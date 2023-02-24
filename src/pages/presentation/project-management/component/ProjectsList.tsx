@@ -24,11 +24,7 @@ import classNames from 'classnames';
 import OffCanvas, { OffCanvasBody, OffCanvasHeader, OffCanvasTitle } from '../../../../components/bootstrap/OffCanvas';
 import FormGroup from '../../../../components/bootstrap/forms/FormGroup';
 import { FormikHelpers, useFormik } from 'formik';
-import USERS from '../../../../common/data/userDummyData';
 import moment from 'moment';
-import Popovers from '../../../../components/bootstrap/Popovers';
-import Checks from '../../../../components/bootstrap/forms/Checks';
-import Textarea from '../../../../components/bootstrap/forms/Textarea';
 import Input from '../../../../components/bootstrap/forms/Input';
 
 interface ICommonUpcomingEventsProps {
