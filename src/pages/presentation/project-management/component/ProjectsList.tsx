@@ -48,14 +48,14 @@ const ProjectLists: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 	};
 
 	const [projectEditOffcanvas, setProjectEditOffcanvas] = useState(false);
-	var addModeOffCanvas;
+	const [editModeOffCanvas, setEditModeOffCanvas] = useState(false);
 	const handleProjectAdd = () => {
 		setProjectEditOffcanvas(!projectEditOffcanvas);
-		addModeOffCanvas = true;
+		setEditModeOffCanvas(false);
 	};
 	const handleProjectEdit = () => {
 		setProjectEditOffcanvas(!projectEditOffcanvas);
-		addModeOffCanvas = false;
+		setEditModeOffCanvas(true);
 	};
 
 	const formik = useFormik({
@@ -70,7 +70,7 @@ const ProjectLists: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 			startedDate: moment().add(1, 'days').format('YYYY-MM-DD'),
 			endDate: moment().add(90, 'days').format('YYYY-MM-DD'),
 			teamMembers: '',
-			status: 'Approved'
+			status: 'Green'
 		},
 	});
 
@@ -103,6 +103,7 @@ const ProjectLists: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 								<th>End Date</th>
 								<th>Team Members</th>
 								<th>RAG Status</th>
+								<th></th>
 								<td />
 							</tr>
 						</thead>
@@ -167,7 +168,7 @@ const ProjectLists: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 									<td>
 	
 									</td>
-									{/* <td>
+									<td>
 										<Button
 											isOutline={!darkModeStatus}
 											color='dark'
@@ -179,7 +180,7 @@ const ProjectLists: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 											onClick={handleProjectEdit}>
 											Edit
 										</Button>
-									</td> */}
+									</td>
 								</tr>
 							))}
 						</tbody>
@@ -241,7 +242,7 @@ const ProjectLists: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 							</FormGroup>
 						</div>
 						<div className='col-6'>
-							<FormGroup id='status' label='Status'>
+							<FormGroup id='status' label='RAG Status'>
 								<Input
 									onChange={formik.handleChange}
 									value={formik.values.status}
