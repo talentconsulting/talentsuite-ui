@@ -161,7 +161,7 @@ const DashboardPage = () => {
 				</SubHeaderLeft>
 				<SubHeaderRight>
 					<CommonAvatarTeam>
-						<strong>Facit</strong> Team
+						<strong>TalentSuite</strong> Team
 					</CommonAvatarTeam>
 				</SubHeaderRight>
 			</SubHeader>
