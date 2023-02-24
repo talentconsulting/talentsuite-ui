@@ -101,15 +101,27 @@ const ProjectLists: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 								<th>Project</th>
 								<th>Start Date</th>
 								<th>End Date</th>
-								<th>Team Memebers</th>
+								<th>Team Members</th>
 								<th>RAG Status</th>
 								<td />
 							</tr>
 						</thead>
 						<tbody>
 							{dataPagination(items, currentPage, perPage).map((item) => (
-								<tr key={item.id} onClick={()=> handleOnClick(item.id)} className='navigation-item cursor-pointer'>
-									<td></td>
+								<tr key={item.id} className='navigation-item cursor-pointer'>
+									<td>
+										<Button
+											isOutline={!darkModeStatus}
+											color='dark'
+											isLight={darkModeStatus}
+											className={classNames({
+												'border-light': !darkModeStatus,
+											})}
+											icon='Info'
+											onClick={()=> handleOnClick(item.id)}
+											aria-label='Detailed information'
+										/>
+									</td>
 									<td>{item.name}</td>
 									<td>
 										<span className='text-nowrap'>
