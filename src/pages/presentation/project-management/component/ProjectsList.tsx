@@ -99,10 +99,10 @@ const ProjectLists: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 							<tr>
 								<td style={{ width: 60 }} />
 								<th>Project</th>
-								<th>Started Date</th>
+								<th>Start Date</th>
 								<th>End Date</th>
 								<th>Team Memebers</th>
-								<th>Status</th>
+								<th>RAG Status</th>
 								<td />
 							</tr>
 						</thead>
@@ -111,8 +111,20 @@ const ProjectLists: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 								<tr key={item.id} onClick={()=> handleOnClick(item.id)} className='navigation-item cursor-pointer'>
 									<td></td>
 									<td>{item.name}</td>
-									<td>{item.startedDate}</td>
-									<td>{item.endDate}</td>
+									<td>
+										<span className='text-nowrap'>
+											{moment(item.startedDate).format(
+												'MMM Do YYYY',
+											)}
+										</span>
+									</td>
+									<td>
+										<span className='text-nowrap'>
+											{moment(item.endDate).format(
+												'MMM Do YYYY',
+											)}
+										</span>
+									</td>
 									<td>{item.teamMembers}</td>
 									<td>
 										<Dropdown>
