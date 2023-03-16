@@ -16,6 +16,7 @@ import { useParams } from 'react-router-dom';
 import OffCanvas, { OffCanvasBody, OffCanvasHeader, OffCanvasTitle } from '../../../../components/bootstrap/OffCanvas';
 import FormGroup from '../../../../components/bootstrap/forms/FormGroup';
 import Input from '../../../../components/bootstrap/forms/Input';
+import Icon from '../../../../components/icon/Icon';
 import { FormikHelpers, useFormik } from 'formik';
 import moment from 'moment';
 import classNames from 'classnames';
@@ -42,8 +43,7 @@ const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 		initialValues: {
 			project: 'Project D',
 			startedDate: moment().add(1, 'days').format('YYYY-MM-DD'),
-			endDate: moment().add(90, 'days').format('YYYY-MM-DD'),
-			teamMembers: '',
+			description: '',
 			status: 'Green'
 		},
 	});
@@ -87,6 +87,7 @@ const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 								<th>Reported Date</th>
 								<th>Reported By</th>
 								<th>Description</th>
+								<th>Status</th>
 								<td />
 							</tr>
 						</thead>
@@ -97,6 +98,9 @@ const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 									<td>{item.reportedDate}</td>
 									<td>{item.enteredBy}</td>
 									<td>{item.description}</td>
+									<td>
+									<Icon icon='Circle' color={ item.status.color } />
+									</td>
 									<td>
 									<Button
 											isOutline={!darkModeStatus}
@@ -153,20 +157,12 @@ const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 								/>
 							</FormGroup>
 						</div>
+
 						<div className='col-12'>
-							<FormGroup id='endDate' label='End Date'>
+							<FormGroup id='description' label='Description'>
 								<Input
 									onChange={formik.handleChange}
-									value={formik.values.endDate}
-									type='date'
-								/>
-							</FormGroup>
-						</div>
-						<div className='col-12'>
-							<FormGroup id='teamMembers' label='Team Members'>
-								<Input
-									onChange={formik.handleChange}
-									value={formik.values.teamMembers}
+									value={formik.values.description}
 								/>
 							</FormGroup>
 						</div>

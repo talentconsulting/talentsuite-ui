@@ -1,4 +1,5 @@
 import moment from 'moment';
+import REPORT_STATUS, { IStatus } from './enumStatus';
 
 const data: IReportProps[] = [
 	{
@@ -7,7 +8,8 @@ const data: IReportProps[] = [
 		reportedDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(-20, 'days').format('DD'),
 		enteredBy: 'Luke',
-		description: 'This week we acheived out sprint velocity, project look on target'
+		description: 'This week we acheived out sprint velocity, project look on target',
+		status: REPORT_STATUS.APPROVED
 	},
 	{
 		id: 2,
@@ -15,7 +17,8 @@ const data: IReportProps[] = [
 		reportedDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(-10, 'days').format('DD'),
 		enteredBy: 'Han',
-		description: 'We had a few bugs to resolve that have put us behind'
+		description: 'We had a few bugs to resolve that have put us behind',
+		status: REPORT_STATUS.AT_RISK
 	},
 	{
 		id: 3,
@@ -23,7 +26,8 @@ const data: IReportProps[] = [
 		reportedDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(-19, 'days').format('DD'),
 		enteredBy: 'Leia',
-		description: 'This week we acheived out sprint velocity, project look on target'
+		description: 'This week we acheived out sprint velocity, project look on target',
+		status: REPORT_STATUS.APPROVED
 	},
 	{
 		id: 4,
@@ -31,7 +35,8 @@ const data: IReportProps[] = [
 		reportedDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(-19, 'days').format('DD'),
 		enteredBy: 'Anakin',
-		description: 'This week we acheived out sprint velocity, project look on target'
+		description: 'This week we acheived out sprint velocity, project look on target',
+		status: REPORT_STATUS.AT_RISK
 	},
 	{
 		id: 5,
@@ -39,7 +44,8 @@ const data: IReportProps[] = [
 		reportedDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(-19, 'days').format('DD'),
 		enteredBy: 'Yoda',
-		description: 'Did good this week, we did'
+		description: 'Did good this week, we did',
+		status: REPORT_STATUS.APPROVED
 	},
 	{
 		id: 6,
@@ -47,7 +53,8 @@ const data: IReportProps[] = [
 		reportedDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(-19, 'days').format('DD'),
 		enteredBy: 'Ben',
-		description: 'This was not the answer you were looking for'
+		description: 'This was not the answer you were looking for',
+		status: REPORT_STATUS.APPROVED
 	},
 	{
 		id: 7,
@@ -55,7 +62,8 @@ const data: IReportProps[] = [
 		reportedDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(-19, 'days').format('DD'),
 		enteredBy: 'Anakin',
-		description: 'We underestimated this work'
+		description: 'We underestimated this work',
+		status: REPORT_STATUS.AT_RISK
 	}
 ];
 
@@ -67,6 +75,7 @@ export interface IReportProps {
 	reportedDate: string;
 	enteredBy: string;
 	description: string;
+	status: IStatus['key'];
 }
 
 export function getReportDataByProjectId(id?: string): IReportProps[] {

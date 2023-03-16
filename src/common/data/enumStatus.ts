@@ -1,10 +1,10 @@
 import COLORS from './enumColors';
 import { TColor } from '../../type/color-type';
 
-export interface IProjectStatus {
+export interface IStatus {
 	[key: string]: { name: string; color: TColor };
 }
-const PROJECT_STATUS: IProjectStatus = {
+const PROJECT_STATUS: IStatus = {
 	APPROVED: { name: 'Green', color: COLORS.SUCCESS.name },
 	AT_RISK: { name: 'Amber', color: COLORS.WARNING.name },
 	BEHIND: { name: 'Red', color: COLORS.DANGER.name },
