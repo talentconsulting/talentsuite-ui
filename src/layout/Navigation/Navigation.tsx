@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { TIcons } from '../../type/icons-type';
 import Item from './Item';
+import { useContext } from 'react';
+import FeatureFlagsContext from './../../contexts/featureFlagsContext';
 
 interface IListProps extends HTMLAttributes<HTMLUListElement> {
 	id?: string;
@@ -118,6 +120,19 @@ const Navigation = forwardRef<HTMLElement, INavigationProps>(
 
 		const { t } = useTranslation('menu');
 
+		const { featureFlags } = useContext(FeatureFlagsContext);
+		function hideMenuItem(id:string, menuHide:boolean):boolean{
+			if(menuHide){
+				return true;
+			}
+
+			if(featureFlags.has(id) && featureFlags.get(id) == true){
+				return false;
+			}
+
+			return true;
+		}
+
 		function fillMenu(
 			data:
 				| {
@@ -156,8 +171,8 @@ const Navigation = forwardRef<HTMLElement, INavigationProps>(
 						setActiveItem={setActiveItem}
 						activeItem={activeItem}
 						notification={data[item].notification}
-						hide={data[item].hide}>
-						{!!data[item].subMenu &&
+						hide={hideMenuItem(data[item].id, data[item].hide)}>
+						{!!data[item].subMenu && 
 							fillMenu(
 								data[item].subMenu,
 								data[item].id,

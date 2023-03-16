@@ -15,7 +15,7 @@ export const HeaderLeft: FC<IHeaderLeftProps> = ({ children, className }) => {
 	return <div className={classNames('header-left', 'col-md', className)}>{children}</div>;
 };
 HeaderLeft.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
 	className: PropTypes.string,
 };
 HeaderLeft.defaultProps = {
