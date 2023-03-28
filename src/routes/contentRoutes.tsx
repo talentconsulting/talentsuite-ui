@@ -35,7 +35,7 @@ const APP_ELEMENTS = {
 		LIST: lazy(() => import('../pages/presentation/project-management/ListProjectsPage')),
 		ITEM: lazy(() => import('../pages/presentation/project-management/ProjectPage')),
 		REPORTS: {
-			LIST : lazy(() => import('../pages/presentation/project-management/ListReportsPage')),
+			LIST : lazy(() => import('../pages/presentation/project-management/reports/ReportsPage')),
 		}
 	},	
 	PEOPLE: {

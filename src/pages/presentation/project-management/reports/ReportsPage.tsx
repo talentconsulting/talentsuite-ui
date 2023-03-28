@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import { Calendar as DatePicker } from 'react-date-range';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Icon from '../../../components/icon/Icon';
-import Button from '../../../components/bootstrap/Button';
-import Page from '../../../layout/Page/Page';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import ReportsList from './component/ReportsList';
-import Popovers from '../../../components/bootstrap/Popovers';
-import { appPagesMenu } from '../../../menu';
-import useDarkMode from '../../../hooks/useDarkMode';
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../../layout/SubHeader/SubHeader';
+import Icon from '../../../../components/icon/Icon';
+import Button from '../../../../components/bootstrap/Button';
+import Page from '../../../../layout/Page/Page';
+import PageWrapper from '../../../../layout/PageWrapper/PageWrapper';
+import ReportsList from './ReportsList';
+import Popovers from '../../../../components/bootstrap/Popovers';
+import { appPagesMenu } from '../../../../menu';
+import useDarkMode from '../../../../hooks/useDarkMode';
 
-const ListReportsPage = () => {
+const ReportsPage = () => {
 	const { themeStatus } = useDarkMode();
 
 	const [date, setDate] = useState<Date>(new Date());
@@ -50,4 +50,4 @@ const ListReportsPage = () => {
 	);
 };
 
-export default ListReportsPage;
+export default ReportsPage;
