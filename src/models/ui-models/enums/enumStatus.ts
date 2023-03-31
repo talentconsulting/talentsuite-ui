@@ -1,5 +1,5 @@
-import COLORS from '../../common/data/enumColors';
-import { TColor } from '../../type/color-type';
+import COLORS from '../../../common/data/enumColors';
+import { TColor } from '../../../type/color-type';
 
 export interface IStatus {
 	[key: string]: { name: string; color: TColor };
