@@ -107,8 +107,8 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 							{dataPagination(items, currentPage, perPage).map((item) => (
 								<tr key={item.id} onClick={()=> handleRowOnClick(item.id)} className='navigation-item cursor-pointer'>
 									<td></td>
-									<td>{item.reportedDate}</td>
-									<td>{item.enteredBy}</td>
+									<td>{item.submissionDate}</td>
+									<td>{item.userName}</td>
 									<td>{item.description}</td>
 									<td>
 									<Icon icon='Circle' color={ item.ragStatus.color } />
