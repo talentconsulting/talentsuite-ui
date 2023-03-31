@@ -1,4 +1,4 @@
-import COLORS from './enumColors';
+import COLORS from '../../common/data/enumColors';
 import { TColor } from '../../type/color-type';
 
 export interface IStatus {

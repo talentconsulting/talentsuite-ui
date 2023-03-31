@@ -1,5 +1,5 @@
 import moment from 'moment';
-import PROJECT_STATUS, { IStatus } from './enumStatus';
+import PROJECT_STATUS, { IStatus } from '../../models/enums/enumStatus';
 import Company1 from '../../assets/logos/company1.png';
 import Company2 from '../../assets/logos/company2.png';
 import Company3 from '../../assets/logos/company3.png';

@@ -1,5 +1,6 @@
 import moment from 'moment';
-import REPORT_STATUS, { IStatus } from './enumStatus';
+import REPORT_STATUS, { IStatus } from '../../models/enums/enumStatus';
+import { IReportProps } from '../../models/IReportProps';
 
 const data: IReportProps[] = [
 	{
@@ -69,20 +70,17 @@ const data: IReportProps[] = [
 
 export default data;
 
-export interface IReportProps {
-	id: number;
-	projectId: number;
-	reportedDate: string;
-	enteredBy: string;
-	description: string;
-	status: IStatus['key'];
-}
-
-export function getReportDataByProjectId(id?: string): IReportProps[] {
+export function getDummyReportDataByProjectId(id?: string): IReportProps[] {
 	if(id == "All"){
 		return data;
 	}
 	// @ts-ignore
 	return data.filter(x=>x.projectId.toString() == id);
+	//return data[Object.keys(data).filter((f) => data[f].projectId.toString() === id.toString())];
+}
+
+export function getDummyReportDataByReportId(id?: string): IReportProps {
+	// @ts-ignore
+	return data.filter(x=>x.id.toString() == id).indexOf(0);
 	//return data[Object.keys(data).filter((f) => data[f].projectId.toString() === id.toString())];
 }
