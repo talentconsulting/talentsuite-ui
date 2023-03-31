@@ -17,6 +17,12 @@ export const appPagesMenu = {
 		path: APP_PATHS.PROJECTS.LIST,
 		icon: 'ViewDay',
 	},	
+	listReports: {
+		id: 'listReports',
+		text: 'Reports',
+		path: APP_PATHS.PROJECTS.REPORTS.LIST.replace(':id', "All"),
+		icon: 'Article',
+	},	
 	listPeople: {
 		id: 'listPeople',
 		text: 'People',

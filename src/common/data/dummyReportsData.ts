@@ -79,6 +79,9 @@ export interface IReportProps {
 }
 
 export function getReportDataByProjectId(id?: string): IReportProps[] {
+	if(id == "All"){
+		return data;
+	}
 	// @ts-ignore
 	return data.filter(x=>x.projectId.toString() == id);
 	//return data[Object.keys(data).filter((f) => data[f].projectId.toString() === id.toString())];

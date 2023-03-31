@@ -20,7 +20,8 @@ import Icon from '../../../../components/icon/Icon';
 import { FormikHelpers, useFormik } from 'formik';
 import moment from 'moment';
 import classNames from 'classnames';
-import ReportEditor from './ReportEditor';
+import { useNavigate } from 'react-router-dom';
+import { APP_PATHS } from '../../../../routes/contentRoutes';
 
 
 interface ICommonUpcomingEventsProps {
@@ -33,6 +34,7 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [perPage, setPerPage] = useState(PER_COUNT['5']);
 	const { items } = useSortableData(getReportDataByProjectId(id));
+	const navigate = useNavigate();
 
 	const formik = useFormik({
 		onSubmit<Values>(
@@ -48,6 +50,11 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 			status: 'Green'
 		},
 	});
+
+	const handleRowOnClick = (id:any)=>{
+		var path = APP_PATHS.PROJECTS.REPORTS.DETAILS.replace(':id', id)
+		navigate(`../${path}`);
+	};
 
 	const handleProjectAdd = () => {
 		setProjectEditOffcanvas(!projectEditOffcanvas);
@@ -95,7 +102,7 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 						</thead>
 						<tbody>
 							{dataPagination(items, currentPage, perPage).map((item) => (
-								<tr key={item.id}>
+								<tr key={item.id} onClick={()=> handleRowOnClick(item.id)} className='navigation-item cursor-pointer'>
 									<td></td>
 									<td>{item.reportedDate}</td>
 									<td>{item.enteredBy}</td>

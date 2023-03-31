@@ -7,7 +7,8 @@ export const APP_PATHS = {
 		LIST: 'projects/List' ,
 		ITEM: 'project',
 		REPORTS: {
-			LIST : 'projects/:id/reports/List'
+			LIST : 'projects/:id/reports/List',
+			DETAILS : 'projects/reports/:id',
 		}
 	},	
 	PEOPLE: {
@@ -36,6 +37,7 @@ const APP_ELEMENTS = {
 		ITEM: lazy(() => import('../pages/presentation/project-management/ProjectPage')),
 		REPORTS: {
 			LIST : lazy(() => import('../pages/presentation/project-management/reports/ReportsPage')),
+			DETAILS : lazy(() => import('../pages/presentation/project-management/reports/ReportDetailsPage')),
 		}
 	},	
 	PEOPLE: {
@@ -73,6 +75,10 @@ const presentation: RouteProps[] = [
 	{
 		path: APP_PATHS.PROJECTS.REPORTS.LIST,
 		element: <APP_ELEMENTS.PROJECTS.REPORTS.LIST />,
+	},
+	{
+		path: APP_PATHS.PROJECTS.REPORTS.DETAILS,
+		element: <APP_ELEMENTS.PROJECTS.REPORTS.DETAILS />,
 	},
 	{
 		path: APP_PATHS.PEOPLE.LIST,
