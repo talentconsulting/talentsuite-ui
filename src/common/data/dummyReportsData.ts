@@ -1,6 +1,5 @@
 import moment from 'moment';
 import REPORT_STATUS, { IStatus } from '../../models/ui-models/enums/enumStatus';
-import { IReportRiskModel } from '../../models/ui-models/IReportModel';
 import { IReportModel } from '../../models/ui-models/IReportModel';
 
 
@@ -65,5 +64,5 @@ export function getDummyReportDataByProjectId(id?: string): IReportModel[] {
 
 export function getDummyReportDataByReportId(id?: string): IReportModel {
 	// @ts-ignore
-	return data.filter(x=>x.id.toString() == id).indexOf(0);
+    return data.filter(x=>x.id.toString() == id)[0];
 }
