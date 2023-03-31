@@ -5,5 +5,5 @@ export interface IRiskProps {
     reportId: string;
     riskDetails: string;
     riskMitigation: string;
-    ragStatus: IStatus;
+    ragStatus: IStatus['key'];
 }

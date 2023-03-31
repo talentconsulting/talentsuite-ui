@@ -2,13 +2,12 @@ import { IRiskProps } from './IRiskProps';
 
 export interface IReportProps {
 	id: string;
-	created: Date;
+	created: string;
 	plannedTasks: string;
 	completedTasks: string;
 	weeknumber: number;
-	submissionDate: Date;
+	submissionDate: string;
 	projectId: string;
 	userId: string;
-	risks: IRiskProps;
-
+	risks: IRiskProps[];
 }

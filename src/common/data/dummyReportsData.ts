@@ -4,68 +4,43 @@ import { IReportProps } from '../../models/IReportProps';
 
 const data: IReportProps[] = [
 	{
-		id: 1,
-		projectId: 1,
-		reportedDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(-20, 'days').format('DD'),
-		enteredBy: 'Luke',
-		description: 'This week we acheived out sprint velocity, project look on target',
-		status: REPORT_STATUS.APPROVED
+		id: "5b01ab64-5de5-4b3c-8e5a-413ce7661a94",
+        created: moment().format('YYYY') + moment().format('MM') + moment().add(-20, 'days').format('DD'),
+		plannedTasks: "task1, task2",
+		completedTasks: "task3",
+		weeknumber: 3,
+		submissionDate: moment().format('YYYY') + moment().format('MM') + moment().add(-10, 'days').format('DD'),
+		projectId: "dd9712fd-d4d0-4a56-9a83-4807139995c0",
+		userId: "161ff923-0a91-450e-8051-dbf67302e456",
+		risks: [
+            {
+				id: "256317d8-9a01-4b12-a77d-9771f6680bed",
+				reportId: "5b01ab64-5de5-4b3c-8e5a-413ce7661a94",
+				riskDetails: "no devops resource allocated yet",
+				riskMitigation: "allocate devops resource by end of next sprint",
+				ragStatus: REPORT_STATUS.AT_RISK
+            }
+        ]
 	},
-	{
-		id: 2,
-		projectId: 1,
-		reportedDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(-10, 'days').format('DD'),
-		enteredBy: 'Han',
-		description: 'We had a few bugs to resolve that have put us behind',
-		status: REPORT_STATUS.AT_RISK
-	},
-	{
-		id: 3,
-		projectId: 2,
-		reportedDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(-19, 'days').format('DD'),
-		enteredBy: 'Leia',
-		description: 'This week we acheived out sprint velocity, project look on target',
-		status: REPORT_STATUS.APPROVED
-	},
-	{
-		id: 4,
-		projectId: 2,
-		reportedDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(-19, 'days').format('DD'),
-		enteredBy: 'Anakin',
-		description: 'This week we acheived out sprint velocity, project look on target',
-		status: REPORT_STATUS.AT_RISK
-	},
-	{
-		id: 5,
-		projectId: 3,
-		reportedDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(-19, 'days').format('DD'),
-		enteredBy: 'Yoda',
-		description: 'Did good this week, we did',
-		status: REPORT_STATUS.APPROVED
-	},
-	{
-		id: 6,
-		projectId: 3,
-		reportedDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(-19, 'days').format('DD'),
-		enteredBy: 'Ben',
-		description: 'This was not the answer you were looking for',
-		status: REPORT_STATUS.APPROVED
-	},
-	{
-		id: 7,
-		projectId: 3,
-		reportedDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(-19, 'days').format('DD'),
-		enteredBy: 'Anakin',
-		description: 'We underestimated this work',
-		status: REPORT_STATUS.AT_RISK
-	}
+    {
+		id: "10c8b1ac-4500-46b3-96db-4a418b49f759",
+        created: moment().format('YYYY') + moment().format('MM') + moment().add(-30, 'days').format('DD'),
+        plannedTasks: "task4, task5",
+        completedTasks: "task6",
+        weeknumber: 7,
+        submissionDate: moment().format('YYYY') + moment().format('MM') + moment().add(-15, 'days').format('DD'),
+		projectId: "fee3a72d-a16d-4af9-a4a1-fdfc8de749ed",
+		userId: "3bb19745-a3fb-4820-9c9b-ffe0849bbfbc",
+        risks: [
+            {
+				id: "763ecba7-d4c5-4484-bf1c-57912da851cb",
+				reportId: "10c8b1ac-4500-46b3-96db-4a418b49f759",
+                riskDetails: "version 2 won't be ready for new academic year deadline",
+                riskMitigation: "implement must have features into version 1",
+				ragStatus: REPORT_STATUS.BEHIND
+            }
+        ]
+    }
 ];
 
 export default data;
