@@ -1,9 +1,9 @@
-import { IReportProps } from '../models/IReportProps';
+import { IReportModel} from '../models/ui-models/IReportModel';
 import { getDummyReportDataByProjectId, getDummyReportDataByReportId } from '../common/data/dummyReportsData';
 
 export interface IReportService {
-	getReportsDataByProjectId(id?: string): IReportProps[]
-    getReportDataByReportId(id?: string): IReportProps
+	getReportsDataByProjectId(id?: string): IReportModel[];
+    getReportDataByReportId(id?: string): IReportModel;
 }
 
 class ReportService implements IReportService {
@@ -14,14 +14,14 @@ class ReportService implements IReportService {
         this.apiEndpoint = "https://localhost:7055/"; // Return from configuration  
     }
 
-    getReportsDataByProjectId(id?: string): IReportProps[] {
+    getReportsDataByProjectId(id?: string): IReportModel[] {
 
        // if(this.useDummyData){
             return getDummyReportDataByProjectId(id);
        // }
     }
 
-    getReportDataByReportId(id?: string): IReportProps {
+    getReportDataByReportId(id?: string): IReportModel {
         return getDummyReportDataByReportId(id);
     }
 }
