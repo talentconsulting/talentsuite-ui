@@ -12,10 +12,12 @@ interface IFeatureFlagsContextProviderProps {
 }
 export const FeatureFlagsContextProvider: FC<IFeatureFlagsContextProviderProps> = ({ children }) => {
 
+	//  The string must match the id for the page found in menu.ts
 	const value = { 
 		'featureFlags':new Map<string, boolean>([
 			
 			["listProjects", true],
+			["listReports", true],
 			["listPeople", true],
 			["schedule", true],
 			["calendar", true],

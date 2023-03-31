@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useRef, FC, useState } from 'react';
 import Card, {
 	CardActions,
 	CardBody,
@@ -20,18 +20,21 @@ import Icon from '../../../../components/icon/Icon';
 import { FormikHelpers, useFormik } from 'formik';
 import moment from 'moment';
 import classNames from 'classnames';
+import { useNavigate } from 'react-router-dom';
+import { APP_PATHS } from '../../../../routes/contentRoutes';
 
 
 interface ICommonUpcomingEventsProps {
 	isFluid?: boolean;
 }
-const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
+const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 	const { themeStatus, darkModeStatus } = useDarkMode();
 
 	const { id } = useParams();
 	const [currentPage, setCurrentPage] = useState(1);
 	const [perPage, setPerPage] = useState(PER_COUNT['5']);
 	const { items } = useSortableData(getReportDataByProjectId(id));
+	const navigate = useNavigate();
 
 	const formik = useFormik({
 		onSubmit<Values>(
@@ -48,6 +51,11 @@ const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 		},
 	});
 
+	const handleRowOnClick = (id:any)=>{
+		var path = APP_PATHS.PROJECTS.REPORTS.DETAILS.replace(':id', id)
+		navigate(`../${path}`);
+	};
+
 	const handleProjectAdd = () => {
 		setProjectEditOffcanvas(!projectEditOffcanvas);
 		setEditModeOffCanvas(false);
@@ -60,6 +68,7 @@ const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 	const [projectEditOffcanvas, setProjectEditOffcanvas] = useState(false);
 	const [editModeOffCanvas, setEditModeOffCanvas] = useState(false);
 
+	const reportEditor = useRef();
 	return (
 		<>
 			<Card stretch={isFluid}>
@@ -93,7 +102,7 @@ const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 						</thead>
 						<tbody>
 							{dataPagination(items, currentPage, perPage).map((item) => (
-								<tr key={item.id}>
+								<tr key={item.id} onClick={()=> handleRowOnClick(item.id)} className='navigation-item cursor-pointer'>
 									<td></td>
 									<td>{item.reportedDate}</td>
 									<td>{item.enteredBy}</td>
@@ -191,4 +200,4 @@ const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 	);
 };
 
-export default CommonUpcomingEvents;
+export default ReportsList;
