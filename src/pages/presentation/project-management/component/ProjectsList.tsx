@@ -14,7 +14,7 @@ import Dropdown, {
 } from '../../../../components/bootstrap/Dropdown';
 import Icon from '../../../../components/icon/Icon';
 import data from '../../../../common/data/dummyProjectsData';
-import PROJECT_STATUS from '../../../../common/data/enumStatus';
+import PROJECT_STATUS from '../../../../models/enums/enumStatus';
 import PaginationButtons, { dataPagination, PER_COUNT } from '../../../../components/PaginationButtons';
 import useSortableData from '../../../../hooks/useSortableData';
 import useDarkMode from '../../../../hooks/useDarkMode';

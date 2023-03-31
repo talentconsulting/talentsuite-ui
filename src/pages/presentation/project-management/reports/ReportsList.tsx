@@ -8,7 +8,7 @@ import Card, {
 } from '../../../../components/bootstrap/Card';
 import Button from '../../../../components/bootstrap/Button';
 
-import { getReportDataByProjectId } from '../../../../common/data/dummyReportsData';
+import { getDummyReportDataByProjectId } from '../../../../common/data/dummyReportsData';
 import PaginationButtons, { dataPagination, PER_COUNT } from '../../../../components/PaginationButtons';
 import useSortableData from '../../../../hooks/useSortableData';
 import useDarkMode from '../../../../hooks/useDarkMode';
@@ -22,18 +22,21 @@ import moment from 'moment';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { APP_PATHS } from '../../../../routes/contentRoutes';
+import  ReportService from '../../../../services/reportService';
 
 
 interface ICommonUpcomingEventsProps {
 	isFluid?: boolean;
 }
 const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
+
+	var reportService = new ReportService();
 	const { themeStatus, darkModeStatus } = useDarkMode();
 
 	const { id } = useParams();
 	const [currentPage, setCurrentPage] = useState(1);
 	const [perPage, setPerPage] = useState(PER_COUNT['5']);
-	const { items } = useSortableData(getReportDataByProjectId(id));
+	const { items } = useSortableData(reportService.getReportsDataByProjectId(id));
 	const navigate = useNavigate();
 
 	const formik = useFormik({
