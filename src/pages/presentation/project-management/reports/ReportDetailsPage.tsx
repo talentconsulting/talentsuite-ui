@@ -18,6 +18,7 @@ import Button from '../../../../components/bootstrap/Button';
 import { APP_PATHS } from '../../../../routes/contentRoutes';
 import CommonAvatarTeam from '../../../../common/other/CommonAvatarTeam';
 
+
 import ReportService from '../../../../services/reportService';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
@@ -38,7 +39,7 @@ const ReportDetailsPage = () => {
 
     return (
 		
-		<PageWrapper title={`${data.description}`}>
+		<PageWrapper title={`${data.projectName} - Week ${data.weeknumber}`}>
 			<SubHeader>
 				<SubHeaderLeft>
 					<Button
@@ -61,7 +62,7 @@ const ReportDetailsPage = () => {
 			</SubHeader>
 			<Page>
                 <div className='pt-3 pb-5 d-flex align-items-center'>
-					<span className='display-4 fw-bold me-3'>{`${data.projectName}`} - Week Number {`${data.weeknumber}`} - <Icon icon='Circle' color={data.ragStatus.color} /></span>
+					<span className='display-4 fw-bold me-3'>{`${data.projectName}`} - Week {`${data.weeknumber}`} Report - <Icon icon='Circle' color={data.ragStatus.color} /></span>
 				</div>
 
 				<div className='row'>
