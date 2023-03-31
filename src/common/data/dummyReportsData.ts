@@ -86,3 +86,9 @@ export function getReportDataByProjectId(id?: string): IReportProps[] {
 	return data.filter(x=>x.projectId.toString() == id);
 	//return data[Object.keys(data).filter((f) => data[f].projectId.toString() === id.toString())];
 }
+
+export function getReportDataById(id?: string): IReportProps {
+    // @ts-ignore
+    //return data.filter(x => x.id.toString() == id);
+    return data[Object.keys(data).filter((f) => data[f].id.toString() === id.toString())];
+}
