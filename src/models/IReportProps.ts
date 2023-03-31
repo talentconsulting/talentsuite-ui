@@ -1,10 +1,14 @@
-import { IStatus } from './enums/enumStatus';
+import { IRiskProps } from './IRiskProps';
 
 export interface IReportProps {
-	id: number;
-	projectId: number;
-	reportedDate: string;
-	enteredBy: string;
-	description: string;
-	status: IStatus['key'];
+	id: string;
+	created: Date;
+	plannedTasks: string;
+	completedTasks: string;
+	weeknumber: number;
+	submissionDate: Date;
+	projectId: string;
+	userId: string;
+	risks: IRiskProps;
+
 }
