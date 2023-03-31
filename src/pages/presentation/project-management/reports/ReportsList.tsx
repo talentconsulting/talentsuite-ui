@@ -111,7 +111,7 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 									<td>{item.enteredBy}</td>
 									<td>{item.description}</td>
 									<td>
-									<Icon icon='Circle' color={ item.status.color } />
+									<Icon icon='Circle' color={ item.ragStatus.color } />
 									</td>
 									<td>
 									<Button
