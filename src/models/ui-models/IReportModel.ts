@@ -23,4 +23,6 @@ export interface IReportModel {
     userName: string;
     description: string;
     ragStatus: IStatus["key"];
+    projectName: string;
+    client: string;
 }

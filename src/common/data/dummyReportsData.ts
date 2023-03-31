@@ -24,7 +24,9 @@ const data: IReportModel[] = [
         ],
         userName: "Daniel",
         description: "UI refresh running behind, may need to implement changes in existing web app.",
-        ragStatus: REPORT_STATUS.BEHIND
+        ragStatus: REPORT_STATUS.BEHIND,
+        projectName: "FruitPortal UI Refresh",
+        client: "Frank's Fruits"
     },
     {
         id: "5b01ab64-5de5-4b3c-8e5a-413ce7661a94",
@@ -46,7 +48,9 @@ const data: IReportModel[] = [
         ],
         userName: "Luke",
         description: "Project is generally going well, we've been muddling along using our own azure credits for now but will need devops to set up a proper test environment soon.",
-        ragStatus: REPORT_STATUS.AT_RISK
+        ragStatus: REPORT_STATUS.AT_RISK,
+        projectName: "New Accounts Project",
+        client: "Village Accountancy"
     }
 
 ];
