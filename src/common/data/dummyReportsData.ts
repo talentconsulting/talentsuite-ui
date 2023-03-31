@@ -1,67 +1,69 @@
 import moment from 'moment';
-import REPORT_STATUS, { IStatus } from '../../models/enums/enumStatus';
-import { IReportProps } from '../../models/IReportProps';
+import REPORT_STATUS, { IStatus } from '../../models/ui-models/enums/enumStatus';
+import { IReportRiskModel } from '../../models/ui-models/IReportModel';
+import { IReportModel } from '../../models/ui-models/IReportModel';
 
-const data: IReportProps[] = [
-	{
-		id: "5b01ab64-5de5-4b3c-8e5a-413ce7661a94",
-        created: moment().format('YYYY') + moment().format('MM') + moment().add(-20, 'days').format('DD'),
-		plannedTasks: "task1, task2",
-		completedTasks: "task3",
-		weeknumber: 3,
-		submissionDate: moment().format('YYYY') + moment().format('MM') + moment().add(-10, 'days').format('DD'),
-		projectId: "dd9712fd-d4d0-4a56-9a83-4807139995c0",
-		userId: "161ff923-0a91-450e-8051-dbf67302e456",
-		risks: [
-            {
-				id: "256317d8-9a01-4b12-a77d-9771f6680bed",
-				reportId: "5b01ab64-5de5-4b3c-8e5a-413ce7661a94",
-				riskDetails: "no devops resource allocated yet",
-				riskMitigation: "allocate devops resource by end of next sprint",
-				ragStatus: REPORT_STATUS.AT_RISK
-            }
-        ]
-	},
+
+const data: IReportModel[] = [
     {
-		id: "10c8b1ac-4500-46b3-96db-4a418b49f759",
-        created: moment().format('YYYY') + moment().format('MM') + moment().add(-30, 'days').format('DD'),
-        plannedTasks: "task4, task5",
-        completedTasks: "task6",
-        weeknumber: 7,
+        id: "1300db01-ac4e-4b0b-a3f1-c5b926adf12d",
+        created: moment().format('YYYY') + moment().format('MM') + moment().add(-50, 'days').format('DD'),
+        plannedTasks: "User Research, UI Refresh Design",
+        completedTasks: "Design DB Changes",
+        weeknumber: 6,
         submissionDate: moment().format('YYYY') + moment().format('MM') + moment().add(-15, 'days').format('DD'),
-		projectId: "fee3a72d-a16d-4af9-a4a1-fdfc8de749ed",
-		userId: "3bb19745-a3fb-4820-9c9b-ffe0849bbfbc",
+        projectId: "f4abb297-f5bb-4495-8ecf-f3732e4a4026",
+        userId: "b8b675f9-f10b-4112-9027-84af190dbea4",
         risks: [
             {
-				id: "763ecba7-d4c5-4484-bf1c-57912da851cb",
-				reportId: "10c8b1ac-4500-46b3-96db-4a418b49f759",
-                riskDetails: "version 2 won't be ready for new academic year deadline",
-                riskMitigation: "implement must have features into version 1",
-				ragStatus: REPORT_STATUS.BEHIND
+                id: "1300db01-ac4e-4b0b-a3f1-c5b926adf12d",
+                reportId: "4e3f5d14-20ad-4873-aebe-805b6a24fde2",
+                riskDetails: "Refreshed web app may not be ready for go live",
+                riskMitigation: "Update existing web app to handle new user journey",
+                ragStatus: REPORT_STATUS.BEHIND
             }
-        ]
+        ],
+        userName: "Daniel",
+        description: "UI refresh running behind, may need to implement changes in existing web app.",
+        ragStatus: REPORT_STATUS.BEHIND
+    },
+    {
+        id: "5b01ab64-5de5-4b3c-8e5a-413ce7661a94",
+        created: moment().format('YYYY') + moment().format('MM') + moment().add(-20, 'days').format('DD'),
+        plannedTasks: "Build Api, Update UI",
+        completedTasks: "Design DB",
+        weeknumber: 3,
+        submissionDate: moment().format('YYYY') + moment().format('MM') + moment().add(-10, 'days').format('DD'),
+        projectId: "dd9712fd-d4d0-4a56-9a83-4807139995c0",
+        userId: "161ff923-0a91-450e-8051-dbf67302e456",
+        risks: [
+            {
+                id: "0c1a867f-606a-40ca-bdd8-7364dba926db",
+                reportId: "5b01ab64-5de5-4b3c-8e5a-413ce7661a94",
+                riskDetails: "No devops resource allocated",
+                riskMitigation: "allocate devops resource by end of sprint 5",
+                ragStatus: REPORT_STATUS.AT_RISK
+            }
+        ],
+        userName: "Luke",
+        description: "Project is generally going well, we've been muddling along using our own azure credits for now but will need devops to set up a proper test environment soon.",
+        ragStatus: REPORT_STATUS.AT_RISK
     }
+
 ];
+
 
 export default data;
 
-export function getDummyReportDataByProjectId(id?: string): IReportProps[] {
+export function getDummyReportDataByProjectId(id?: string): IReportModel[] {
 	if(id == "All"){
 		return data;
 	}
 	// @ts-ignore
 	return data.filter(x=>x.projectId.toString() == id);
-	//return data[Object.keys(data).filter((f) => data[f].projectId.toString() === id.toString())];
 }
 
-export function getDummyReportDataByReportId(id?: string): IReportProps {
+export function getDummyReportDataByReportId(id?: string): IReportModel {
 	// @ts-ignore
 	return data.filter(x=>x.id.toString() == id).indexOf(0);
-	//return data[Object.keys(data).filter((f) => data[f].projectId.toString() === id.toString())];
 }
-
-//export function getReportDataById(id?: string): IReportProps {
-//    // @ts-ignore
-//    //return data.filter(x => x.id.toString() == id);
-//    return data[Object.keys(data).filter((f) => data[f].id.toString() === id.toString())];
-//}

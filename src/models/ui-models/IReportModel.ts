@@ -1,11 +1,11 @@
 import REPORT_STATUS, { IStatus } from './enums/enumStatus';
 
-export interface IReportRisk {
+export interface IReportRiskModel {
     id: string;
     reportId: string;
     riskDetails: string;
     riskMitigation: string;
-    ragStatus: string;
+    ragStatus: IStatus["key"];
 }
 
 export interface IReportModel {
@@ -18,9 +18,9 @@ export interface IReportModel {
     projectId: string;
     userId: string;
 
-    risks: IReportRisk[];
+    risks: IReportRiskModel[];
 
     userName: string;
     description: string;
-    status: IStatus["key"];
+    ragStatus: IStatus["key"];
 }
