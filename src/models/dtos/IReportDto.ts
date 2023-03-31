@@ -1,6 +1,6 @@
-import { IRiskProps } from './IRiskProps';
+import { IRiskDto } from './IRiskDto';
 
-export interface IReportProps {
+export interface IReportDto {
 	id: string;
 	created: string;
 	plannedTasks: string;
@@ -9,5 +9,5 @@ export interface IReportProps {
 	submissionDate: string;
 	projectId: string;
 	userId: string;
-	risks: IRiskProps[];
+	risks: IRiskDto[];
 }
