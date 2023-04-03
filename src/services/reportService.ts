@@ -2,6 +2,7 @@ import { IReportModel} from '../models/ui-models/IReportModel';
 import { IReportDto} from '../models/dtos/IReportDto';
 import { IPaginatedResultDto} from '../models/dtos/IPaginatedResultDto';
 import  PROJECT_STATUS from '../models/ui-models/enums/enumStatus';
+import  { dateParse}  from '../helpers/dateHelper';
 
 import { getDummyReportDataByProjectId, getDummyReportDataByReportId } from '../common/data/dummyReportsData';
 
@@ -32,9 +33,7 @@ class ReportService implements IReportService {
                 var paginatedResult = json as IPaginatedResultDto<IReportDto>;
                 return this.map(paginatedResult.items);
             })
-        
-
-        
+    
     }
 
     getReportDataByReportId(id?: string): IReportModel {
@@ -48,11 +47,11 @@ class ReportService implements IReportService {
 
             var model: IReportModel = {
                 id: dto.id,
-                created: dto.created,
+                created: dateParse(dto.created),
                 plannedTasks: dto.plannedTasks,
                 completedTasks: dto.completedTasks,
                 weeknumber: dto.weeknumber,
-                submissionDate: dto.submissionDate,
+                submissionDate: dateParse(dto.submissionDate),
                 projectId: dto.projectId,
                 userId: dto.userId,
                 risks: [],
@@ -71,9 +70,7 @@ class ReportService implements IReportService {
         return models;
     }
 
-    resolveRag(){
 
-    }
 }
 
 export default ReportService;

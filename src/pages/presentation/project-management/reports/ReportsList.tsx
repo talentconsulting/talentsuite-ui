@@ -81,7 +81,7 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 
 	useEffect(() => {
         getReportData();
-     });
+     }, []);
 
 	const [projectEditOffcanvas, setProjectEditOffcanvas] = useState(false);
 	const [editModeOffCanvas, setEditModeOffCanvas] = useState(false);
