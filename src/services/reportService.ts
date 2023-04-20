@@ -3,6 +3,7 @@ import { IReportDto} from '../models/dtos/IReportDto';
 import { IPaginatedResultDto} from '../models/dtos/IPaginatedResultDto';
 import  PROJECT_STATUS from '../models/ui-models/enums/enumStatus';
 import  { dateParse}  from '../helpers/dateHelper';
+import { GetAppSettings } from '../appsettings';
 
 import { getDummyReportDataByProjectId, getDummyReportDataByReportId } from '../common/data/dummyReportsData';
 
@@ -13,10 +14,10 @@ export interface IReportService {
 
 class ReportService implements IReportService {
     apiEndpoint: string = ''; 
-    useDummyData: boolean = true;
+    useDummyData: boolean = false;
 
     constructor() {
-        this.apiEndpoint = "https://localhost:7055/"; // Return from configuration  
+        this.apiEndpoint = GetAppSettings().ReportsApiUrl; 
     }
 
     getReportsDataByProjectId(id?: string): Promise<IReportModel[]> {
@@ -58,7 +59,6 @@ class ReportService implements IReportService {
                 projectName: '',
                 client: '',
                 userName: dto.userId,
-                
                 description: 'no description',
                 ragStatus: PROJECT_STATUS["APPROVED"]
             };
