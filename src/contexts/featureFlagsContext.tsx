@@ -71,8 +71,17 @@ export const FeatureFlagsContextProvider: FC<IFeatureFlagsContextProviderProps> 
 	showPagesFlags.flags.push({flagName:"login", isActive: true});
 	showPagesFlags.flags.push({flagName:"signUp", isActive: true});
 
+	//  Reports FeatureFlags
+	var reportsFlags: IFeatureFlagGroup = {
+		groupName :"Reports",
+		description : "FeatureFlags related to Reports",
+		flags : []
+	}
+	reportsFlags.flags.push({flagName:"UseDummyData", isActive: true});
+
 	const featureFlagGroups : IFeatureFlagGroup[] = [];
 	featureFlagGroups.push(showPagesFlags);
+	featureFlagGroups.push(reportsFlags);
 
 	const value = { 'featureFlags':new FeatureManager(featureFlagGroups) };
 

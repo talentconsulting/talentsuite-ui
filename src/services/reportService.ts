@@ -4,8 +4,9 @@ import { IPaginatedResultDto} from '../models/dtos/IPaginatedResultDto';
 import  PROJECT_STATUS from '../models/ui-models/enums/enumStatus';
 import  { dateParse}  from '../helpers/dateHelper';
 import { GetAppSettings } from '../appsettings';
-
 import { getDummyReportDataByProjectId, getDummyReportDataByReportId } from '../common/data/dummyReportsData';
+import FeatureFlagsContext from './../contexts/featureFlagsContext';
+import { useContext } from 'react';
 
 export interface IReportService {
 	getReportsDataByProjectId(id?: string): Promise<IReportModel[]>;
@@ -18,6 +19,8 @@ class ReportService implements IReportService {
 
     constructor() {
         this.apiEndpoint = GetAppSettings().ReportsApiUrl; 
+        const { featureFlags } = useContext(FeatureFlagsContext);
+        this.useDummyData = featureFlags.isFeatureActive("Reports","UseDummyData");
     }
 
     getReportsDataByProjectId(id?: string): Promise<IReportModel[]> {
