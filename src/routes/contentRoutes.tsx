@@ -27,7 +27,10 @@ export const APP_PATHS = {
 		LOGIN: 'auth-pages/login' ,
 		SIGN_UP: 'auth-pages/sign-up' ,
 		NOT_FOUND_404: 'auth-pages/404',
-	}
+	},
+    REPORTS: {
+		LIST: 'projects/All/reports/List'
+    },
 };
 
 const APP_ELEMENTS = {

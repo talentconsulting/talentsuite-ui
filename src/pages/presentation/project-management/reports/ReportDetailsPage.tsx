@@ -47,7 +47,7 @@ const ReportDetailsPage = () => {
 						isLink
 						icon='ArrowBack'
 						tag='a'
-						to={`../${APP_PATHS.PEOPLE.LIST}`}>
+						to={`../${APP_PATHS.REPORTS.LIST}`}>
 						Back to List
 					</Button>
 					<SubheaderSeparator />
