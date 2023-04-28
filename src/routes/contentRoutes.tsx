@@ -29,7 +29,7 @@ export const APP_PATHS = {
 		NOT_FOUND_404: 'auth-pages/404',
 	},
     REPORTS: {
-		LIST: 'projects/All/reports/List'
+		LIST: 'projects/All/reports/List',
     },
 };
 
