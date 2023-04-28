@@ -79,9 +79,18 @@ export const FeatureFlagsContextProvider: FC<IFeatureFlagsContextProviderProps> 
 	}
 	reportsFlags.flags.push({flagName:"UseDummyData", isActive: true});
 
+	//  Projects FeatureFlags
+	var projectsFlags: IFeatureFlagGroup = {
+		groupName :"Projects",
+		description : "FeatureFlags related to Projects",
+		flags : []
+	}
+	projectsFlags.flags.push({flagName:"UseDummyData", isActive: true});
+
 	const featureFlagGroups : IFeatureFlagGroup[] = [];
 	featureFlagGroups.push(showPagesFlags);
 	featureFlagGroups.push(reportsFlags);
+	featureFlagGroups.push(projectsFlags);
 
 	const value = { 'featureFlags':new FeatureManager(featureFlagGroups) };
 
