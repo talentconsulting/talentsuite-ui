@@ -96,6 +96,8 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 						<thead>
 							<tr>
 								<td style={{ width: 60 }} />
+								<th>Client</th>
+                                <th>Project</th>
 								<th>Reported Date</th>
 								<th>Reported By</th>
 								<th>Description</th>
@@ -107,7 +109,9 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 							{dataPagination(items, currentPage, perPage).map((item) => (
 								<tr key={item.id} onClick={()=> handleRowOnClick(item.id)} className='navigation-item cursor-pointer'>
 									<td></td>
-									<td>{item.submissionDate}</td>
+									<td>{item.client}</td>
+									<td>{item.projectName}</td>
+									<td>{moment(item.submissionDate).format('Do MMM YYYY')}</td>
 									<td>{item.userName}</td>
 									<td>{item.description}</td>
 									<td>
