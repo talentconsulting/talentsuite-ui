@@ -91,8 +91,6 @@ class ReportService implements IReportService {
 
         return models;
     }
-
-
 }
 
 export default ReportService;
