@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import classNames from 'classnames';
-import { getProjectDataWithId } from '../../../common/data/dummyProjectsData';
+import DataContext from './../../../contexts/dataContext/dataContext';
 import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
 import Page from '../../../layout/Page/Page';
 import SubHeader, {
@@ -26,13 +26,46 @@ import COLORS from '../../../common/data/enumColors';
 import useDarkMode from '../../../hooks/useDarkMode';
 import useTourStep from '../../../hooks/useTourStep';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { IProjectModel } from '../../../models/ui-models/IProjectModel';
+import PROJECT_STATUS, { IStatus } from '../../../models/ui-models/enums/enumStatus';
 
 const ProjectPage = () => {
 	useTourStep(19);
+	const { projectService } = useContext(DataContext);
 	const { darkModeStatus } = useDarkMode();
 
 	const { id } = useParams();
-	const data = getProjectDataWithId(id);
+
+
+	var emptyProject: IProjectModel = {id: -1,
+		name: '',
+		startedDate: '',
+		endDate: '',
+		teamMembers: [],
+		status: PROJECT_STATUS.APPROVED,
+		description: '',
+		image: ''};
+	const [data, updateItems] = useState(emptyProject);
+	//var data = projectService.getProjectById(id);
+
+
+
+	const getProjectData = ()=>{
+
+		projectService.getProjectById(id).then(data => 
+			updateItems(data)
+			);
+
+	}
+
+	useEffect(() => {
+        getProjectData();
+     });
+
+
+
+
 
 	const navigate = useNavigate();
 
