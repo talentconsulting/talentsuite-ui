@@ -26,3 +26,14 @@ export interface IReportModel {
     projectName: string;
     client: string;
 }
+
+export interface IReportAddModel {
+    plannedTasks: string;
+    completedTasks: string;
+    projectId: string;
+    userId: string;
+    clientId: string;
+    description: string;
+    ragStatus: IStatus["key"];
+    risks: IReportRiskModel[];
+}

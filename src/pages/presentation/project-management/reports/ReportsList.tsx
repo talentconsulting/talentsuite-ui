@@ -23,7 +23,10 @@ import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { APP_PATHS } from '../../../../routes/contentRoutes';
 import  ReportService from '../../../../services/reportService';
-import { IReportModel} from '../../../../models/ui-models/IReportModel';
+import { IReportModel } from '../../../../models/ui-models/IReportModel';
+import { v4 as uuidv4 } from 'uuid';
+import { IReportAddModel } from '../../../../models/ui-models/IReportModel';
+import PROJECT_STATUS, { IStatus } from '../../../../models/ui-models/enums/enumStatus';
 
 
 interface ICommonUpcomingEventsProps {
@@ -65,11 +68,30 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 	const handleProjectAdd = () => {
 		setProjectEditOffcanvas(!projectEditOffcanvas);
 		setEditModeOffCanvas(false);
-	};
+    };
 	const handleProjectEdit = () => {
 		setProjectEditOffcanvas(!projectEditOffcanvas);
 		setEditModeOffCanvas(true);
 	};
+
+    const handleProjectAddSave = () => {
+		setProjectEditOffcanvas(false);
+
+		var model: IReportAddModel = {
+            plannedTasks: "todo",
+            completedTasks: "todo",
+            projectId: "todo",
+            userId: "todo",
+            clientId: "todo",
+			description: formik.values.description,
+			ragStatus: PROJECT_STATUS["APPROVED"],
+            risks: []
+		};
+
+		console.log(model);
+
+        reportService.addNewReport(model);
+    };
 
 	const getReportData = ()=>{
 
@@ -211,7 +233,7 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 						<Button
 							color='info'
 							className='w-100'
-							onClick={() => setProjectEditOffcanvas(false)}>
+							onClick={() => handleProjectAddSave()}>
 							Save
 						</Button>
 					</div>
