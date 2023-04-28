@@ -126,11 +126,7 @@ const Navigation = forwardRef<HTMLElement, INavigationProps>(
 				return true;
 			}
 
-			if(featureFlags.has(id) && featureFlags.get(id) == true){
-				return false;
-			}
-
-			return true;
+			return !featureFlags.isFeatureActive("ShowPages", id);
 		}
 
 		function fillMenu(

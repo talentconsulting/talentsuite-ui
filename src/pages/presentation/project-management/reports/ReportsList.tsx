@@ -1,4 +1,4 @@
-import React, { useRef, FC, useState } from 'react';
+import React, { useEffect, FC, useState } from 'react';
 import Card, {
 	CardActions,
 	CardBody,
@@ -23,6 +23,7 @@ import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { APP_PATHS } from '../../../../routes/contentRoutes';
 import  ReportService from '../../../../services/reportService';
+import { IReportModel} from '../../../../models/ui-models/IReportModel';
 
 
 interface ICommonUpcomingEventsProps {
@@ -31,13 +32,15 @@ interface ICommonUpcomingEventsProps {
 const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 
 	var reportService = new ReportService();
+	var emptyReportList: IReportModel[] = [];
 	const { themeStatus, darkModeStatus } = useDarkMode();
 
 	const { id } = useParams();
 	const [currentPage, setCurrentPage] = useState(1);
 	const [perPage, setPerPage] = useState(PER_COUNT['5']);
-	const { items } = useSortableData(reportService.getReportsDataByProjectId(id));
+	const [items, updateItems] = useState(emptyReportList);
 	const navigate = useNavigate();
+
 
 	const formik = useFormik({
 		onSubmit<Values>(
@@ -68,10 +71,21 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 		setEditModeOffCanvas(true);
 	};
 
+	const getReportData = ()=>{
+
+		reportService.getReportsDataByProjectId(id).then(data => 
+			updateItems(data)
+			);
+
+	}
+
+	useEffect(() => {
+        getReportData();
+     }, []);
+
 	const [projectEditOffcanvas, setProjectEditOffcanvas] = useState(false);
 	const [editModeOffCanvas, setEditModeOffCanvas] = useState(false);
 
-	const reportEditor = useRef();
 	return (
 		<>
 			<Card stretch={isFluid}>
