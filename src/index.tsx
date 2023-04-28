@@ -8,17 +8,20 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeContextProvider } from './contexts/themeContext';
 import { AuthContextProvider } from './contexts/authContext';
 import { FeatureFlagsContextProvider } from './contexts/featureFlagsContext';
+import { DataContextProvider } from './contexts/dataContext/dataContext';
 import './i18n';
 
 const children = (
 	<AuthContextProvider>
 		<ThemeContextProvider>
 			<FeatureFlagsContextProvider>
-				<Router>
-					<React.StrictMode>
-						<App />
-					</React.StrictMode>
-				</Router>
+				<DataContextProvider>				
+					<Router>
+						<React.StrictMode>
+							<App />
+						</React.StrictMode>
+					</Router>
+				</DataContextProvider>
 			</FeatureFlagsContextProvider>
 		</ThemeContextProvider>
 	</AuthContextProvider>

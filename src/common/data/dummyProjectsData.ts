@@ -3,8 +3,9 @@ import PROJECT_STATUS, { IStatus } from '../../models/ui-models/enums/enumStatus
 import Company1 from '../../assets/logos/company1.png';
 import Company2 from '../../assets/logos/company2.png';
 import Company3 from '../../assets/logos/company3.png';
+import { IProjectModel } from '../../models/ui-models/IProjectModel';
 
-const data: IProjectProps[] = [
+const data: IProjectModel[] = [
 	{
 		id: 1,
 		name: 'Project A',
@@ -45,18 +46,14 @@ const data: IProjectProps[] = [
 
 export default data;
 
-export interface IProjectProps {
-	id: number;
-	name: string;
-	startedDate: string;
-	endDate: string;
-	teamMembers: string[];
-	status: IStatus['key'];
-	description: string;
-	image: string;
+export function getDummyProjectsByClientId(id?: string): IProjectModel[] {
+	// For now return all
+
+	// @ts-ignore
+	return data;
 }
 
-export function getProjectDataWithId(id?: string): IProjectProps {
+export function getDummyProjectDataWithId(id?: string): IProjectModel {
 	// @ts-ignore
 	return data[Object.keys(data).filter((f) => data[f].id.toString() === id.toString())];
 }
