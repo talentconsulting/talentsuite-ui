@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import useDarkMode from '../../../../hooks/useDarkMode';
 import PageWrapper from '../../../../layout/PageWrapper/PageWrapper';
 import Page from '../../../../layout/Page/Page';
@@ -17,9 +17,7 @@ import Card, {
 import Button from '../../../../components/bootstrap/Button';
 import { APP_PATHS } from '../../../../routes/contentRoutes';
 import CommonAvatarTeam from '../../../../common/other/CommonAvatarTeam';
-
-
-import ReportService from '../../../../services/reportService';
+import DataContext from './../../../../contexts/dataContext/dataContext';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import Icon from '../../../../components/icon/Icon';
@@ -33,7 +31,7 @@ const ReportDetailsPage = () => {
 
 	const { id } = useParams();
 
-    var reportService = new ReportService();
+	const { reportService } = useContext(DataContext);
 
 	const data = reportService.getReportDataByReportId(id);
 

@@ -1,4 +1,4 @@
-import React, { useEffect, FC, useState } from 'react';
+import React, { useEffect, FC, useState, useContext } from 'react';
 import Card, {
 	CardActions,
 	CardBody,
@@ -22,7 +22,7 @@ import moment from 'moment';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { APP_PATHS } from '../../../../routes/contentRoutes';
-import  ReportService from '../../../../services/reportService';
+import DataContext from './../../../../contexts/dataContext/dataContext';
 import { IReportModel } from '../../../../models/ui-models/IReportModel';
 import { v4 as uuidv4 } from 'uuid';
 import { IReportAddModel } from '../../../../models/ui-models/IReportModel';
@@ -34,7 +34,7 @@ interface ICommonUpcomingEventsProps {
 }
 const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 
-	var reportService = new ReportService();
+	const { reportService } = useContext(DataContext);
 	var emptyReportList: IReportModel[] = [];
 	const { themeStatus, darkModeStatus } = useDarkMode();
 

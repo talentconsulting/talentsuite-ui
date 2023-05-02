@@ -1,11 +1,11 @@
-import { IReportModel, IReportAddModel } from '../models/ui-models/IReportModel';
-import { IReportDto} from '../models/dtos/IReportDto';
-import { IPaginatedResultDto} from '../models/dtos/IPaginatedResultDto';
-import  PROJECT_STATUS from '../models/ui-models/enums/enumStatus';
-import  { dateParse}  from '../helpers/dateHelper';
-import { GetAppSettings } from '../appsettings';
-import { getDummyReportDataByProjectId, getDummyReportDataByReportId } from '../common/data/dummyReportsData';
-import FeatureFlagsContext from './../contexts/featureFlagsContext';
+import { IReportModel, IReportAddModel } from '../../models/ui-models/IReportModel';
+import { IReportDto} from '../../models/dtos/IReportDto';
+import { IPaginatedResultDto} from '../../models/dtos/IPaginatedResultDto';
+import  PROJECT_STATUS from '../../models/ui-models/enums/enumStatus';
+import  { dateParse}  from '../../helpers/dateHelper';
+import { GetAppSettings } from '../../appsettings';
+import { getDummyReportDataByProjectId, getDummyReportDataByReportId } from '../../common/data/dummyReportsData';
+import FeatureFlagsContext from './../../contexts/featureFlagsContext';
 import { useContext } from 'react';
 
 export interface IReportService {
