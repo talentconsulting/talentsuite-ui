@@ -3,6 +3,10 @@ import IProjectService from './projectService';
 import ReportService from './reportService';
 import IReportService from './reportService';
 
+export interface IDataServiceProvider{
+	dataService:IDataService;
+}
+
 export interface IDataService {
 	projectService:IProjectService;
 	reportService:IReportService;

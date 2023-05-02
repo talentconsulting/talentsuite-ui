@@ -34,7 +34,7 @@ interface ICommonUpcomingEventsProps {
 }
 const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 
-	const { reportService } = useContext(DataContext);
+	const { dataService } = useContext(DataContext);
 	var emptyReportList: IReportModel[] = [];
 	const { themeStatus, darkModeStatus } = useDarkMode();
 
@@ -90,12 +90,12 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 
 		console.log(model);
 
-        reportService.addNewReport(model);
+        dataService.reportService.addNewReport(model);
     };
 
 	const getReportData = ()=>{
 
-		reportService.getReportsDataByProjectId(id).then(data => 
+		dataService.reportService.getReportsDataByProjectId(id).then(data => 
 			updateItems(data)
 			);
 

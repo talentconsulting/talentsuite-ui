@@ -1,8 +1,8 @@
 import React, { createContext, FC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import {IDataService, DataService} from './dataService';
+import {IDataService, IDataServiceProvider, DataService} from './dataService';
 
-const DataContext = createContext<IDataService>({} as IDataService);
+const DataContext = createContext<IDataServiceProvider>({} as IDataServiceProvider);
 
 interface IDataContextProviderProps {
 	children: ReactNode;
@@ -10,7 +10,7 @@ interface IDataContextProviderProps {
 
 export const DataContextProvider: FC<IDataContextProviderProps> = ({ children }) => {
 
-	const value = new DataService();
+	const value = {'dataService':new DataService()};
 
 	return <DataContext.Provider value={ value}>{children}</DataContext.Provider>;
 };

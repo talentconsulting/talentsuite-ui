@@ -31,7 +31,7 @@ import PROJECT_STATUS, { IStatus } from '../../../models/ui-models/enums/enumSta
 
 const ProjectPage = () => {
 	useTourStep(19);
-	const { projectService } = useContext(DataContext);
+	const { dataService } = useContext(DataContext);
 	const { darkModeStatus } = useDarkMode();
 
 	const { id } = useParams();
@@ -52,7 +52,7 @@ const ProjectPage = () => {
 
 	const getProjectData = ()=>{
 
-		projectService.getProjectById(id).then(data => 
+		dataService.projectService.getProjectById(id).then(data => 
 			updateItems(data)
 			);
 

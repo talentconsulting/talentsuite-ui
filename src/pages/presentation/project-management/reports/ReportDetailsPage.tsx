@@ -31,9 +31,9 @@ const ReportDetailsPage = () => {
 
 	const { id } = useParams();
 
-	const { reportService } = useContext(DataContext);
+	const { dataService } = useContext(DataContext);
 
-	const data = reportService.getReportDataByReportId(id);
+	const data = dataService.reportService.getReportDataByReportId(id);
 
     return (
 		
