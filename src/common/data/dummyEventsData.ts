@@ -1,7 +1,8 @@
 import moment from 'moment';
-import USERS, { IUserProps } from './userDummyData';
+import USERS from './userDummyData';
 import EVENT_STATUS, { IEventStatus } from './enumEventStatus';
-import SERVICES, { IServiceProps } from './serviceDummyData';
+import SERVICES from './serviceDummyData';
+import { IUserModel,  ISkillModel } from '../../models/ui-models/IUserModel';
 
 const data: {
 	id: number;
@@ -9,8 +10,8 @@ const data: {
 	date: string;
 	time: number | string;
 	customer: { name: string; email: string };
-	assigned: IUserProps;
-	service: IServiceProps;
+	assigned: IUserModel;
+	service: ISkillModel;
 	duration: string;
 	payment: number | null;
 }[] = [

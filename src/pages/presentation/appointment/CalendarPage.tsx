@@ -4,7 +4,8 @@ import classNames from 'classnames';
 import { Calendar, momentLocalizer, View as TView, Views } from 'react-big-calendar';
 import { useFormik } from 'formik';
 import { Calendar as DatePicker } from 'react-date-range';
-import USERS, { getUserDataWithUsername, IUserProps } from '../../../common/data/userDummyData';
+import USERS, { getUserDataWithUsername } from '../../../common/data/userDummyData';
+import { IUserModel } from '../../../models/ui-models/IUserModel';
 import eventList, { IEvents } from '../../../common/data/events';
 import {
 	CalendarTodayButton,
@@ -47,8 +48,8 @@ const localizer = momentLocalizer(moment);
 const now = new Date();
 
 interface IEvent extends IEvents {
-	user?: IUserProps;
-	users?: IUserProps[];
+	user?: IUserModel;
+	users?: IUserModel[];
 	color?: TColor;
 }
 

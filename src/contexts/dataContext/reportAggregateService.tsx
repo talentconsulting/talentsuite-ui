@@ -1,5 +1,6 @@
 import IProjectService from './projectService';
 import IReportService from './reportService';
+import IUserService from './userService';
 import { IReportModel } from '../../models/ui-models/IReportModel';
 import { IReportDto} from '../../models/dtos/IReportDto';
 import  { dateParse}  from '../../helpers/dateHelper';
@@ -14,10 +15,12 @@ class ReportAggregateService implements IReportAggregateService{
 
     projectService: IProjectService;
 	reportService:IReportService;
+    userService:IUserService;
 
-    constructor(reportService:IReportService, projectService:IProjectService){
+    constructor(reportService:IReportService, projectService:IProjectService, userService:IUserService){
         this.reportService = reportService;
         this.projectService = projectService;
+        this.userService = userService;
     }
 
     async getById(id?: string): Promise<IReportModel> {
@@ -51,6 +54,14 @@ class ReportAggregateService implements IReportAggregateService{
             projectName = project.name;
         }
 
+        var user = await this.userService.getUserById(dto.userId);
+        var userName = '';
+        if(user != undefined){
+            userName = user.name;
+        }
+
+
+
         var model: IReportModel = {
                 id: dto.id,
                 created: dateParse(dto.created),
@@ -63,7 +74,7 @@ class ReportAggregateService implements IReportAggregateService{
                 risks: [],
                 projectName: projectName,
                 client: '',
-                userName: dto.userId,
+                userName: userName,
                 description: 'no description',
                 ragStatus: PROJECT_STATUS["APPROVED"]
             };

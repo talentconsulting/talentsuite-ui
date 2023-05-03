@@ -1,9 +1,10 @@
-import USERS, { IUserProps } from './userDummyData';
+import USERS from './userDummyData';
+import { IUserModel } from '../../models/ui-models/IUserModel';
 
 export interface IMessages {
 	id: number;
 	messages: { id: number; message: string }[];
-	user: IUserProps;
+	user: IUserModel;
 	isReply?: boolean;
 }
 

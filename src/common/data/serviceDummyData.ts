@@ -1,73 +1,68 @@
 import { TColor } from '../../type/color-type';
+import { ISkillModel } from '../../models/ui-models/IUserModel';
 
-export interface IServiceProps {
-	name: string;
-	icon: string;
-	color: TColor;
-}
-
-const surfing: IServiceProps = {
+const surfing: ISkillModel = {
 	name: 'Surfing',
 	icon: 'Surfing',
 	color: 'info',
 };
-const kiteSurfing: IServiceProps = {
+const kiteSurfing: ISkillModel = {
 	name: 'Kite Surfing',
 	icon: 'Kitesurfing',
 	color: 'danger',
 };
-const tennis: IServiceProps = {
+const tennis: ISkillModel = {
 	name: 'Tennis',
 	icon: 'SportsTennis',
 	color: 'success',
 };
-const kayaking: IServiceProps = {
+const kayaking: ISkillModel = {
 	name: 'Kayaking',
 	icon: 'Kayaking',
 	color: 'info',
 };
-const handball: IServiceProps = {
+const handball: ISkillModel = {
 	name: 'Handball',
 	icon: 'SportsHandball',
 	color: 'warning',
 };
-const iceSkating: IServiceProps = {
+const iceSkating: ISkillModel = {
 	name: 'Ice Skating',
 	icon: 'IceSkating',
 	color: 'info',
 };
-const snowboarding: IServiceProps = {
+const snowboarding: ISkillModel = {
 	name: 'Snowboarding',
 	icon: 'Snowboarding',
 	color: 'warning',
 };
-const volleyball: IServiceProps = {
+const volleyball: ISkillModel = {
 	name: 'Volleyball',
 	icon: 'SportsVolleyball',
 	color: 'warning',
 };
-const cricket: IServiceProps = {
+const cricket: ISkillModel = {
 	name: 'Cricket',
 	icon: 'SportsCricket',
 	color: 'success',
 };
-const yoga: IServiceProps = {
+const yoga: ISkillModel = {
 	name: 'Yoga',
 	icon: 'SelfImprovement',
 	color: 'success',
 };
-const hiking: IServiceProps = {
+const hiking: ISkillModel = {
 	name: 'Hiking',
 	icon: 'Hiking',
 	color: 'danger',
 };
-const football: IServiceProps = {
+const football: ISkillModel = {
 	name: 'Football',
 	icon: 'SportsFootball',
 	color: 'success',
 };
 
-const SERVICES: { [key: string]: IServiceProps } = {
+const SERVICES: { [key: string]: ISkillModel } = {
 	SURFING: surfing,
 	KITE_SURFING: kiteSurfing,
 	TENNIS: tennis,

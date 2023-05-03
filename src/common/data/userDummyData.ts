@@ -12,30 +12,14 @@ import UserImage6 from '../../assets/img/wanna/wanna6.png';
 import UserImage6Webp from '../../assets/img/wanna/wanna6.webp';
 import UserImage7 from '../../assets/img/wanna/wanna7.png';
 import UserImage7Webp from '../../assets/img/wanna/wanna7.webp';
-import SERVICES, { IServiceProps } from './serviceDummyData';
+import SERVICES from './serviceDummyData';
 
 import User7Landing from '../../assets/img/wanna/landing1.png';
 import { TColor } from '../../type/color-type';
+import { IUserModel, ISkillModel } from '../../models/ui-models/IUserModel';
 
-export interface IUserProps {
-	id: string;
-	username: string;
-	name: string;
-	surname: string;
-	position: string;
-	email?: string;
-	src: string;
-	srcSet: string;
-	isOnline: boolean;
-	isReply?: boolean;
-	color: TColor;
-	fullImage?: string;
-	services?: IServiceProps[];
-	password: string;
-}
-
-const john: IUserProps = {
-	id: '1',
+const john: IUserModel = {
+	id: 'b8b675f9-f10b-4112-9027-84af190dbea4',
 	username: 'john',
 	name: 'John',
 	surname: 'Doe',
@@ -50,8 +34,8 @@ const john: IUserProps = {
 	password: '@ABC123',
 };
 
-const grace: IUserProps = {
-	id: '2',
+const grace: IUserModel = {
+	id: '161ff923-0a91-450e-8051-dbf67302e456',
 	username: 'grace',
 	name: 'Grace',
 	surname: 'Buckland',
@@ -65,7 +49,7 @@ const grace: IUserProps = {
 	password: '@ABC123',
 };
 
-const jane: IUserProps = {
+const jane: IUserModel = {
 	id: '3',
 	username: 'jane',
 	name: 'Jane',
@@ -80,7 +64,7 @@ const jane: IUserProps = {
 	password: '@ABC123',
 };
 
-const ryan: IUserProps = {
+const ryan: IUserModel = {
 	id: '4',
 	username: 'ryan',
 	name: 'Ryan',
@@ -95,7 +79,7 @@ const ryan: IUserProps = {
 	password: '@ABC123',
 };
 
-const ella: IUserProps = {
+const ella: IUserModel = {
 	id: '5',
 	username: 'ella',
 	name: 'Ella',
@@ -110,7 +94,7 @@ const ella: IUserProps = {
 	password: '@ABC123',
 };
 
-const chloe: IUserProps = {
+const chloe: IUserModel = {
 	id: '6',
 	username: 'chloe',
 	name: 'Chloe',
@@ -125,7 +109,7 @@ const chloe: IUserProps = {
 	password: '@ABC123',
 };
 
-const sam: IUserProps = {
+const sam: IUserModel = {
 	id: '7',
 	username: 'sam',
 	name: 'Sam',
@@ -140,7 +124,7 @@ const sam: IUserProps = {
 	password: '@ABC123',
 };
 
-const USERS: { [key: string]: IUserProps } = {
+const USERS: { [key: string]: IUserModel } = {
 	JOHN: john,
 	GRACE: grace,
 	JANE: jane,
@@ -150,12 +134,22 @@ const USERS: { [key: string]: IUserProps } = {
 	SAM: sam,
 };
 
-export function getUserDataWithUsername(username: string): IUserProps {
+export const data: IUserModel[] = [
+	john,
+	grace,
+	jane,
+	ryan,
+	ella,
+	chloe,
+	sam,
+];
+
+export function getUserDataWithUsername(username: string): IUserModel {
 	// @ts-ignore
 	return USERS[Object.keys(USERS).filter((f) => USERS[f].username.toString() === username)];
 }
 
-export function getUserDataWithId(id?: string): IUserProps {
+export function getUserDataWithId(id?: string): IUserModel {
 	// @ts-ignore
 	return USERS[Object.keys(USERS).filter((f) => USERS[f].id.toString() === id.toString())];
 }

@@ -1,11 +1,12 @@
 import React, { createContext, FC, ReactNode, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getUserDataWithUsername, IUserProps } from '../common/data/userDummyData';
+import { getUserDataWithUsername } from '../common/data/userDummyData';
+import { IUserModel } from '../models/ui-models/IUserModel';
 
 export interface IAuthContextProps {
 	user: string;
 	setUser?(...args: unknown[]): unknown;
-	userData: Partial<IUserProps>;
+	userData: Partial<IUserModel>;
 }
 const AuthContext = createContext<IAuthContextProps>({} as IAuthContextProps);
 
@@ -14,7 +15,7 @@ interface IAuthContextProviderProps {
 }
 export const AuthContextProvider: FC<IAuthContextProviderProps> = ({ children }) => {
 	const [user, setUser] = useState<string>(localStorage.getItem('facit_authUsername') || '');
-	const [userData, setUserData] = useState<Partial<IUserProps>>({});
+	const [userData, setUserData] = useState<Partial<IUserModel>>({});
 
 	useEffect(() => {
 		localStorage.setItem('facit_authUsername', user);

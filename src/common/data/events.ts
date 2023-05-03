@@ -1,12 +1,13 @@
 import moment from 'moment';
-import USERS, { IUserProps } from './userDummyData';
-import SERVICES, { IServiceProps } from './serviceDummyData';
+import USERS from './userDummyData';
+import SERVICES from './serviceDummyData';
+import { ISkillModel, IUserModel } from '../../models/ui-models/IUserModel';
 
-export interface IEvents extends Partial<IServiceProps> {
+export interface IEvents extends Partial<ISkillModel> {
 	id?: number;
 	start?: Date;
 	end?: Date;
-	user?: IUserProps;
+	user?: IUserModel;
 	[key: string]: any;
 }
 const events: IEvents[] = [
