@@ -1,16 +1,16 @@
-import moment from 'moment';
+import moment, {Moment} from 'moment';
 import REPORT_STATUS, { IStatus } from '../../models/ui-models/enums/enumStatus';
-import { IReportModel } from '../../models/ui-models/IReportModel';
+import { IReportDto } from '../../models/dtos/IReportDto';
 
 
-const data: IReportModel[] = [
+const data: IReportDto[] = [
     {
         id: "1300db01-ac4e-4b0b-a3f1-c5b926adf12d",
-        created: moment().format('YYYY') + moment().format('MM') + moment().add(-50, 'days').format('DD'),
+        created: formatDate(moment().add(-50, 'days')),
         plannedTasks: "User Research, UI Refresh Design",
         completedTasks: "Design DB Changes",
         weeknumber: 6,
-        submissionDate: moment().format('YYYY') + moment().format('MM') + moment().add(-15, 'days').format('DD'),
+        submissionDate: formatDate(moment().add(-15, 'days')),
         projectId: "f4abb297-f5bb-4495-8ecf-f3732e4a4026",
         userId: "b8b675f9-f10b-4112-9027-84af190dbea4",
         risks: [
@@ -19,22 +19,17 @@ const data: IReportModel[] = [
                 reportId: "4e3f5d14-20ad-4873-aebe-805b6a24fde2",
                 riskDetails: "Refreshed web app may not be ready for go live",
                 riskMitigation: "Update existing web app to handle new user journey",
-                ragStatus: REPORT_STATUS.BEHIND
+                ragStatus: 'REPORT_STATUS.BEHIND'
             }
-        ],
-        userName: "Daniel",
-        description: "UI refresh running behind, may need to implement changes in existing web app.",
-        ragStatus: REPORT_STATUS.BEHIND,
-        projectName: "FruitPortal UI Refresh",
-        client: "Frank's Fruits"
+        ]
     },
     {
         id: "5b01ab64-5de5-4b3c-8e5a-413ce7661a94",
-        created: moment().format('YYYY') + moment().format('MM') + moment().add(-20, 'days').format('DD'),
+        created: formatDate(moment().add(-20, 'days')),
         plannedTasks: "Build Api, Update UI",
         completedTasks: "Design DB",
         weeknumber: 3,
-        submissionDate: moment().format('YYYY') + moment().format('MM') + moment().add(-10, 'days').format('DD'),
+        submissionDate: formatDate(moment().add(-10, 'days')),
         projectId: "dd9712fd-d4d0-4a56-9a83-4807139995c0",
         userId: "161ff923-0a91-450e-8051-dbf67302e456",
         risks: [
@@ -43,14 +38,9 @@ const data: IReportModel[] = [
                 reportId: "5b01ab64-5de5-4b3c-8e5a-413ce7661a94",
                 riskDetails: "No devops resource allocated",
                 riskMitigation: "allocate devops resource by end of sprint 5",
-                ragStatus: REPORT_STATUS.AT_RISK
+                ragStatus: 'REPORT_STATUS.AT_RISK'
             }
-        ],
-        userName: "Luke",
-        description: "Project is generally going well, we've been muddling along using our own azure credits for now but will need devops to set up a proper test environment soon.",
-        ragStatus: REPORT_STATUS.AT_RISK,
-        projectName: "New Accounts Project",
-        client: "Village Accountancy"
+        ]
     }
 
 ];
@@ -58,7 +48,7 @@ const data: IReportModel[] = [
 
 export default data;
 
-export function getDummyReportDataByProjectId(id?: string): IReportModel[] {
+export function getDummyReportDataByProjectId(id?: string): IReportDto[] {
 	if(id == "All"){
 		return data;
 	}
@@ -66,7 +56,11 @@ export function getDummyReportDataByProjectId(id?: string): IReportModel[] {
 	return data.filter(x=>x.projectId.toString() == id);
 }
 
-export function getDummyReportDataByReportId(id?: string): IReportModel {
+export function getDummyReportDataByReportId(id?: string): IReportDto {
 	// @ts-ignore
     return data.filter(x=>x.id.toString() == id)[0];
+}
+
+function formatDate(date:Moment ):string{
+    return `${date.format('YYYY-MM-DD')}T${date.format('hh:mm:ss')}.0000000`;
 }

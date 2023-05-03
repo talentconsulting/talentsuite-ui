@@ -7,8 +7,6 @@ import Card, {
 	CardTitle,
 } from '../../../../components/bootstrap/Card';
 import Button from '../../../../components/bootstrap/Button';
-
-import { getDummyReportDataByProjectId } from '../../../../common/data/dummyReportsData';
 import PaginationButtons, { dataPagination, PER_COUNT } from '../../../../components/PaginationButtons';
 import useSortableData from '../../../../hooks/useSortableData';
 import useDarkMode from '../../../../hooks/useDarkMode';
@@ -95,7 +93,7 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 
 	const getReportData = ()=>{
 
-		dataService.reportService.getReportsDataByProjectId(id).then(data => 
+		dataService.reportAggregateService.getByProjectId(id).then(data => 
 			updateItems(data)
 			);
 

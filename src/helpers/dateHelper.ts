@@ -3,8 +3,6 @@ const MONTH_NAMES_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug
 
 
 export const dateParse = (dateString:string) => {
-
     var date = new Date(dateString);
     return `${date.getDate()} ${MONTH_NAMES[date.getMonth()]} ${date.getFullYear()} `;
-
 };

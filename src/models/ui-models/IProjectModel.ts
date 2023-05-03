@@ -1,7 +1,7 @@
 import PROJECT_STATUS, { IStatus } from './enums/enumStatus';
 
 export interface IProjectModel {
-	id: number;
+	id: string;
 	name: string;
 	startedDate: string;
 	endDate: string;

@@ -7,7 +7,7 @@ import { IProjectModel } from '../../models/ui-models/IProjectModel';
 
 const data: IProjectModel[] = [
 	{
-		id: 1,
+		id: "f4abb297-f5bb-4495-8ecf-f3732e4a4026",
 		name: 'Project A',
 		startedDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(-100, 'days').format('DD'),
@@ -19,7 +19,7 @@ const data: IProjectModel[] = [
 		image: Company1
 	},
 	{
-		id: 2,
+		id: "dd9712fd-d4d0-4a56-9a83-4807139995c0",
 		name: 'Project B',
 		startedDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(-80, 'days').format('DD'),
@@ -31,7 +31,7 @@ const data: IProjectModel[] = [
 		image: Company2
 	},
 	{
-		id: 3,
+		id: "3",
 		name: 'Project C',
 		startedDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(-150, 'days').format('DD'),
@@ -45,15 +45,3 @@ const data: IProjectModel[] = [
 ];
 
 export default data;
-
-export function getDummyProjectsByClientId(id?: string): IProjectModel[] {
-	// For now return all
-
-	// @ts-ignore
-	return data;
-}
-
-export function getDummyProjectDataWithId(id?: string): IProjectModel {
-	// @ts-ignore
-	return data[Object.keys(data).filter((f) => data[f].id.toString() === id.toString())];
-}

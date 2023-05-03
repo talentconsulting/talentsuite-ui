@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import useDarkMode from '../../../../hooks/useDarkMode';
 import PageWrapper from '../../../../layout/PageWrapper/PageWrapper';
 import Page from '../../../../layout/Page/Page';
@@ -21,6 +21,8 @@ import DataContext from './../../../../contexts/dataContext/dataContext';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import Icon from '../../../../components/icon/Icon';
+import { IReportModel } from '../../../../models/ui-models/IReportModel';
+import REPORT_STATUS, { IStatus } from '../../../../models/ui-models/enums/enumStatus';
 
 const ReportDetailsPage = () => {
 
@@ -33,7 +35,20 @@ const ReportDetailsPage = () => {
 
 	const { dataService } = useContext(DataContext);
 
-	const data = dataService.reportService.getReportDataByReportId(id);
+	//const data = dataService.reportAggregateService.getById(id);
+	var emptyReport = { 'ragStatus':REPORT_STATUS.APPROVED} as IReportModel;
+	const [data, updateItems] = useState(emptyReport);
+	const getReportData = ()=>{
+
+		dataService.reportAggregateService.getById(id).then(data => 
+			updateItems(data)
+			);
+
+	}
+
+	useEffect(() => {
+        getReportData();
+     }, []);
 
     return (
 		

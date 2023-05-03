@@ -37,7 +37,7 @@ const ProjectPage = () => {
 	const { id } = useParams();
 
 
-	var emptyProject: IProjectModel = {id: -1,
+	var emptyProject: IProjectModel = {id: "-1",
 		name: '',
 		startedDate: '',
 		endDate: '',
@@ -52,10 +52,11 @@ const ProjectPage = () => {
 
 	const getProjectData = ()=>{
 
-		dataService.projectService.getProjectById(id).then(data => 
-			updateItems(data)
-			);
-
+		dataService.projectService.getProjectById(id).then(data => {
+			if(data != undefined){
+				updateItems(data)
+			}
+		});
 	}
 
 	useEffect(() => {

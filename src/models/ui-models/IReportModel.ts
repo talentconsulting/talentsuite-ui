@@ -17,9 +17,7 @@ export interface IReportModel {
     submissionDate: string;
     projectId: string;
     userId: string;
-
     risks: IReportRiskModel[];
-
     userName: string;
     description: string;
     ragStatus: IStatus["key"];
