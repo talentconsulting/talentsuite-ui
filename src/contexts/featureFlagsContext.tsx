@@ -1,5 +1,6 @@
 import React, { createContext, FC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
+import data from '../common/data/dummyFeatureFlagsData';
 
 export interface IFeature {
 	featureFlags: IFeatureManager;
@@ -54,44 +55,7 @@ export interface IFeatureFlag {
 
 export const FeatureFlagsContextProvider: FC<IFeatureFlagsContextProviderProps> = ({ children }) => {
 
-	//  The string must match the id for the page found in menu.ts
-	var showPagesFlags: IFeatureFlagGroup = {
-		groupName :"ShowPages",
-		description : "Tells the UI which pages to display",
-		flags : []
-	}
-	showPagesFlags.flags.push({flagName:"listProjects", isActive: true});
-	showPagesFlags.flags.push({flagName:"listReports", isActive: true});
-	showPagesFlags.flags.push({flagName:"listPeople", isActive: true});
-	showPagesFlags.flags.push({flagName:"schedule", isActive: true});
-	showPagesFlags.flags.push({flagName:"calendar", isActive: true});
-	showPagesFlags.flags.push({flagName:"appointmentList", isActive: true});
-	showPagesFlags.flags.push({flagName:"wiki", isActive: true});
-	showPagesFlags.flags.push({flagName:"auth", isActive: true});
-	showPagesFlags.flags.push({flagName:"login", isActive: true});
-	showPagesFlags.flags.push({flagName:"signUp", isActive: true});
-
-	//  Reports FeatureFlags
-	var reportsFlags: IFeatureFlagGroup = {
-		groupName :"Reports",
-		description : "FeatureFlags related to Reports",
-		flags : []
-	}
-	reportsFlags.flags.push({flagName:"UseDummyData", isActive: true});
-
-	//  Projects FeatureFlags
-	var projectsFlags: IFeatureFlagGroup = {
-		groupName :"Projects",
-		description : "FeatureFlags related to Projects",
-		flags : []
-	}
-	projectsFlags.flags.push({flagName:"UseDummyData", isActive: true});
-
-	const featureFlagGroups : IFeatureFlagGroup[] = [];
-	featureFlagGroups.push(showPagesFlags);
-	featureFlagGroups.push(reportsFlags);
-	featureFlagGroups.push(projectsFlags);
-
+	var featureFlagGroups = data;
 	const value = { 'featureFlags':new FeatureManager(featureFlagGroups) };
 
 	return <FeatureFlagsContext.Provider value={ value}>{children}</FeatureFlagsContext.Provider>;
