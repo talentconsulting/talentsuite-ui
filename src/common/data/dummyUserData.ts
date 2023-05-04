@@ -19,7 +19,7 @@ import { TColor } from '../../type/color-type';
 import { IUserModel, ISkillModel } from '../../models/ui-models/IUserModel';
 
 const john: IUserModel = {
-	id: 'b8b675f9-f10b-4112-9027-84af190dbea4',
+	id: '93e0f88c-691f-4373-8abf-3f895bddec60',
 	username: 'john',
 	name: 'John',
 	surname: 'Doe',
@@ -50,7 +50,7 @@ const grace: IUserModel = {
 };
 
 const jane: IUserModel = {
-	id: '93e0f88c-691f-4373-8abf-3f895bddec60',
+	id: '83c756a8-ff87-48be-a862-096678b41817',
 	username: 'jane',
 	name: 'Jane',
 	surname: 'Lee',
@@ -80,7 +80,7 @@ const ryan: IUserModel = {
 };
 
 const ella: IUserModel = {
-	id: '5',
+	id: 'b8b675f9-f10b-4112-9027-84af190dbea4',
 	username: 'ella',
 	name: 'Ella',
 	surname: 'Oliver',

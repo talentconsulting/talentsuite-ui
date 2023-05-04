@@ -2,54 +2,53 @@ import React, { useState, useContext, useEffect } from 'react';
 import useDarkMode from '../../../../hooks/useDarkMode';
 import PageWrapper from '../../../../layout/PageWrapper/PageWrapper';
 import Page from '../../../../layout/Page/Page';
-import SubHeader, {
-    SubHeaderLeft,
-    SubHeaderRight,
-	SubheaderSeparator,
-} from '../../../../layout/SubHeader/SubHeader';
 import Card, {
-    CardActions,
     CardBody,
-    CardFooter,
-    CardFooterLeft,
-    CardFooterRight,
     CardHeader,
     CardLabel,
     CardTitle,
 } from '../../../../components/bootstrap/Card';
-import Button from '../../../../components/bootstrap/Button';
-import { APP_PATHS } from '../../../../routes/contentRoutes';
-import CommonAvatarTeam from '../../../../common/other/CommonAvatarTeam';
 import DataContext from './../../../../contexts/dataContext/dataContext';
 import { useParams } from 'react-router-dom';
-import moment from 'moment';
 import Icon from '../../../../components/icon/Icon';
 import { IReportModel, IReportRiskModel } from '../../../../models/ui-models/IReportModel';
 import REPORT_STATUS, { IStatus } from '../../../../models/ui-models/enums/enumStatus';
-import CommonDesc from '../../../../common/other/CommonDesc';
-import FormGroup from '../../../../components/bootstrap/forms/FormGroup';
-import { Input } from '../../../../components/icon/material-icons';
-import Label from '../../../../components/bootstrap/forms/Label';
-import InputGroup, { InputGroupText } from '../../../../components/bootstrap/forms/InputGroup';
 import Textarea from '../../../../components/bootstrap/forms/Textarea';
+import AuthContext from '../../../../contexts/authContext';
 
 const ReportDetailsPage = () => {
 
-
 	const { themeStatus } = useDarkMode();
-
 	const [date, setDate] = useState<Date>(new Date());
-
 	const { id } = useParams();
-
+	const pageTitle = ((id == 'new') ? 'New Report' : 'Edit Report');
 	const { dataService } = useContext(DataContext);
+	const { userData } = useContext(AuthContext);
 
-	var emptyReport = { 'ragStatus':REPORT_STATUS.APPROVED, risks:[] as IReportRiskModel[]} as IReportModel;
-	const [data, updateItems] = useState(emptyReport);
+	console.log(userData);
+
+	var newReport = { 
+		plannedTasks: '',
+		completedTasks: '',
+		weeknumber: 0,
+		projectId: '',
+		userId: userData.id,
+		risks:[] as IReportRiskModel[],
+		userName: userData.name + ' ' + userData.surname,
+		description: '',
+		ragStatus:REPORT_STATUS.APPROVED, 
+		projectName: ''
+	} as IReportModel;
+
+	const [data, updateItems] = useState(newReport);
 	const getReportData = ()=>{
 
+		if(id == 'new'){
+			return;
+		}
+
+
 		dataService.reportAggregateService.getById(id).then(data => {
-			console.log('report', data);
 			updateItems(data);
 		});
 
@@ -61,7 +60,7 @@ const ReportDetailsPage = () => {
 
     return (
 
-		<PageWrapper title={`${data.projectName} - Week ${data.weeknumber}`}>
+		<PageWrapper title={pageTitle}>
 
 			<Page>
 				<div className='row h-100'>

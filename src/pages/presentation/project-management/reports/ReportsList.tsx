@@ -63,32 +63,9 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 		navigate(`../${path}`);
 	};
 
-	const handleProjectAdd = () => {
-		setProjectEditOffcanvas(!projectEditOffcanvas);
-		setEditModeOffCanvas(false);
-    };
-	const handleProjectEdit = () => {
-		setProjectEditOffcanvas(!projectEditOffcanvas);
-		setEditModeOffCanvas(true);
-	};
-
     const handleProjectAddSave = () => {
-		setProjectEditOffcanvas(false);
-
-		var model: IReportAddModel = {
-            plannedTasks: "todo",
-            completedTasks: "todo",
-            projectId: "todo",
-            userId: "todo",
-            clientId: "todo",
-			description: formik.values.description,
-			ragStatus: PROJECT_STATUS["APPROVED"],
-            risks: []
-		};
-
-		console.log(model);
-
-        dataService.reportService.addNewReport(model);
+		var path = APP_PATHS.PROJECTS.REPORTS.DETAILS.replace(':id', 'new')
+		navigate(`../${path}`);
     };
 
 	const getReportData = ()=>{
@@ -115,7 +92,7 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 					</CardLabel>
 					<CardActions>
 						<Button
-							onClick={handleProjectAdd}
+							onClick={handleProjectAddSave}
 							color='info'
 							icon='Add'
 							isLight
@@ -160,7 +137,7 @@ const ReportsList: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 												'border-light': !darkModeStatus,
 											})}
 											icon='Edit'
-											onClick={handleProjectEdit}>
+											onClick={()=>handleRowOnClick(item.id)}>
 											Edit
 										</Button>
 									</td>
