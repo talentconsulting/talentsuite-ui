@@ -28,7 +28,7 @@ import Textarea from '../../components/bootstrap/forms/Textarea';
 import Checks from '../../components/bootstrap/forms/Checks';
 import Popovers from '../../components/bootstrap/Popovers';
 import data from '../../common/data/dummyEventsData';
-import USERS from '../../common/data/userDummyData';
+import USERS from '../../common/data/dummyUserData';
 import EVENT_STATUS from '../../common/data/enumEventStatus';
 import Avatar from '../../components/Avatar';
 import PaginationButtons, { dataPagination, PER_COUNT } from '../../components/PaginationButtons';

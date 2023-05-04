@@ -20,7 +20,7 @@ import Card, {
 } from '../../../components/bootstrap/Card';
 import Button from '../../../components/bootstrap/Button';
 import Avatar, { AvatarGroup } from '../../../components/Avatar';
-import USERS from '../../../common/data/userDummyData';
+import USERS from '../../../common/data/dummyUserData';
 import Icon from '../../../components/icon/Icon';
 import Progress from '../../../components/bootstrap/Progress';
 import CommonAvatarTeam from '../../../common/other/CommonAvatarTeam';

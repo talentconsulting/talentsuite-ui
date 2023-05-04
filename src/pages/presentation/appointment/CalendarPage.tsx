@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Calendar, momentLocalizer, View as TView, Views } from 'react-big-calendar';
 import { useFormik } from 'formik';
 import { Calendar as DatePicker } from 'react-date-range';
-import USERS, { getUserDataWithUsername } from '../../../common/data/userDummyData';
+import USERS, { getUserDataWithUsername } from '../../../common/data/dummyUserData';
 import { IUserModel } from '../../../models/ui-models/IUserModel';
 import eventList, { IEvents } from '../../../common/data/events';
 import {
@@ -14,7 +14,7 @@ import {
 	getUnitType,
 	getViews,
 } from '../../../components/extras/calendarHelper';
-import SERVICES, { getServiceDataWithServiceName } from '../../../common/data/serviceDummyData';
+import SERVICES, { getServiceDataWithServiceName } from '../../../common/data/dummySkillsData';
 import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
 import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
 import Icon from '../../../components/icon/Icon';

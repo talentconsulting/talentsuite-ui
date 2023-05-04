@@ -1,4 +1,4 @@
-import USERS from './userDummyData';
+import USERS from './dummyUserData';
 import { IUserModel } from '../../models/ui-models/IUserModel';
 
 export interface IMessages {

@@ -12,7 +12,7 @@ import Avatar from '../../../components/Avatar';
 import Page from '../../../layout/Page/Page';
 import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
 import Badge from '../../../components/bootstrap/Badge';
-import USERS from '../../../common/data/userDummyData';
+import USERS from '../../../common/data/dummyUserData';
 import useDarkMode from '../../../hooks/useDarkMode';
 import useTourStep from '../../../hooks/useTourStep';
 

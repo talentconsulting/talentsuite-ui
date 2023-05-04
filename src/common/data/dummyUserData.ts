@@ -12,7 +12,7 @@ import UserImage6 from '../../assets/img/wanna/wanna6.png';
 import UserImage6Webp from '../../assets/img/wanna/wanna6.webp';
 import UserImage7 from '../../assets/img/wanna/wanna7.png';
 import UserImage7Webp from '../../assets/img/wanna/wanna7.webp';
-import SERVICES from './serviceDummyData';
+import SERVICES from './dummySkillsData';
 
 import User7Landing from '../../assets/img/wanna/landing1.png';
 import { TColor } from '../../type/color-type';
@@ -30,7 +30,7 @@ const john: IUserModel = {
 	isOnline: true,
 	isReply: true,
 	color: 'primary',
-	services: [SERVICES.SURFING, SERVICES.KITE_SURFING, SERVICES.TENNIS],
+	services: [SERVICES.HTML_SKILL, SERVICES.JAVA_SKILL, SERVICES.ANDROID_SKILL],
 	password: '@ABC123',
 };
 
@@ -45,7 +45,7 @@ const grace: IUserModel = {
 	srcSet: UserImage2Webp,
 	isOnline: true,
 	color: 'warning',
-	services: [SERVICES.SNOWBOARDING, SERVICES.ICE_SKATING, SERVICES.KITE_SURFING],
+	services: [SERVICES.CSS_SKILL, SERVICES.KUBERNETES_SKILL, SERVICES.JAVA_SKILL],
 	password: '@ABC123',
 };
 
@@ -60,7 +60,7 @@ const jane: IUserModel = {
 	srcSet: UserImage3Webp,
 	isOnline: true,
 	color: 'secondary',
-	services: [SERVICES.YOGA, SERVICES.HANDBALL, SERVICES.CRICKET],
+	services: [SERVICES.SQL_SERVER_SKILL, SERVICES.ARCHITECTURE_SKILL, SERVICES.C_SHARP_SKILL],
 	password: '@ABC123',
 };
 
@@ -75,7 +75,7 @@ const ryan: IUserModel = {
 	srcSet: UserImage4Webp,
 	isOnline: false,
 	color: 'info',
-	services: [SERVICES.HIKING, SERVICES.FOOTBALL, SERVICES.HANDBALL],
+	services: [SERVICES.POSTGRES_SKILL, SERVICES.COSMOS_SKILL, SERVICES.ARCHITECTURE_SKILL],
 	password: '@ABC123',
 };
 
@@ -90,7 +90,7 @@ const ella: IUserModel = {
 	srcSet: UserImage5Webp,
 	isOnline: false,
 	color: 'success',
-	services: [SERVICES.ICE_SKATING, SERVICES.TENNIS, SERVICES.SNOWBOARDING, SERVICES.YOGA],
+	services: [SERVICES.KUBERNETES_SKILL, SERVICES.ANDROID_SKILL, SERVICES.CSS_SKILL, SERVICES.SQL_SERVER_SKILL],
 	password: '@ABC123',
 };
 
@@ -105,7 +105,7 @@ const chloe: IUserModel = {
 	srcSet: UserImage6Webp,
 	isOnline: true,
 	color: 'warning',
-	services: [SERVICES.VOLLEYBALL, SERVICES.CRICKET],
+	services: [SERVICES.REACT_SKILL, SERVICES.C_SHARP_SKILL],
 	password: '@ABC123',
 };
 

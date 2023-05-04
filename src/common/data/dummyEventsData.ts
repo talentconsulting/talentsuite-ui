@@ -1,7 +1,7 @@
 import moment from 'moment';
-import USERS from './userDummyData';
+import USERS from './dummyUserData';
 import EVENT_STATUS, { IEventStatus } from './enumEventStatus';
-import SERVICES from './serviceDummyData';
+import SERVICES from './dummySkillsData';
 import { IUserModel,  ISkillModel } from '../../models/ui-models/IUserModel';
 
 const data: {
@@ -23,7 +23,7 @@ const data: {
 		time: 1030,
 		customer: { name: 'Alison Berry', email: 'alisonberry@site.com' },
 		assigned: USERS.GRACE,
-		service: SERVICES.ICE_SKATING,
+		service: SERVICES.KUBERNETES_SKILL,
 		duration: '45min',
 		payment: 15,
 	},
@@ -35,7 +35,7 @@ const data: {
 		time: 1200,
 		customer: { name: 'Diane Bower', email: 'dianebower@site.com' },
 		assigned: USERS.JANE,
-		service: SERVICES.YOGA,
+		service: SERVICES.SQL_SERVER_SKILL,
 		duration: '45min',
 		payment: 40,
 	},
@@ -47,7 +47,7 @@ const data: {
 		time: 1230,
 		customer: { name: 'Claire Campbell', email: 'clairecampbell@site.com' },
 		assigned: USERS.ELLA,
-		service: SERVICES.TENNIS,
+		service: SERVICES.ANDROID_SKILL,
 		duration: '45min',
 		payment: 40,
 	},
@@ -59,7 +59,7 @@ const data: {
 		time: 1500,
 		customer: { name: 'Sue Quinn', email: 'suequinn@site.com' },
 		assigned: USERS.RYAN,
-		service: SERVICES.HANDBALL,
+		service: SERVICES.ARCHITECTURE_SKILL,
 		duration: '45min',
 		payment: 120,
 	},
@@ -71,7 +71,7 @@ const data: {
 		time: '0930',
 		customer: { name: 'Gabrielle Powell', email: 'gabriellepowell@site.com' },
 		assigned: USERS.ELLA,
-		service: SERVICES.SNOWBOARDING,
+		service: SERVICES.CSS_SKILL,
 		duration: '1h',
 		payment: 45,
 	},
@@ -83,7 +83,7 @@ const data: {
 		time: 1530,
 		customer: { name: 'Emily Taylor', email: 'emilytaylor@site.com' },
 		assigned: USERS.JANE,
-		service: SERVICES.HANDBALL,
+		service: SERVICES.ARCHITECTURE_SKILL,
 		duration: '45min',
 		payment: null,
 	},
@@ -95,7 +95,7 @@ const data: {
 		time: 1130,
 		customer: { name: 'Carolyn Morgan', email: 'carolynmorgan@site.com' },
 		assigned: USERS.JANE,
-		service: SERVICES.CRICKET,
+		service: SERVICES.C_SHARP_SKILL,
 		duration: '30min',
 		payment: null,
 	},
@@ -107,7 +107,7 @@ const data: {
 		time: 1300,
 		customer: { name: 'Penelope North', email: 'penelopenorth@site.com' },
 		assigned: USERS.RYAN,
-		service: SERVICES.HIKING,
+		service: SERVICES.POSTGRES_SKILL,
 		duration: '1h',
 		payment: null,
 	},
@@ -119,7 +119,7 @@ const data: {
 		time: 1530,
 		customer: { name: 'Alexander Kelly', email: 'alexanderkelly@site.com' },
 		assigned: USERS.ELLA,
-		service: SERVICES.YOGA,
+		service: SERVICES.SQL_SERVER_SKILL,
 		duration: '45min',
 		payment: null,
 	},
@@ -131,7 +131,7 @@ const data: {
 		time: 1600,
 		customer: { name: 'Cameron Hodges', email: 'cameronhodges@site.com' },
 		assigned: USERS.GRACE,
-		service: SERVICES.KITE_SURFING,
+		service: SERVICES.JAVA_SKILL,
 		duration: '30min',
 		payment: null,
 	},

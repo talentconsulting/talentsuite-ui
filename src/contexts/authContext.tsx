@@ -1,6 +1,6 @@
 import React, { createContext, FC, ReactNode, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getUserDataWithUsername } from '../common/data/userDummyData';
+import { getUserDataWithUsername } from '../common/data/dummyUserData';
 import { IUserModel } from '../models/ui-models/IUserModel';
 
 export interface IAuthContextProps {

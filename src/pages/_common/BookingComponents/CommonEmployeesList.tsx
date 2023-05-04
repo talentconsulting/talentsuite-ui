@@ -9,7 +9,7 @@ import PaginationButtons, {
 import { priceFormat } from '../../../helpers/helpers';
 import Progress from '../../../components/bootstrap/Progress';
 import useSortableData from '../../../hooks/useSortableData';
-import USERS from '../../../common/data/userDummyData';
+import USERS from '../../../common/data/dummyUserData';
 
 const CommonEmployeesList = () => {
 	const dataEmployees = [

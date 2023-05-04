@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import OffCanvas, { OffCanvasBody } from '../../../components/bootstrap/OffCanvas';
 import Avatar, { AvatarGroup } from '../../../components/Avatar';
-import USERS from '../../../common/data/userDummyData';
+import USERS from '../../../common/data/dummyUserData';
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
@@ -19,7 +19,7 @@ import Card, {
 import Icon from '../../../components/icon/Icon';
 import Chart from '../../../components/extras/Chart';
 import { sales } from '../../../common/data/chartDummyData';
-import SERVICES from '../../../common/data/serviceDummyData';
+import SERVICES from '../../../common/data/dummySkillsData';
 import useDarkMode from '../../../hooks/useDarkMode';
 
 interface IUserAppointment {
@@ -49,63 +49,63 @@ const CommonRightPanel: FC<ICommonRightPanel> = ({ setOpen, isOpen }) => {
 			id: 1,
 			time: '1h 30m',
 			person: 2,
-			...SERVICES.KAYAKING,
+			...SERVICES.AZURE_SKILL,
 			status: USER_APPOINTMENT.APPROVED,
 		},
 		{
 			id: 2,
 			time: '1h 30m',
 			person: 2,
-			...SERVICES.TENNIS,
+			...SERVICES.ANDROID_SKILL,
 			status: USER_APPOINTMENT.APPROVED,
 		},
 		{
 			id: 3,
 			time: '45m',
 			person: 1,
-			...SERVICES.SURFING,
+			...SERVICES.HTML_SKILL,
 			status: USER_APPOINTMENT.APPROVED,
 		},
 		{
 			id: 4,
 			time: '1h',
 			person: 1,
-			...SERVICES.HANDBALL,
+			...SERVICES.ARCHITECTURE_SKILL,
 			status: USER_APPOINTMENT.PENDING,
 		},
 		{
 			id: 5,
 			time: '1h',
 			person: 4,
-			...SERVICES.FOOTBALL,
+			...SERVICES.COSMOS_SKILL,
 			status: USER_APPOINTMENT.PENDING,
 		},
 		{
 			id: 6,
 			time: '2h',
 			person: 1,
-			...SERVICES.KITE_SURFING,
+			...SERVICES.JAVA_SKILL,
 			status: USER_APPOINTMENT.PENDING,
 		},
 		{
 			id: 7,
 			time: '30m',
 			person: 1,
-			...SERVICES.YOGA,
+			...SERVICES.SQL_SERVER_SKILL,
 			status: USER_APPOINTMENT.PENDING,
 		},
 		{
 			id: 8,
 			time: '1h',
 			person: 1,
-			...SERVICES.ICE_SKATING,
+			...SERVICES.KUBERNETES_SKILL,
 			status: USER_APPOINTMENT.PENDING,
 		},
 		{
 			id: 9,
 			time: '1h',
 			person: 1,
-			...SERVICES.SURFING,
+			...SERVICES.HTML_SKILL,
 			status: USER_APPOINTMENT.CANCELED,
 		},
 	];

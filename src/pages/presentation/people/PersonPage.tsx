@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import classNames from 'classnames';
-import { getUserDataWithId } from '../../../common/data/userDummyData';
+import { getUserDataWithId } from '../../../common/data/dummyUserData';
 import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
 import Page from '../../../layout/Page/Page';
 import SubHeader, {

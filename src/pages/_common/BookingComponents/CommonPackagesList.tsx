@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Icon from '../../../components/icon/Icon';
 import { priceFormat } from '../../../helpers/helpers';
 import { CardBody } from '../../../components/bootstrap/Card';
-import SERVICES from '../../../common/data/serviceDummyData';
+import SERVICES from '../../../common/data/dummySkillsData';
 import PaginationButtons, {
 	dataPagination,
 	PER_COUNT,
@@ -14,48 +14,48 @@ const CommonPackagesList = () => {
 	const dataPackages = [
 		{
 			id: 1,
-			name: `${SERVICES.SURFING.name} (Package)`,
+			name: `${SERVICES.HTML_SKILL.name} (Package)`,
 			buy: 8,
 			sumOfPayments: 120,
 			ofHoursInAppointment: 6,
-			color: SERVICES.SURFING.color,
-			icon: SERVICES.SURFING.icon,
+			color: SERVICES.HTML_SKILL.color,
+			icon: SERVICES.HTML_SKILL.icon,
 		},
 		{
 			id: 2,
-			name: `${SERVICES.KITE_SURFING.name} (Package)`,
+			name: `${SERVICES.JAVA_SKILL.name} (Package)`,
 			buy: 12,
 			sumOfPayments: 480,
 			ofHoursInAppointment: 9,
-			color: SERVICES.KITE_SURFING.color,
-			icon: SERVICES.KITE_SURFING.icon,
+			color: SERVICES.JAVA_SKILL.color,
+			icon: SERVICES.JAVA_SKILL.icon,
 		},
 		{
 			id: 3,
-			name: `${SERVICES.KAYAKING.name} (Package)`,
+			name: `${SERVICES.ANDROID_SKILL.name} (Package)`,
 			buy: 4,
 			sumOfPayments: 300,
 			ofHoursInAppointment: 4,
-			color: SERVICES.KAYAKING.color,
-			icon: SERVICES.KAYAKING.icon,
+			color: SERVICES.ANDROID_SKILL.color,
+			icon: SERVICES.ANDROID_SKILL.icon,
 		},
 		{
 			id: 4,
-			name: `${SERVICES.ICE_SKATING.name} (Package)`,
+			name: `${SERVICES.AZURE_SKILL.name} (Package)`,
 			buy: 9,
 			sumOfPayments: 800,
 			ofHoursInAppointment: 4,
-			color: SERVICES.ICE_SKATING.color,
-			icon: SERVICES.ICE_SKATING.icon,
+			color: SERVICES.AZURE_SKILL.color,
+			icon: SERVICES.AZURE_SKILL.icon,
 		},
 		{
 			id: 5,
-			name: `${SERVICES.YOGA.name} (Package)`,
+			name: `${SERVICES.ARCHITECTURE_SKILL.name} (Package)`,
 			buy: 3,
 			sumOfPayments: 300,
 			ofHoursInAppointment: 5,
-			color: SERVICES.YOGA.color,
-			icon: SERVICES.YOGA.icon,
+			color: SERVICES.ARCHITECTURE_SKILL.color,
+			icon: SERVICES.ARCHITECTURE_SKILL.icon,
 		},
 	];
 

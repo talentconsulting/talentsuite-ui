@@ -1,5 +1,5 @@
 import { IUserModel} from '../../models/ui-models/IUserModel';
-import { data } from '../../common/data/userDummyData';
+import { data } from '../../common/data/dummyUserData';
 import FeatureFlagsContext from './../../contexts/featureFlagsContext';
 import { useContext } from 'react';
 
