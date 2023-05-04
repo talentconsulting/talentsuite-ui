@@ -50,7 +50,7 @@ const grace: IUserModel = {
 };
 
 const jane: IUserModel = {
-	id: '3',
+	id: '93e0f88c-691f-4373-8abf-3f895bddec60',
 	username: 'jane',
 	name: 'Jane',
 	surname: 'Lee',
@@ -65,7 +65,7 @@ const jane: IUserModel = {
 };
 
 const ryan: IUserModel = {
-	id: '4',
+	id: '8ed672f0-5146-4ecc-89a0-6a36c1f5db71',
 	username: 'ryan',
 	name: 'Ryan',
 	surname: 'McGrath',

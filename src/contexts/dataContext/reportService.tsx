@@ -7,7 +7,7 @@ import FeatureFlagsContext from './../../contexts/featureFlagsContext';
 import { useContext } from 'react';
 
 export interface IReportService {
-    getById(id?: string): IReportDto;
+    getById(id?: string): Promise<IReportDto>;
 	getByProjectId(id?: string): Promise<IReportDto[]>;
     addNewReport(report?: IReportAddModel): void;
     updateReport(report?: IReportModel): boolean;
@@ -24,8 +24,19 @@ class ReportService implements IReportService {
         this.useDummyData = featureFlags.isFeatureActive("Reports","UseDummyData");
     }
 
-    getById(id?: string): IReportDto {
-        return getDummyReportDataByReportId(id);
+    getById(id?: string): Promise<IReportDto> {
+
+        if(this.useDummyData){
+            return Promise.resolve( getDummyReportDataByReportId(id));
+        }
+        var path = `${this.apiEndpoint}api/reports/${id}`;
+
+        return fetch(path)
+            // the JSON body is taken from the response
+            .then(response => response.json())
+            .then(json => {
+                return json as IReportDto;
+            });
     }
 
     getByProjectId(id?: string): Promise<IReportDto[]> {

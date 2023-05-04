@@ -1,6 +1,7 @@
 import REPORT_STATUS, { IStatus } from './enums/enumStatus';
 
 export interface IReportRiskModel {
+    key: string;
     id: string;
     reportId: string;
     riskDetails: string;

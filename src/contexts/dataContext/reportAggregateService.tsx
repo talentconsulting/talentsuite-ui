@@ -1,7 +1,7 @@
 import IProjectService from './projectService';
 import IReportService from './reportService';
 import IUserService from './userService';
-import { IReportModel } from '../../models/ui-models/IReportModel';
+import { IReportModel, IReportRiskModel } from '../../models/ui-models/IReportModel';
 import { IReportDto} from '../../models/dtos/IReportDto';
 import  { dateParse}  from '../../helpers/dateHelper';
 import  PROJECT_STATUS from '../../models/ui-models/enums/enumStatus';
@@ -24,7 +24,9 @@ class ReportAggregateService implements IReportAggregateService{
     }
 
     async getById(id?: string): Promise<IReportModel> {
-        return await this.mapDtoToModel(this.reportService.getById(id));
+        var dto = await this.reportService.getById(id);
+        var model = await this.mapDtoToModel(dto)
+        return model;
     }
 
     getByProjectId(id?: string): Promise<IReportModel[]> {
@@ -49,18 +51,19 @@ class ReportAggregateService implements IReportAggregateService{
     async mapDtoToModel(dto: IReportDto) : Promise<IReportModel>{
 
         var project = await this.projectService.getProjectById(dto.projectId);
-        var projectName = '';
-        if(project != undefined){
-            projectName = project.name;
-        }
-
         var user = await this.userService.getUserById(dto.userId);
-        var userName = '';
-        if(user != undefined){
-            userName = user.name;
-        }
+        var risks : IReportRiskModel[] = [];
 
-
+        dto.risks.forEach(risk=>{
+            risks.push({
+                key: risk.id,
+                id: risk.id,
+                reportId: dto.id,
+                riskDetails: risk.riskDetails,
+                riskMitigation: risk.riskMitigation,
+                ragStatus: PROJECT_STATUS["APPROVED"]//PROJECT_STATUS[risk.ragStatus]
+            });
+        });
 
         var model: IReportModel = {
                 id: dto.id,
@@ -71,15 +74,24 @@ class ReportAggregateService implements IReportAggregateService{
                 submissionDate: dateParse(dto.submissionDate),
                 projectId: dto.projectId,
                 userId: dto.userId,
-                risks: [],
-                projectName: projectName,
+                risks: risks,
+                projectName: this.getValue(project, 'name'),
                 client: '',
-                userName: userName,
+                userName: `${this.getValue(user, 'name')} ${this.getValue(user, 'surname')}`,
                 description: 'no description',
                 ragStatus: PROJECT_STATUS["APPROVED"]
             };
 
         return model;
+    }
+
+    getValue(obj:any, key:string):string {
+        var value = '';
+        if(obj != undefined){
+            value = obj[key];
+        }
+
+        return value;
     }
 }
 

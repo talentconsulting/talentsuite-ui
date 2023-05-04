@@ -31,7 +31,7 @@ const data: IProjectModel[] = [
 		image: Company2
 	},
 	{
-		id: "3",
+		id: "86b610ee-e866-4749-9f10-4a5c59e96f2f",
 		name: 'Project C',
 		startedDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(-150, 'days').format('DD'),

@@ -10,6 +10,9 @@ import SubHeader, {
 import Card, {
     CardActions,
     CardBody,
+    CardFooter,
+    CardFooterLeft,
+    CardFooterRight,
     CardHeader,
     CardLabel,
     CardTitle,
@@ -21,8 +24,14 @@ import DataContext from './../../../../contexts/dataContext/dataContext';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import Icon from '../../../../components/icon/Icon';
-import { IReportModel } from '../../../../models/ui-models/IReportModel';
+import { IReportModel, IReportRiskModel } from '../../../../models/ui-models/IReportModel';
 import REPORT_STATUS, { IStatus } from '../../../../models/ui-models/enums/enumStatus';
+import CommonDesc from '../../../../common/other/CommonDesc';
+import FormGroup from '../../../../components/bootstrap/forms/FormGroup';
+import { Input } from '../../../../components/icon/material-icons';
+import Label from '../../../../components/bootstrap/forms/Label';
+import InputGroup, { InputGroupText } from '../../../../components/bootstrap/forms/InputGroup';
+import Textarea from '../../../../components/bootstrap/forms/Textarea';
 
 const ReportDetailsPage = () => {
 
@@ -35,14 +44,14 @@ const ReportDetailsPage = () => {
 
 	const { dataService } = useContext(DataContext);
 
-	//const data = dataService.reportAggregateService.getById(id);
-	var emptyReport = { 'ragStatus':REPORT_STATUS.APPROVED} as IReportModel;
+	var emptyReport = { 'ragStatus':REPORT_STATUS.APPROVED, risks:[] as IReportRiskModel[]} as IReportModel;
 	const [data, updateItems] = useState(emptyReport);
 	const getReportData = ()=>{
 
-		dataService.reportAggregateService.getById(id).then(data => 
-			updateItems(data)
-			);
+		dataService.reportAggregateService.getById(id).then(data => {
+			console.log('report', data);
+			updateItems(data);
+		});
 
 	}
 
@@ -51,90 +60,112 @@ const ReportDetailsPage = () => {
      }, []);
 
     return (
-		
-		<PageWrapper title={`${data.projectName} - Week ${data.weeknumber}`}>
-			<SubHeader>
-				<SubHeaderLeft>
-					<Button
-						color='info'
-						isLink
-						icon='ArrowBack'
-						tag='a'
-						to={`../${APP_PATHS.REPORTS.LIST}`}>
-						Back to List
-					</Button>
-					<SubheaderSeparator />
-					<CommonAvatarTeam isAlignmentEnd>
-						<strong>Project</strong> Team
-					</CommonAvatarTeam>
-				</SubHeaderLeft>
-				<SubHeaderRight>
-					<span className='text-muted fst-italic me-2'>Last update:</span>
-					<span className='fw-bold'>13 hours ago</span>
-				</SubHeaderRight>
-			</SubHeader>
-			<Page>
-                <div className='pt-3 pb-5 d-flex align-items-center'>
-					<span className='display-4 fw-bold me-3'>{`${data.projectName}`} - Week {`${data.weeknumber}`} Report - <Icon icon='Circle' color={data.ragStatus.color} /></span>
-				</div>
 
-				<div className='row'>
-					<div className='col-lg-12'>
-						<Card className='shadow-3d-info'>
+		<PageWrapper title={`${data.projectName} - Week ${data.weeknumber}`}>
+
+			<Page>
+				<div className='row h-100'>
+					<div className='col-xl-3 col-lg-4 col-md-6'>
+						<Card stretch>
 							<CardHeader>
-								<CardLabel icon='Summarize' iconColor='success'>
-									<CardTitle tag='h4' className='h5'>
-										{data.description}
-									</CardTitle>
+								<CardLabel icon='Article' iconColor='success'>
+									<CardTitle>Report - Week {`${data.weeknumber}`}</CardTitle>
 								</CardLabel>
 							</CardHeader>
-							<CardBody>
-								<div className='row g-5'>
-                                    <div className='col-12'>
-										<div className='row g-2'>
-											<div className='col-12'>
-												<div className='d-flex align-items-center'>
-													<div className='flex-shrink-0'>
-														<Icon icon='Festival' size='3x' color='info' />
-													</div>
-													<div className='flex-grow-1 ms-3'>
-														<div className='fw-bold fs-5 mb-0'>
-															Client
-														</div>
-														<div className='text-muted'>
-															{data.client}
-														</div>
-													</div>
-												</div>
-											</div>
-											<div className='col-12'>
-												<div className='d-flex align-items-center'>
-													<div className='flex-shrink-0'>
-														<Icon icon='Traffic' size='3x' color='info' />
-													</div>
-													<div className='flex-grow-1 ms-3'>
-														<div className='fw-bold fs-5 mb-0'>
-															Rag Status
-														</div>
-														<div className='text-muted'>
-															{data.ragStatus.name}
-														</div>
-													</div>
-												</div>
-											</div>
-                                        </div>
-									</div>
-								</div>
+							<CardBody isScrollable>
+
+								<ReportInfoBody>
+
+									<ReportInfoItem icon='Task'>{data.projectName}</ReportInfoItem>
+
+									<ReportInfoItem icon='Person'>{data.userName}</ReportInfoItem>
+
+									<ReportInfoItem icon='DateRange'>Submitted: {data.submissionDate}</ReportInfoItem>
+
+									<ReportInfoItem icon='Traffic'>Rag Status - <Icon icon='Circle' color={data.ragStatus.color} /></ReportInfoItem>
+
+								</ReportInfoBody>
+
 							</CardBody>
 						</Card>
 					</div>
-                </div>
+					<div className='col-xl-9 col-lg-8 col-md-6'>
+						
+						<Card stretch>
+							<CardHeader>
+								<CardLabel icon='Report' iconColor='danger'>
+									<CardTitle>Risks</CardTitle>
+								</CardLabel>
+							</CardHeader>
+							<CardBody className='pb-0' isScrollable>
+								{data.risks.map((member) => (
+									<Card borderSize={1}>
+										<CardBody className='pb-0'>
+											<ReportInfoItem icon='Task'>
+												<Textarea
+														id='exampleDescription'
+														ariaLabel='With textarea'
+														value={member.riskDetails}
+													/>
+											</ReportInfoItem><br/>
+											<ReportInfoItem icon='Task'>
+													<Textarea
+													id='exampleDescription'
+													ariaLabel='With textarea'
+													value={member.riskMitigation}
+												/>
+											</ReportInfoItem><br/>
+											<ReportInfoItem icon='Traffic'><Icon icon='Circle' color={member.ragStatus.color} /></ReportInfoItem><br/>
+
+
+
+
+
+										</CardBody>
+									</Card>
+								))}
+								
+							</CardBody>
+						</Card>
+						
+
+					</div>
+				</div>
 			</Page>
 		</PageWrapper>
-		
+
 	);
 
 
 };
+
+const ReportInfoItem = (props: any) =>{
+	return (
+		<div className='col-12'>
+			<div className='d-flex align-items-center'>
+				<div className='flex-shrink-0'>
+					<Icon icon={props.icon} size='3x' color='info' />
+				</div>
+				<div className='flex-grow-1 ms-3'>
+					<div className='fw-bold fs-5 mb-0'>
+						{props.children}
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+  }
+
+  const ReportInfoBody = (props: any) =>{
+	return (
+		<div className='row g-5'>
+			<div className='col-12'>
+				<div className='row g-2'>
+					{props.children}
+				</div>
+			</div>
+		</div>
+	);
+  }
 
 export default ReportDetailsPage;
