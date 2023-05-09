@@ -11,10 +11,14 @@ import Card, {
 import DataContext from './../../../../contexts/dataContext/dataContext';
 import { useParams } from 'react-router-dom';
 import Icon from '../../../../components/icon/Icon';
-import { IReportModel, IReportRiskModel } from '../../../../models/ui-models/IReportModel';
+import { IReportModel, IReportRiskModel, ReportModel, ReportRiskModel } from '../../../../models/ui-models/IReportModel';
 import REPORT_STATUS, { IStatus } from '../../../../models/ui-models/enums/enumStatus';
 import Textarea from '../../../../components/bootstrap/forms/Textarea';
 import AuthContext from '../../../../contexts/authContext';
+import Input from '../../../../components/bootstrap/forms/Input';
+import Select, { ISelectItem } from '../../../../components/bootstrap/forms/Select';
+import { dateNow, weekNumber } from '../../../../helpers/dateHelper';
+import Button from '../../../../components/bootstrap/Button';
 
 const ReportDetailsPage = () => {
 
@@ -28,34 +32,54 @@ const ReportDetailsPage = () => {
 	var newReport = { 
 		plannedTasks: '',
 		completedTasks: '',
-		weeknumber: 0,
+		weeknumber: weekNumber(),
 		projectId: '',
 		userId: userData.id,
 		risks:[] as IReportRiskModel[],
 		userName: userData.name + ' ' + userData.surname,
+		submissionDate: dateNow(),
 		description: '',
 		ragStatus:REPORT_STATUS.APPROVED, 
 		projectName: ''
 	} as IReportModel;
+	
+	var shouldUpdate = false;
+	const [data, updateUserDetails] = useState(newReport);
+	const [projectList, updateProjectList] = useState([] as ISelectItem[]);
 
-	const [data, updateItems] = useState(newReport);
 	const getReportData = ()=>{
+		var projects = dataService.projectService.getProjectsByClientId('All').then(data => {
+			var projects: ISelectItem[] = [];
+			data.forEach(project => {
+				projects.push({'value': project.id, 'text': project.name});
+			});
+			updateProjectList(projects);
+		});
 
 		if(id == 'new'){
 			return;
 		}
 
-
 		dataService.reportAggregateService.getById(id).then(data => {
-			updateItems(data);
+			updateUserDetails(data);
 		});
 
 	}
 
 	useEffect(() => {
         getReportData();
-     }, []);
+     }, [shouldUpdate]);
 
+	const handleAddRisk = () => {
+		const updatedData = new ReportModel(data);
+
+		var risk = new ReportRiskModel();
+		risk.key = `${updatedData.risks.length + 1}`;
+		updatedData.risks.push(risk);
+
+		updateUserDetails(updatedData);
+		shouldUpdate = !shouldUpdate;
+    };
     return (
 
 		<PageWrapper title={pageTitle}>
@@ -73,13 +97,19 @@ const ReportDetailsPage = () => {
 
 								<ReportInfoBody>
 
-									<ReportInfoItem icon='Task'>{data.projectName}</ReportInfoItem>
+									<ReportInfoItem icon='Task' label='Project'>
+										{(id == 'new')
+											? <Select id='ProjectSelect' name='ProjectSelect' ariaLabel='Project' list={ projectList } />
+											: data.projectName
+										}
+									</ReportInfoItem>
 
-									<ReportInfoItem icon='Person'>{data.userName}</ReportInfoItem>
+									<ReportInfoItem icon='Person' label='Reported By'>{data.userName}
+									</ReportInfoItem>
 
-									<ReportInfoItem icon='DateRange'>Submitted: {data.submissionDate}</ReportInfoItem>
+									<ReportInfoItem icon='DateRange' label='Submitted'>Submitted: {data.submissionDate}</ReportInfoItem>
 
-									<ReportInfoItem icon='Traffic'>Rag Status - <Icon icon='Circle' color={data.ragStatus.color} /></ReportInfoItem>
+									<ReportInfoItem icon='Traffic' label='Rag Status'>Rag Status - <Icon icon='Circle' color={data.ragStatus.color} /></ReportInfoItem>
 
 								</ReportInfoBody>
 
@@ -98,30 +128,38 @@ const ReportDetailsPage = () => {
 								{data.risks.map((member) => (
 									<Card borderSize={1}>
 										<CardBody className='pb-0'>
-											<ReportInfoItem icon='Task'>
+											<ReportInfoItem icon='Task' label='Risk Details'>
 												<Textarea
 														id='exampleDescription'
 														ariaLabel='With textarea'
 														value={member.riskDetails}
 													/>
 											</ReportInfoItem><br/>
-											<ReportInfoItem icon='Task'>
+											<ReportInfoItem icon='Task' label='Risk Mitigation'>
 													<Textarea
 													id='exampleDescription'
 													ariaLabel='With textarea'
 													value={member.riskMitigation}
 												/>
 											</ReportInfoItem><br/>
-											<ReportInfoItem icon='Traffic'><Icon icon='Circle' color={member.ragStatus.color} /></ReportInfoItem><br/>
-
-
-
-
+											<ReportInfoItem icon='Traffic' label='Rag Status'>
+												<Icon icon='Circle' color={member.ragStatus.color} />
+											</ReportInfoItem><br/>
 
 										</CardBody>
 									</Card>
 								))}
 								
+								<Button
+									onClick={handleAddRisk}
+									className='float-end'
+									color='info'
+									icon='Add'
+									isLight
+									tag='a'
+									download>
+									Add Risk
+								</Button>
 							</CardBody>
 						</Card>
 						
@@ -139,14 +177,15 @@ const ReportDetailsPage = () => {
 const ReportInfoItem = (props: any) =>{
 	return (
 		<div className='col-12'>
-			<div className='d-flex align-items-center'>
+			<div className='d-flex align-items-start'>
 				<div className='flex-shrink-0'>
 					<Icon icon={props.icon} size='3x' color='info' />
 				</div>
 				<div className='flex-grow-1 ms-3'>
 					<div className='fw-bold fs-5 mb-0'>
-						{props.children}
+						{props.label}
 					</div>
+					{props.children}
 				</div>
 			</div>
 		</div>

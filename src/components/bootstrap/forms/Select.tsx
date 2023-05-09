@@ -230,4 +230,10 @@ Select.defaultProps = {
 	onSelect: undefined,
 };
 
+export interface ISelectItem{ 
+	value?: string | number | undefined; 
+	text?: string | number | undefined; 
+	label?: string | number | undefined; 
+}
+
 export default Select;
