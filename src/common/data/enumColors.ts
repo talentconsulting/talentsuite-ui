@@ -39,6 +39,10 @@ const COLORS: IColors = {
 		name: 'light',
 		code: String(process.env.REACT_APP_LIGHT_COLOR),
 	},
+	GREY: {
+		name: 'grey',
+		code: String(process.env.REACT_APP_GREY_COLOR),
+	},
 };
 
 export function getColorNameWithIndex(index: number) {

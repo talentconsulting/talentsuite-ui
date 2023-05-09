@@ -4,7 +4,7 @@ import IUserService from './userService';
 import { IReportModel, IReportRiskModel } from '../../models/ui-models/IReportModel';
 import { IReportDto} from '../../models/dtos/IReportDto';
 import  { dateParse}  from '../../helpers/dateHelper';
-import  PROJECT_STATUS from '../../models/ui-models/enums/enumStatus';
+import  RAG_STATUS, {parseStatus} from '../../models/ui-models/enums/enumStatus';
 
 export interface IReportAggregateService {
     getById(id?: string): Promise<IReportModel>;
@@ -61,7 +61,7 @@ class ReportAggregateService implements IReportAggregateService{
                 reportId: dto.id,
                 riskDetails: risk.riskDetails,
                 riskMitigation: risk.riskMitigation,
-                ragStatus: PROJECT_STATUS["APPROVED"]//PROJECT_STATUS[risk.ragStatus]
+                ragStatus: parseStatus(risk.ragStatus)
             });
         });
 
@@ -79,7 +79,7 @@ class ReportAggregateService implements IReportAggregateService{
                 client: '',
                 userName: `${this.getValue(user, 'name')} ${this.getValue(user, 'surname')}`,
                 description: 'no description',
-                ragStatus: PROJECT_STATUS["APPROVED"]
+                ragStatus: RAG_STATUS.UNKNOWN
             };
 
         return model;

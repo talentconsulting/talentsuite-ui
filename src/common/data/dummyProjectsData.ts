@@ -1,5 +1,5 @@
 import moment from 'moment';
-import PROJECT_STATUS, { IStatus } from '../../models/ui-models/enums/enumStatus';
+import RAG_STATUS, { IStatus } from '../../models/ui-models/enums/enumStatus';
 import Company1 from '../../assets/logos/company1.png';
 import Company2 from '../../assets/logos/company2.png';
 import Company3 from '../../assets/logos/company3.png';
@@ -14,7 +14,7 @@ const data: IProjectModel[] = [
 		endDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(100, 'days').format('DD'),
 		teamMembers: [],
-		status: PROJECT_STATUS.APPROVED,
+		status: RAG_STATUS.APPROVED,
 		description: 'Build a data store',
 		image: Company1
 	},
@@ -26,7 +26,7 @@ const data: IProjectModel[] = [
 		endDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(200, 'days').format('DD'),
 		teamMembers: [],
-		status: PROJECT_STATUS.AT_RISK,
+		status: RAG_STATUS.AT_RISK,
 		description: 'Develope mobile app',
 		image: Company2
 	},
@@ -38,7 +38,7 @@ const data: IProjectModel[] = [
 		endDate:
 			moment().format('YYYY') + moment().format('MM') + moment().add(30, 'days').format('DD'),
 		teamMembers: [],
-		status: PROJECT_STATUS.BEHIND,
+		status: RAG_STATUS.BEHIND,
 		description: 'Develope Web app',
 		image: Company3
 	}

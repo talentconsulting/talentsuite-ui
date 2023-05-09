@@ -6,4 +6,5 @@ export type TColor =
 	| 'warning'
 	| 'danger'
 	| 'light'
-	| 'dark';
+	| 'dark'
+	| 'grey';

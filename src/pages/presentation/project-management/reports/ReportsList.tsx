@@ -8,7 +8,6 @@ import Card, {
 } from '../../../../components/bootstrap/Card';
 import Button from '../../../../components/bootstrap/Button';
 import PaginationButtons, { dataPagination, PER_COUNT } from '../../../../components/PaginationButtons';
-import useSortableData from '../../../../hooks/useSortableData';
 import useDarkMode from '../../../../hooks/useDarkMode';
 import { useParams } from 'react-router-dom';
 import OffCanvas, { OffCanvasBody, OffCanvasHeader, OffCanvasTitle } from '../../../../components/bootstrap/OffCanvas';
@@ -22,9 +21,6 @@ import { useNavigate } from 'react-router-dom';
 import { APP_PATHS } from '../../../../routes/contentRoutes';
 import DataContext from './../../../../contexts/dataContext/dataContext';
 import { IReportModel } from '../../../../models/ui-models/IReportModel';
-import { v4 as uuidv4 } from 'uuid';
-import { IReportAddModel } from '../../../../models/ui-models/IReportModel';
-import PROJECT_STATUS, { IStatus } from '../../../../models/ui-models/enums/enumStatus';
 
 
 interface ICommonUpcomingEventsProps {

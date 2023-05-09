@@ -27,7 +27,7 @@ import useDarkMode from '../../../hooks/useDarkMode';
 import useTourStep from '../../../hooks/useTourStep';
 import { useNavigate } from 'react-router-dom';
 import { IProjectModel } from '../../../models/ui-models/IProjectModel';
-import PROJECT_STATUS, { IStatus } from '../../../models/ui-models/enums/enumStatus';
+import RAG_STATUS, { IStatus } from '../../../models/ui-models/enums/enumStatus';
 
 const ProjectPage = () => {
 	useTourStep(19);
@@ -42,7 +42,7 @@ const ProjectPage = () => {
 		startedDate: '',
 		endDate: '',
 		teamMembers: [],
-		status: PROJECT_STATUS.APPROVED,
+		status: RAG_STATUS.APPROVED,
 		description: '',
 		image: ''};
 	const [data, updateItems] = useState(emptyProject);

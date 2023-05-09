@@ -2,7 +2,7 @@ import { IProjectModel} from '../../models/ui-models/IProjectModel';
 import data from '../../common/data/dummyProjectsData';
 import FeatureFlagsContext from './../../contexts/featureFlagsContext';
 import { useContext } from 'react';
-import PROJECT_STATUS, { IStatus } from '../../models/ui-models/enums/enumStatus';
+import RAG_STATUS, { IStatus } from '../../models/ui-models/enums/enumStatus';
 
 export interface IProjectService {
 	getProjectsByClientId(id?: string): Promise<IProjectModel[]>;
@@ -40,7 +40,7 @@ class ProjectService implements IProjectService {
             startedDate: '',
             endDate: '',
             teamMembers: [],
-            status: PROJECT_STATUS.APPROVED,
+            status: RAG_STATUS.APPROVED,
             description: '',
             image: ''});
     }

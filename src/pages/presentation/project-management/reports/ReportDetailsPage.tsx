@@ -25,8 +25,6 @@ const ReportDetailsPage = () => {
 	const { dataService } = useContext(DataContext);
 	const { userData } = useContext(AuthContext);
 
-	console.log(userData);
-
 	var newReport = { 
 		plannedTasks: '',
 		completedTasks: '',

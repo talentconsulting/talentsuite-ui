@@ -1,4 +1,4 @@
-import PROJECT_STATUS, { IStatus } from './enums/enumStatus';
+import RAG_STATUS, { IStatus } from './enums/enumStatus';
 
 export interface IProjectModel {
 	id: string;

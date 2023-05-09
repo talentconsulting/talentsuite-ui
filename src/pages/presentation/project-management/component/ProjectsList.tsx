@@ -14,7 +14,7 @@ import Dropdown, {
 } from '../../../../components/bootstrap/Dropdown';
 import Icon from '../../../../components/icon/Icon';
 import data from '../../../../common/data/dummyProjectsData';
-import PROJECT_STATUS from '../../../../models/ui-models/enums/enumStatus';
+import RAG_STATUS from '../../../../models/ui-models/enums/enumStatus';
 import PaginationButtons, { dataPagination, PER_COUNT } from '../../../../components/PaginationButtons';
 import useSortableData from '../../../../hooks/useSortableData';
 import useDarkMode from '../../../../hooks/useDarkMode';
@@ -90,14 +90,14 @@ const ProjectLists: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 												</Button>
 											</DropdownToggle>
 											<DropdownMenu>
-												{Object.keys(PROJECT_STATUS).map((key) => (
+												{Object.keys(RAG_STATUS).map((key) => (
 													<DropdownItem key={key}>
 														<div>
 															<Icon
 																icon='Circle'
-																color={PROJECT_STATUS[key].color}
+																color={RAG_STATUS[key].color}
 															/>
-															{PROJECT_STATUS[key].name}
+															{RAG_STATUS[key].name}
 														</div>
 													</DropdownItem>
 												))}
