@@ -9,5 +9,6 @@ const COLORS: { [key: string]: TColor } = {
 	SUCCESS: 'success',
 	LIGHT: 'light',
 	DARK: 'dark',
+	GREY: 'grey',
 };
 export default COLORS;

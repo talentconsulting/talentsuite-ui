@@ -34,6 +34,7 @@ CommonDesc.propTypes = {
 		'danger',
 		'light',
 		'dark',
+		'grey',
 	]),
 };
 CommonDesc.defaultProps = {

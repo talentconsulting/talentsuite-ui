@@ -80,6 +80,29 @@ const ReportDetailsPage = () => {
 		updateUserDetails(updatedData);
 		shouldUpdate = !shouldUpdate;
     };
+
+	const updateRiskMitigation = (newValue:string, index:number) =>{
+		const updatedData = new ReportModel(data);
+		updatedData.risks[index].riskMitigation = newValue;
+		updateUserDetails(updatedData);
+		shouldUpdate = !shouldUpdate;
+	  }
+
+	const saveChanges = () => {
+
+		console.log('data', data);
+		// var report = {
+		// 	plannedTasks: '';
+		// 	completedTasks: '';
+		// 	projectId: string;
+		// 	userId: string;
+		// 	clientId: string;
+		// 	description: string;
+		// 	ragStatus: IStatus["key"];
+		// 	risks: IReportRiskModel[];
+		// } as IReportAddModel ;
+    };
+
     return (
 
 		<PageWrapper title={pageTitle}>
@@ -94,9 +117,7 @@ const ReportDetailsPage = () => {
 								</CardLabel>
 							</CardHeader>
 							<CardBody isScrollable>
-
 								<ReportInfoBody>
-
 									<ReportInfoItem icon='Task' label='Project'>
 										{(id == 'new')
 											? <Select id='ProjectSelect' name='ProjectSelect' ariaLabel='Project' list={ projectList } />
@@ -104,11 +125,8 @@ const ReportDetailsPage = () => {
 										}
 									</ReportInfoItem>
 
-									<ReportInfoItem icon='Person' label='Reported By'>{data.userName}
-									</ReportInfoItem>
-
+									<ReportInfoItem icon='Person' label='Reported By'>{data.userName}</ReportInfoItem>
 									<ReportInfoItem icon='DateRange' label='Submitted'>Submitted: {data.submissionDate}</ReportInfoItem>
-
 									<ReportInfoItem icon='Traffic' label='Rag Status'>Rag Status - <Icon icon='Circle' color={data.ragStatus.color} /></ReportInfoItem>
 
 								</ReportInfoBody>
@@ -125,14 +143,15 @@ const ReportDetailsPage = () => {
 								</CardLabel>
 							</CardHeader>
 							<CardBody className='pb-0' isScrollable>
-								{data.risks.map((member) => (
-									<Card borderSize={1}>
+								{data.risks.map((member,index) => (
+									<Card key={member.key} borderSize={1}>
 										<CardBody className='pb-0'>
 											<ReportInfoItem icon='Task' label='Risk Details'>
 												<Textarea
 														id='exampleDescription'
 														ariaLabel='With textarea'
 														value={member.riskDetails}
+														onChange={(event)=>{console.log('event',event)}}
 													/>
 											</ReportInfoItem><br/>
 											<ReportInfoItem icon='Task' label='Risk Mitigation'>
@@ -140,6 +159,7 @@ const ReportDetailsPage = () => {
 													id='exampleDescription'
 													ariaLabel='With textarea'
 													value={member.riskMitigation}
+													onChange={(e:any) => updateRiskMitigation(e.target.value, index)}
 												/>
 											</ReportInfoItem><br/>
 											<ReportInfoItem icon='Traffic' label='Rag Status'>
@@ -163,6 +183,25 @@ const ReportDetailsPage = () => {
 							</CardBody>
 						</Card>
 						
+
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col-xl-12 col-lg-12 col-md-12'>
+					<Card stretch>
+							<CardBody>
+								<Button
+									onClick={saveChanges}
+									className='float-end'
+									color='info'
+									icon='Add'
+									isLight
+									tag='a'
+									download>
+									Save
+								</Button>
+							</CardBody>
+						</Card>
 
 					</div>
 				</div>

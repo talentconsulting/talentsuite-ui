@@ -88,6 +88,7 @@ Icon.propTypes = {
 		'danger',
 		'light',
 		'dark',
+		'grey',
 	]),
 	size: PropTypes.oneOf([
 		null,

@@ -71,6 +71,7 @@ Badge.propTypes = {
 		'danger',
 		'light',
 		'dark',
+		'grey',
 	]),
 	rounded: PropTypes.oneOf([
 		'default',
