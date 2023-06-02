@@ -278,6 +278,7 @@ Button.propTypes = {
 		'brand',
 		'brand-two',
 		'storybook',
+		'grey'
 	]),
 	/**
 	 * if isOutline is true isLight and isLink must be false

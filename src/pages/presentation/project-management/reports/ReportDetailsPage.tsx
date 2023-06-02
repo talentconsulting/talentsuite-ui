@@ -19,6 +19,8 @@ import Input from '../../../../components/bootstrap/forms/Input';
 import Select, { ISelectItem } from '../../../../components/bootstrap/forms/Select';
 import { dateNow, weekNumber } from '../../../../helpers/dateHelper';
 import Button from '../../../../components/bootstrap/Button';
+import RAG_STATUS from '../../../../models/ui-models/enums/enumStatus';
+import Dropdown, { DropdownItem, DropdownMenu, DropdownToggle } from '../../../../components/bootstrap/Dropdown';
 
 const ReportDetailsPage = () => {
 
@@ -81,26 +83,17 @@ const ReportDetailsPage = () => {
 		shouldUpdate = !shouldUpdate;
     };
 
-	const updateRiskMitigation = (newValue:string, index:number) =>{
+	const updateField = (modifyValue:(arg:ReportModel)=>any) =>{
+		console.log('called');
 		const updatedData = new ReportModel(data);
-		updatedData.risks[index].riskMitigation = newValue;
+		modifyValue(updatedData);
 		updateUserDetails(updatedData);
 		shouldUpdate = !shouldUpdate;
-	  }
+	}
 
 	const saveChanges = () => {
 
-		console.log('data', data);
-		// var report = {
-		// 	plannedTasks: '';
-		// 	completedTasks: '';
-		// 	projectId: string;
-		// 	userId: string;
-		// 	clientId: string;
-		// 	description: string;
-		// 	ragStatus: IStatus["key"];
-		// 	risks: IReportRiskModel[];
-		// } as IReportAddModel ;
+		console.log('Not yet saving', data);
     };
 
     return (
@@ -151,7 +144,7 @@ const ReportDetailsPage = () => {
 														id='exampleDescription'
 														ariaLabel='With textarea'
 														value={member.riskDetails}
-														onChange={(event)=>{console.log('event',event)}}
+														onChange={(e:any)=> updateField((data:ReportModel)=>{data.risks[index].riskDetails = e.target.value})}
 													/>
 											</ReportInfoItem><br/>
 											<ReportInfoItem icon='Task' label='Risk Mitigation'>
@@ -159,11 +152,34 @@ const ReportDetailsPage = () => {
 													id='exampleDescription'
 													ariaLabel='With textarea'
 													value={member.riskMitigation}
-													onChange={(e:any) => updateRiskMitigation(e.target.value, index)}
+													onChange={(e:any) => updateField((data:ReportModel)=>{data.risks[index].riskMitigation = e.target.value})}
 												/>
 											</ReportInfoItem><br/>
 											<ReportInfoItem icon='Traffic' label='Rag Status'>
-												<Icon icon='Circle' color={member.ragStatus.color} />
+													<Dropdown>
+														<DropdownToggle hasIcon={false}>
+															<Button
+																isLink
+																color={member.ragStatus.color}
+																icon='Circle'
+																className='text-nowrap'>
+																{member.ragStatus.name}
+															</Button>
+														</DropdownToggle>
+														<DropdownMenu>
+															{Object.keys(RAG_STATUS).map((key) => (
+																<DropdownItem key={key} onClick={() => updateField((data:ReportModel)=>{data.risks[index].ragStatus = RAG_STATUS[key]})}>
+																	<div>
+																		<Icon
+																			icon='Circle'
+																			color={RAG_STATUS[key].color}
+																		/>
+																		{RAG_STATUS[key].name}
+																	</div>
+																</DropdownItem>
+															))}
+														</DropdownMenu>
+													</Dropdown>
 											</ReportInfoItem><br/>
 
 										</CardBody>
