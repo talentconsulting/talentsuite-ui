@@ -11,9 +11,10 @@ import { NavigationLine } from '../Navigation/Navigation';
 import Icon from '../../components/icon/Icon';
 import useNavigationItemHandle from '../../hooks/useNavigationItemHandle';
 import AuthContext from '../../contexts/authContext';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const User = () => {
-	const { userData, setUser } = useContext(AuthContext);
+	const { userData } = useContext(AuthContext);
 
 	const navigate = useNavigate();
 	const handleItem = useNavigationItemHandle();
@@ -22,6 +23,15 @@ const User = () => {
 	const [collapseStatus, setCollapseStatus] = useState<boolean>(false);
 
 	const { t } = useTranslation(['translation', 'menu']);
+
+	const { logout } = useAuth0();
+
+	const logoutWithRedirect = () =>
+    logout({
+        logoutParams: {
+          returnTo: window.location.origin,
+        }
+    });
 
 	return (
 		<>
@@ -121,10 +131,8 @@ const User = () => {
 							role='presentation'
 							className='navigation-item cursor-pointer'
 							onClick={() => {
-								if (setUser) {
-									setUser('');
-								}
-								navigate(`../${APP_PATHS.AUTH.LOGIN}`);
+								
+								logoutWithRedirect()
 							}}>
 							<span className='navigation-link navigation-link-pill'>
 								<span className='navigation-link-info'>

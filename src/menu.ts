@@ -73,12 +73,6 @@ export const appPagesMenu = {
 		text: 'Auth Pages',
 		icon: 'Extension',
 	},
-	login: {
-		id: 'login',
-		text: 'Login',
-		path: APP_PATHS.AUTH.LOGIN,
-		icon: 'Login',
-	},
 	signUp: {
 		id: 'signUp',
 		text: 'Sign Up',
