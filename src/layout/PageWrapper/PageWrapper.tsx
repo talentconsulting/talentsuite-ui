@@ -6,6 +6,7 @@ import { IPageProps } from '../Page/Page';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../contexts/authContext';
 import { APP_PATHS } from '../../routes/contentRoutes';
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 
 interface IPageWrapperProps {
 	isProtected?: boolean;
@@ -33,13 +34,6 @@ const PageWrapper = forwardRef<HTMLDivElement, IPageWrapperProps>(
 		const { user } = useContext(AuthContext);
 
 		const navigate = useNavigate();
-		useEffect(() => {
-			if (isProtected && user === '') {
-				navigate(`../${APP_PATHS.AUTH.LOGIN}`);
-			}
-			return () => {};
-			// eslint-disable-next-line react-hooks/exhaustive-deps
-		}, []);
 
 		return (
 			<div ref={ref} className={classNames('page-wrapper', 'container-fluid', className)}>
@@ -64,4 +58,7 @@ PageWrapper.defaultProps = {
 	className: undefined,
 };
 
-export default PageWrapper;
+//export default PageWrapper;
+export default withAuthenticationRequired(PageWrapper, {
+	onRedirecting: () => <div>Loading</div>,
+  });

@@ -84,7 +84,6 @@ const ReportDetailsPage = () => {
     };
 
 	const updateField = (modifyValue:(arg:ReportModel)=>any) =>{
-		console.log('called');
 		const updatedData = new ReportModel(data);
 		modifyValue(updatedData);
 		updateUserDetails(updatedData);
