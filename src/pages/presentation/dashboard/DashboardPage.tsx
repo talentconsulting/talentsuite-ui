@@ -25,7 +25,6 @@ import Icon from '../../../components/icon/Icon';
 import Progress from '../../../components/bootstrap/Progress';
 import CommonAvatarTeam from '../../../common/other/CommonAvatarTeam';
 import useDarkMode from '../../../hooks/useDarkMode';
-import useTourStep from '../../../hooks/useTourStep';
 
 interface IItemProps extends HTMLAttributes<HTMLDivElement> {
 	name: string;
@@ -132,7 +131,6 @@ const Item: FC<IItemProps> = ({
 };
 
 const DashboardPage = () => {
-	useTourStep(12);
 
 	const { darkModeStatus } = useDarkMode();
 	const navigate = useNavigate();

@@ -24,7 +24,6 @@ export const APP_PATHS = {
 		ITEM: 'wiki/item' ,
 	},
 	AUTH: {
-		SIGN_UP: 'auth-pages/sign-up' ,
 		NOT_FOUND_404: 'auth-pages/404',
 	},
     REPORTS: {
