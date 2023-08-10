@@ -17,10 +17,9 @@ import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
 import SERVICES from '../../../common/data/dummySkillsData';
 import { appPagesMenu } from '../../../menu';
 import { APP_PATHS } from '../../../routes/contentRoutes';
-import useTourStep from '../../../hooks/useTourStep';
+import { useNavigate } from 'react-router-dom';
 
 const PeopleList = () => {
-	useTourStep(18);
 	const [filterMenu, setFilterMenu] = useState(false);
 
 	const formik = useFormik({
@@ -35,6 +34,12 @@ const PeopleList = () => {
 			// alert(JSON.stringify(values, null, 2));
 		},
 	});
+
+	const navigate = useNavigate();
+	const handleAddUserClicked = () => {
+		var path = APP_PATHS.PEOPLE.PERSON;
+		navigate(`../${path}/AddNew`);
+    };
 
 	const searchUsers = Object.keys(USERS)
 		.filter(
@@ -152,8 +157,8 @@ const PeopleList = () => {
 						color='info'
 						isLight
 						tag='a'
-						to={`../PageDeleted`}>
-						New Employee
+						onClick = {handleAddUserClicked}>
+						Add User
 					</Button>
 				</SubHeaderRight>
 			</SubHeader>

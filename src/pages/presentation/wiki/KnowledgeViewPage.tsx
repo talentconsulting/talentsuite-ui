@@ -14,10 +14,8 @@ import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
 import Badge from '../../../components/bootstrap/Badge';
 import USERS from '../../../common/data/dummyUserData';
 import useDarkMode from '../../../hooks/useDarkMode';
-import useTourStep from '../../../hooks/useTourStep';
 
 const KnowledgeViewPage = () => {
-	useTourStep(16);
 	const { darkModeStatus } = useDarkMode();
 
 	const { id } = useParams();

@@ -67,17 +67,6 @@ export const appPagesMenu = {
 		text: 'wikiItemID',
 		path: APP_PATHS.WIKI.ITEM,
 		hide: true,
-	},
-	auth: {
-		id: 'auth',
-		text: 'Auth Pages',
-		icon: 'Extension',
-	},
-	signUp: {
-		id: 'signUp',
-		text: 'Sign Up',
-		path: APP_PATHS.AUTH.SIGN_UP,
-		icon: 'PersonAdd',
 	}
 };
 
