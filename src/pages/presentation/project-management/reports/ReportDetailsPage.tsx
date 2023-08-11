@@ -39,7 +39,7 @@ const ReportDetailsPage = () => {
 		userId: userData.id,
 		risks:[] as IReportRiskModel[],
 		userName: userData.name + ' ' + userData.surname,
-		submissionDate: dateNow(),
+		submissionDate: new Date(),
 		description: '',
 		ragStatus:REPORT_STATUS.APPROVED, 
 		projectName: ''

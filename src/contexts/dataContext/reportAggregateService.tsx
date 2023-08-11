@@ -68,11 +68,11 @@ class ReportAggregateService implements IReportAggregateService{
 
         var model: IReportModel = {
                 id: dto.id,
-                created: dateParse(dto.created),
+                created: dto.created,
                 plannedTasks: dto.plannedTasks,
                 completedTasks: dto.completedTasks,
                 weeknumber: dto.weeknumber,
-                submissionDate: dateParse(dto.submissionDate),
+                submissionDate: dto.submissionDate,
                 projectId: dto.projectId,
                 userId: dto.userId,
                 risks: risks,
@@ -92,11 +92,11 @@ class ReportAggregateService implements IReportAggregateService{
 
         var dto : IReportDto = {
             id: model.id,
-            created: model.created,
+            created: new Date(model.created),
             plannedTasks: model.plannedTasks,
             completedTasks: model.completedTasks,
             weeknumber: model.weeknumber,
-            submissionDate: model.submissionDate,
+            submissionDate: new Date(model.submissionDate),
             projectId: model.projectId,
             userId: model.userId,
             risks: risks
