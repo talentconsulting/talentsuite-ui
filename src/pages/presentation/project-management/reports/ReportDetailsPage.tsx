@@ -17,7 +17,7 @@ import Textarea from '../../../../components/bootstrap/forms/Textarea';
 import AuthContext from '../../../../contexts/authContext';
 import Input from '../../../../components/bootstrap/forms/Input';
 import Select, { ISelectItem } from '../../../../components/bootstrap/forms/Select';
-import { dateNow, formatDateForDisplay, weekNumber } from '../../../../helpers/dateHelper';
+import { dateNow, weekNumber } from '../../../../helpers/dateHelper';
 import Button from '../../../../components/bootstrap/Button';
 import RAG_STATUS from '../../../../models/ui-models/enums/enumStatus';
 import Dropdown, { DropdownItem, DropdownMenu, DropdownToggle } from '../../../../components/bootstrap/Dropdown';
