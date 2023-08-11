@@ -3,7 +3,6 @@ import IReportService from './reportService';
 import IUserService from './userService';
 import { IReportModel, IReportRiskModel } from '../../models/ui-models/IReportModel';
 import { IReportDto} from '../../models/dtos/IReportDto';
-import  { dateParse}  from '../../helpers/dateHelper';
 import  RAG_STATUS, {parseStatus} from '../../models/ui-models/enums/enumStatus';
 import { IRiskDto } from '../../models/dtos/IRiskDto';
 
@@ -90,6 +89,16 @@ class ReportAggregateService implements IReportAggregateService{
 
         var risks : IRiskDto[] = [];
 
+        model.risks.forEach(risk=>{
+            risks.push({
+                id : risk.id,
+                ragStatus : risk.ragStatus.name,
+                reportId : risk.reportId,
+                riskDetails : risk.riskDetails,
+                riskMitigation : risk.riskMitigation
+            });
+        });
+
         var dto : IReportDto = {
             id: model.id,
             created: new Date(model.created),
@@ -100,6 +109,17 @@ class ReportAggregateService implements IReportAggregateService{
             projectId: model.projectId,
             userId: model.userId,
             risks: risks
+        }
+        return dto;
+    }
+
+    async mapRiskModelToDto(riskModel : IReportRiskModel) : Promise<IRiskDto> {
+        var dto : IRiskDto = {
+            id : riskModel.id,
+            ragStatus : riskModel.ragStatus.name,
+            reportId : riskModel.reportId,
+            riskDetails : riskModel.riskDetails,
+            riskMitigation : riskModel.riskMitigation
         }
         return dto;
     }
