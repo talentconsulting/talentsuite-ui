@@ -3,7 +3,7 @@ import IReportService from './reportService';
 import IUserService from './userService';
 import { IReportModel, IReportRiskModel } from '../../models/ui-models/IReportModel';
 import { IReportDto} from '../../models/dtos/IReportDto';
-import  RAG_STATUS, {parseStatus} from '../../models/ui-models/enums/enumStatus';
+import  RAG_STATUS, {getStatusByValue} from '../../models/ui-models/enums/enumStatus';
 import { IRiskDto } from '../../models/dtos/IRiskDto';
 
 export interface IReportAggregateService {
@@ -61,7 +61,7 @@ class ReportAggregateService implements IReportAggregateService{
                 reportId: dto.id,
                 riskDetails: risk.riskDetails,
                 riskMitigation: risk.riskMitigation,
-                ragStatus: parseStatus(risk.ragStatus)
+                ragStatus: getStatusByValue(risk.ragStatus)
             });
         });
 
@@ -92,7 +92,7 @@ class ReportAggregateService implements IReportAggregateService{
         model.risks.forEach(risk=>{
             risks.push({
                 id : risk.id,
-                ragStatus : risk.ragStatus.name,
+                ragStatus : risk.ragStatus.value,
                 reportId : risk.reportId,
                 riskDetails : risk.riskDetails,
                 riskMitigation : risk.riskMitigation
@@ -116,7 +116,7 @@ class ReportAggregateService implements IReportAggregateService{
     async mapRiskModelToDto(riskModel : IReportRiskModel) : Promise<IRiskDto> {
         var dto : IRiskDto = {
             id : riskModel.id,
-            ragStatus : riskModel.ragStatus.name,
+            ragStatus : riskModel.ragStatus.value,
             reportId : riskModel.reportId,
             riskDetails : riskModel.riskDetails,
             riskMitigation : riskModel.riskMitigation
