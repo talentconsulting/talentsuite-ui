@@ -65,6 +65,12 @@ class ReportAggregateService implements IReportAggregateService{
             });
         });
 
+        var reportStatus = risks.sort((a, b) => a.ragStatus.severity > b.ragStatus.severity ? -1 : 1 )[0].ragStatus;
+        if(reportStatus == undefined)
+        {
+            reportStatus = RAG_STATUS.UNKNOWN;
+        }
+
         var model: IReportModel = {
                 id: dto.id,
                 created: dto.created,
@@ -79,7 +85,7 @@ class ReportAggregateService implements IReportAggregateService{
                 client: '',
                 userName: `${this.getValue(user, 'name')} ${this.getValue(user, 'surname')}`,
                 description: 'no description',
-                ragStatus: RAG_STATUS.UNKNOWN
+                ragStatus: reportStatus
             };
 
         return model;

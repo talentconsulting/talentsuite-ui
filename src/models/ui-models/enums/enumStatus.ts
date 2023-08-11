@@ -2,13 +2,13 @@ import COLORS from '../../../common/data/enumColors';
 import { TColor } from '../../../type/color-type';
 
 export interface IStatus {
-	[key: string]: { name: string; color: TColor, value: string };
+	[key: string]: { name: string; color: TColor, value: string, severity: number };
 }
 const RAG_STATUS: IStatus = {
-	APPROVED: { name: 'Green', color: COLORS.SUCCESS.name, value: 'G' },
-	AT_RISK: { name: 'Amber', color: COLORS.WARNING.name, value: 'A' },
-	BEHIND: { name: 'Red', color: COLORS.DANGER.name, value: 'R' },
-	UNKNOWN: { name: 'Unknown', color: COLORS.GREY.name, value: 'U' },
+	APPROVED: { name: 'Green', color: COLORS.SUCCESS.name, value: 'G', severity: 0 },
+	AT_RISK: { name: 'Amber', color: COLORS.WARNING.name, value: 'A', severity: 1 },
+	BEHIND: { name: 'Red', color: COLORS.DANGER.name, value: 'R', severity: 2 },
+	UNKNOWN: { name: 'Unknown', color: COLORS.GREY.name, value: 'U', severity: 3 },
 };
 
 export const getStatusByValue = (queryValue:string) => {
