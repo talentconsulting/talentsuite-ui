@@ -93,11 +93,11 @@ const ReportDetailsPage = () => {
 	const saveChanges = () => {
 		if (data.id != undefined) {
             console.log('Updating report:', data);
-            dataService.reportService.updateReport(data);
+			dataService.reportAggregateService.mapModelToDto(data).then(dto => dataService.reportService.updateReport(dto));
         } else {
             var addModel = new ReportAddModel(data);
             console.log('Saving new report:', data);
-            dataService.reportService.addNewReport(addModel);
+			dataService.reportAggregateService.mapModelToDto(data).then(dto => dataService.reportService.addNewReport(dto));
         }
     };
 

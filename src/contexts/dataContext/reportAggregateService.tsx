@@ -5,7 +5,6 @@ import { IReportModel, IReportRiskModel } from '../../models/ui-models/IReportMo
 import { IReportDto} from '../../models/dtos/IReportDto';
 import  { dateParse}  from '../../helpers/dateHelper';
 import  RAG_STATUS, {parseStatus} from '../../models/ui-models/enums/enumStatus';
-import RiskDto = require("../../models/dtos/IRiskDto");
 import { IRiskDto } from '../../models/dtos/IRiskDto';
 
 export interface IReportAggregateService {
@@ -100,8 +99,9 @@ class ReportAggregateService implements IReportAggregateService{
             submissionDate: model.submissionDate,
             projectId: model.projectId,
             userId: model.userId,
-            risks: 
+            risks: risks
         }
+        return dto;
     }
 
     getValue(obj:any, key:string):string {
