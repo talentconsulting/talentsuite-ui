@@ -11,7 +11,7 @@ import Card, {
 import DataContext from './../../../../contexts/dataContext/dataContext';
 import { useParams } from 'react-router-dom';
 import Icon from '../../../../components/icon/Icon';
-import { IReportModel, IReportRiskModel, ReportModel, ReportRiskModel } from '../../../../models/ui-models/IReportModel';
+import { IReportModel, IReportRiskModel, ReportModel, ReportRiskModel, ReportAddModel } from '../../../../models/ui-models/IReportModel';
 import REPORT_STATUS, { IStatus } from '../../../../models/ui-models/enums/enumStatus';
 import Textarea from '../../../../components/bootstrap/forms/Textarea';
 import AuthContext from '../../../../contexts/authContext';
@@ -31,7 +31,7 @@ const ReportDetailsPage = () => {
 	const { dataService } = useContext(DataContext);
 	const { userData } = useContext(AuthContext);
 
-	var newReport = { 
+    var newReport = { 
 		plannedTasks: '',
 		completedTasks: '',
 		weeknumber: weekNumber(),
@@ -92,8 +92,14 @@ const ReportDetailsPage = () => {
 	}
 
 	const saveChanges = () => {
-
-		console.log('Not yet saving', data);
+		if (data.id != undefined) {
+            console.log('Updating report:', data);
+            dataService.reportService.updateReport(data);
+        } else {
+            var addModel = new ReportAddModel(data);
+            console.log('Saving new report:', data);
+            dataService.reportService.addNewReport(addModel);
+        }
     };
 
     return (

@@ -96,3 +96,30 @@ export interface IReportAddModel {
     ragStatus: IStatus["key"];
     risks: IReportRiskModel[];
 }
+
+export class ReportAddModel implements IReportAddModel {
+    plannedTasks: string;
+    completedTasks: string;
+    projectId: string;
+    userId: string;
+    clientId: string;
+    description: string;
+    ragStatus: IStatus["key"];
+    risks: IReportRiskModel[];
+
+    constructor(reportModel: IReportModel) {
+
+        var risks: IReportRiskModel[] = [];
+        reportModel.risks.forEach(risk => {
+            risks.push(new ReportRiskModel(risk));
+        });
+        this.plannedTasks = reportModel.plannedTasks;
+        this.completedTasks = reportModel.completedTasks;
+        this.projectId = reportModel.projectId;
+        this.userId = reportModel.userId;
+        this.risks = risks;
+        this.description = reportModel.description;
+        this.ragStatus = reportModel.ragStatus;
+        this.clientId = reportModel.client;
+    }
+}

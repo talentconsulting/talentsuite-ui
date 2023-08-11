@@ -9,8 +9,8 @@ import { useContext } from 'react';
 export interface IReportService {
     getById(id?: string): Promise<IReportDto>;
 	getByProjectId(id?: string): Promise<IReportDto[]>;
-    addNewReport(report?: IReportAddModel): void;
-    updateReport(report?: IReportModel): boolean;
+    addNewReport(report?: IReportDto): void;
+    updateReport(report?: IReportDto): void;
 }
 
 class ReportService implements IReportService {
@@ -56,7 +56,7 @@ class ReportService implements IReportService {
 
     }
 
-    addNewReport(report?: IReportAddModel): void {
+    addNewReport(report?: IReportDto): void {
         // Simple POST request with a JSON body using fetch
         const requestOptions = {
             method: 'POST',
@@ -68,8 +68,15 @@ class ReportService implements IReportService {
         //.then(data => this.setState({ postId: data.id }));
     }
 
-    updateReport(report?: IReportModel): boolean {
-        throw new Error("Not implemented");
+    updateReport(report: IReportDto): void {
+        console.log(JSON.stringify(report));
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(report)
+        };
+        fetch(`${this.apiEndpoint}api/reports/${report.id}`, requestOptions)
+            .then(response => response.json());
     }
 
 

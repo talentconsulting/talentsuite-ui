@@ -5,6 +5,8 @@ import { IReportModel, IReportRiskModel } from '../../models/ui-models/IReportMo
 import { IReportDto} from '../../models/dtos/IReportDto';
 import  { dateParse}  from '../../helpers/dateHelper';
 import  RAG_STATUS, {parseStatus} from '../../models/ui-models/enums/enumStatus';
+import RiskDto = require("../../models/dtos/IRiskDto");
+import { IRiskDto } from '../../models/dtos/IRiskDto';
 
 export interface IReportAggregateService {
     getById(id?: string): Promise<IReportModel>;
@@ -83,6 +85,23 @@ class ReportAggregateService implements IReportAggregateService{
             };
 
         return model;
+    }
+
+    async mapModelToDto(model: IReportModel): Promise<IReportDto> {
+
+        var risks : IRiskDto[] = [];
+
+        var dto : IReportDto = {
+            id: model.id,
+            created: model.created,
+            plannedTasks: model.plannedTasks,
+            completedTasks: model.completedTasks,
+            weeknumber: model.weeknumber,
+            submissionDate: model.submissionDate,
+            projectId: model.projectId,
+            userId: model.userId,
+            risks: 
+        }
     }
 
     getValue(obj:any, key:string):string {
