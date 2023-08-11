@@ -24,13 +24,11 @@ import { APP_PATHS } from '../../../routes/contentRoutes';
 import CommonAvatarTeam from '../../../common/other/CommonAvatarTeam';
 import COLORS from '../../../common/data/enumColors';
 import useDarkMode from '../../../hooks/useDarkMode';
-import useTourStep from '../../../hooks/useTourStep';
 import { useNavigate } from 'react-router-dom';
 import { IProjectModel } from '../../../models/ui-models/IProjectModel';
 import RAG_STATUS, { IStatus } from '../../../models/ui-models/enums/enumStatus';
 
 const ProjectPage = () => {
-	useTourStep(19);
 	const { dataService } = useContext(DataContext);
 	const { darkModeStatus } = useDarkMode();
 

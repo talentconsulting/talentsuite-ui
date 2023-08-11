@@ -6,25 +6,48 @@ import './styles/styles.scss';
 import App from './App/App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeContextProvider } from './contexts/themeContext';
-import { AuthContextProvider } from './contexts/authContext';
+import { Auth0Provider } from "@auth0/auth0-react";
 import { FeatureFlagsContextProvider } from './contexts/featureFlagsContext';
 import { DataContextProvider } from './contexts/dataContext/dataContext';
 import './i18n';
+import { GetAppSettings } from './appsettings';
+import history from "./helpers/history";
+import { AuthContextProvider } from './contexts/authContext';//Should be deleted 
+
+const config = GetAppSettings();
+
+const onRedirectCallback = (appState:any) => {
+	history.push(
+	  appState && appState.returnTo ? appState.returnTo : window.location.pathname
+	);
+  };
+
+const providerConfig = {
+	domain: config.domain,
+	clientId: config.clientId,
+	onRedirectCallback,
+	authorizationParams: {
+	  redirect_uri: window.location.origin,
+	  ...(config.audience ? { audience: config.audience } : null),
+	},
+  };
 
 const children = (
-	<AuthContextProvider>
-		<ThemeContextProvider>
-			<FeatureFlagsContextProvider>
-				<DataContextProvider>				
-					<Router>
-						<React.StrictMode>
-							<App />
-						</React.StrictMode>
-					</Router>
-				</DataContextProvider>
-			</FeatureFlagsContextProvider>
-		</ThemeContextProvider>
-	</AuthContextProvider>
+	<Auth0Provider {...providerConfig}>
+		<AuthContextProvider>
+			<ThemeContextProvider>
+				<FeatureFlagsContextProvider>
+					<DataContextProvider>				
+						<Router>
+							<React.StrictMode>
+								<App />
+							</React.StrictMode>
+						</Router>
+					</DataContextProvider>
+				</FeatureFlagsContextProvider>
+			</ThemeContextProvider>
+		</AuthContextProvider>
+	</Auth0Provider>
 );
 
 const container = document.getElementById('root');

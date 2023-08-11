@@ -24,8 +24,6 @@ export const APP_PATHS = {
 		ITEM: 'wiki/item' ,
 	},
 	AUTH: {
-		LOGIN: 'auth-pages/login' ,
-		SIGN_UP: 'auth-pages/sign-up' ,
 		NOT_FOUND_404: 'auth-pages/404',
 	},
     REPORTS: {
@@ -56,8 +54,6 @@ const APP_ELEMENTS = {
 		ITEM: lazy(() => import('../pages/presentation/wiki/KnowledgeViewPage')), 
 	},
 	AUTH: {
-		LOGIN: lazy(() => import('../pages/presentation/auth/Login')), 
-		SIGN_UP: lazy(() => import('../pages/presentation/auth/Login')),
 		NOT_FOUND_404: lazy(() => import('../pages/presentation/auth/Page404')), 
 	}
 };
@@ -94,14 +90,6 @@ const presentation: RouteProps[] = [
 	{
 		path: APP_PATHS.AUTH.NOT_FOUND_404,
 		element: <APP_ELEMENTS.AUTH.NOT_FOUND_404 />,
-	},
-	{
-		path: APP_PATHS.AUTH.LOGIN,
-		element: <APP_ELEMENTS.AUTH.LOGIN />,
-	},
-	{
-		path: APP_PATHS.AUTH.SIGN_UP,
-		element: <APP_ELEMENTS.AUTH.LOGIN isSignUp />,
 	},
 	{
 		path: APP_PATHS.WIKI.GRID,

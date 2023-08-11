@@ -14,7 +14,6 @@ import data, { CATEGORIES, TTags } from './helper/dummyKnowledgeData';
 import { appPagesMenu } from '../../../menu';
 import { APP_PATHS } from '../../../routes/contentRoutes';
 import useDarkMode from '../../../hooks/useDarkMode';
-import useTourStep from '../../../hooks/useTourStep';
 import { TColor } from '../../../type/color-type';
 
 interface IItemProps {
@@ -26,7 +25,6 @@ interface IItemProps {
 	color: TColor;
 }
 const Item: FC<IItemProps> = ({ id, image, title, description, tags, color }) => {
-	useTourStep(15);
 	const { darkModeStatus } = useDarkMode();
 
 	const navigate = useNavigate();

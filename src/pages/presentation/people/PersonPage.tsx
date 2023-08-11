@@ -35,14 +35,22 @@ import Alert from '../../../components/bootstrap/Alert';
 import CommonAvatarTeam from '../../../common/other/CommonAvatarTeam';
 import COLORS from '../../../common/data/enumColors';
 import useDarkMode from '../../../hooks/useDarkMode';
-import useTourStep from '../../../hooks/useTourStep';
+import { UserModel, IUserModel } from '../../../models/ui-models/IUserModel';
 
 const PersonPage = () => {
-	useTourStep(19);
 	const { darkModeStatus } = useDarkMode();
 
 	const { id } = useParams();
-	const data = getUserDataWithId(id);
+
+	var data = new UserModel();
+	var heading = "Add User";
+	var cardDisabled = "card-disabled";
+
+	if(id!= 'AddNew'){
+		data = getUserDataWithId(id);
+		heading = `${data.name} ${data.surname}`;
+		cardDisabled = '';
+	}
 
 	const [dayHours] = useState<IChartOptions>({
 		series: [
@@ -108,7 +116,7 @@ const PersonPage = () => {
 	const userTasks = dummyEventsData.filter((f) => f.assigned.username === data.username);
 
 	return (
-		<PageWrapper title={`${data.name} ${data.surname}`}>
+		<PageWrapper title={heading}>
 			<SubHeader>
 				<SubHeaderLeft>
 					<Button
@@ -131,7 +139,7 @@ const PersonPage = () => {
 			</SubHeader>
 			<Page>
 				<div className='pt-3 pb-5 d-flex align-items-center'>
-					<span className='display-4 fw-bold me-3'>{`${data.name} ${data.surname}`}</span>
+					<span className='display-4 fw-bold me-3'>{heading}</span>
 					<span className='border border-success border-2 text-success fw-bold px-3 py-2 rounded'>
 						{data.position}
 					</span>
@@ -226,7 +234,7 @@ const PersonPage = () => {
 								)}
 							</CardBody>
 						</Card>
-						<Card>
+						<Card className={cardDisabled}>
 							<CardHeader>
 								<CardLabel icon='ShowChart' iconColor='secondary'>
 									<CardTitle>Statics</CardTitle>
@@ -324,7 +332,7 @@ const PersonPage = () => {
 						</Card>
 					</div>
 					<div className='col-lg-8'>
-						<Card className='shadow-3d-primary'>
+						<Card className={`shadow-3d-primary ${cardDisabled}`}>
 							<CardHeader>
 								<CardLabel icon='Summarize' iconColor='success'>
 									<CardTitle tag='h4' className='h5'>
@@ -485,7 +493,7 @@ const PersonPage = () => {
 								</div>
 							</CardBody>
 						</Card>
-						<Card>
+						<Card className={cardDisabled}>
 							<CardHeader>
 								<CardLabel icon='Task' iconColor='danger'>
 									<CardTitle>
