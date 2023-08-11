@@ -17,10 +17,11 @@ import Textarea from '../../../../components/bootstrap/forms/Textarea';
 import AuthContext from '../../../../contexts/authContext';
 import Input from '../../../../components/bootstrap/forms/Input';
 import Select, { ISelectItem } from '../../../../components/bootstrap/forms/Select';
-import { dateNow, weekNumber } from '../../../../helpers/dateHelper';
+import { dateNow, formatDateForDisplay, weekNumber } from '../../../../helpers/dateHelper';
 import Button from '../../../../components/bootstrap/Button';
 import RAG_STATUS from '../../../../models/ui-models/enums/enumStatus';
 import Dropdown, { DropdownItem, DropdownMenu, DropdownToggle } from '../../../../components/bootstrap/Dropdown';
+import moment from 'moment';
 
 const ReportDetailsPage = () => {
 
@@ -124,7 +125,7 @@ const ReportDetailsPage = () => {
 									</ReportInfoItem>
 
 									<ReportInfoItem icon='Person' label='Reported By'>{data.userName}</ReportInfoItem>
-									<ReportInfoItem icon='DateRange' label='Submitted'>Submitted: {data.submissionDate}</ReportInfoItem>
+									<ReportInfoItem icon='DateRange' label='Submitted'>Submitted: {moment(data.submissionDate).format('DD-MM-YYYY')}</ReportInfoItem>
 									<ReportInfoItem icon='Traffic' label='Rag Status'>Rag Status - <Icon icon='Circle' color={data.ragStatus.color} /></ReportInfoItem>
 
 								</ReportInfoBody>
