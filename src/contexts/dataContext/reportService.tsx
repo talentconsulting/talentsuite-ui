@@ -44,7 +44,7 @@ class ReportService implements IReportService {
         if(this.useDummyData){
             return Promise.resolve( getDummyReportDataByProjectId(id));
         }
-        var path = `${this.apiEndpoint}api/reports`;
+        var path = `${this.apiEndpoint}api/reports?pageSize=100`;
 
         return fetch(path)
             // the JSON body is taken from the response
