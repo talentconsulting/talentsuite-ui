@@ -8,4 +8,4 @@ npm start
 # To Build and run docker image
 
 docker build -t talentdemo:dev .
-docker run --publish 3001:3000 talentdemo:dev
+docker run --publish 3000:80 talentdemo:dev

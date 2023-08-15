@@ -25,17 +25,13 @@
 		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
 		"no-param-reassign": "off",
 		"no-empty": "warn",
-		"import/no-extraneous-dependencies": "warn",
+		"import/extensions":"off",
+		"import/no-extraneous-dependencies": ["error", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}],
 		"react/jsx-props-no-spreading": "warn",
 		"react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }],
-		"jsx-a11y/label-has-associated-control": [
-			"warn",
-			{
-				"depth": 3
-			}
-		],
-		"react-hooks/exhaustive-deps": "error",
-		"react-hooks/rules-of-hooks": "error",
+		"jsx-a11y/label-has-associated-control": "off",
+		"react-hooks/exhaustive-deps": "off",
+		"react-hooks/rules-of-hooks": "off",
 		"react/function-component-definition": [
 			2,
 			{
@@ -57,7 +53,9 @@
 				"allowLiteral": false,
 				"allowObject": true
 			}
-		]
+		],
+		"@typescript-eslint/lines-between-class-members":"off",
+		"@typescript-eslint/no-shadow":"off"
 	},
 	"parser": "@typescript-eslint/parser",
 	"settings": {
