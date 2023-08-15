@@ -1,10 +1,9 @@
 # pull official base image
-FROM node:16.13.1-alpine as build
+FROM node:alpine as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm ci --silent
 RUN npm install --legacy-peer-deps
 COPY . ./
 RUN npm run build
