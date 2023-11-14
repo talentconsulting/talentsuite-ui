@@ -99,6 +99,7 @@
 		"web-vitals": "3.1.0"
 	},
 	"devDependencies": {
+		"@babel/plugin-proposal-private-property-in-object": "7.16.7",
 		"@svgr/cli": "6.5.1",
 		"@types/pascalcase": "1.0.1",
 		"@types/payment": "2.1.4",
@@ -132,8 +133,8 @@
 		"run":"1.4.0",
 		"sass": "1.57.1",
 		"sass-loader": "13.2.0",
-		"stylelint": "14.16.1",
-		"stylelint-config-prettier-scss": "0.0.1",
+		"stylelint": "15.11.0",
+		"stylelint-config-prettier-scss": "1.0.0",
 		"stylelint-config-standard": "29.0.0",
 		"stylelint-config-standard-scss": "6.1.0",
 		"stylelint-config-twbs-bootstrap": "7.0.0",
@@ -158,6 +159,7 @@
 		"json5": ">=2.2.2",
 		"minimatch": "9.0.0",
 		"nth-check": ">=2.1.1",
-		"trim": "1.0.1"
+		"trim": "1.0.1",
+		"postcss": ">=8.3.6"
 	}
 }
