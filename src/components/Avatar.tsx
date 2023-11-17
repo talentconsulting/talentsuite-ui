@@ -165,6 +165,7 @@ Avatar.propTypes = {
 		'brand',
 		'brand-two',
 		'storybook',
+		'grey'
 	]),
 	shadow: PropTypes.oneOf([null, 'none', 'sm', 'default', 'lg']),
 	border: PropTypes.oneOf([null, 0, 1, 2, 3, 4, 5]),

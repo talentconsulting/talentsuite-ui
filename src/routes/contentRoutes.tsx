@@ -43,7 +43,7 @@ const APP_ELEMENTS = {
 	},	
 	PEOPLE: {
 		LIST: lazy(() => import('../pages/presentation/people/PeopleList')),
-		PERSON: lazy(() => import('../pages/presentation/people/PersonPage')), 
+		PERSON: lazy(() => import('../pages/presentation/people/personPage/PersonPage')), 
 	},
 	SCHEDULE: {
 		CALENDAR: lazy(() => import('../pages/presentation/appointment/CalendarPage')), 

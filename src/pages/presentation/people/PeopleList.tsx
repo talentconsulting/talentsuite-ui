@@ -51,7 +51,7 @@ const PeopleList = () => {
 				USERS[key].surname
 					.toLowerCase()
 					.includes(formik.values.searchInput.toLowerCase()) ||
-				USERS[key].position.toLowerCase().includes(formik.values.searchInput.toLowerCase()),
+				USERS[key].jobRole.toLowerCase().includes(formik.values.searchInput.toLowerCase()),
 		)
 		.filter((key2) => (formik.values.available ? USERS[key2].isOnline : key2))
 		.map((i) => USERS[i]);
@@ -208,7 +208,7 @@ const PeopleList = () => {
 																	{`${user.name} ${user.surname}`}
 																</div>
 																<small className='border border-success border-2 text-success fw-bold px-2 py-1 rounded-1'>
-																	{user.position}
+																	{user.jobRole}
 																</small>
 															</div>
 
@@ -228,22 +228,22 @@ const PeopleList = () => {
 															/>
 														</div>
 													</div>
-													{!!user?.services && (
+													{!!user?.skills && (
 														<div className='row g-2 mt-3'>
-															{user?.services.map((service) => (
+															{user?.skills.map((skill) => (
 																<div
-																	key={service.name}
+																	key={skill.name}
 																	className='col-auto'>
 																	<Badge
 																		isLight
-																		color={service.color}
+																		color={skill.color}
 																		className='px-3 py-2'>
 																		<Icon
-																			icon={service.icon}
+																			icon={skill.icon}
 																			size='lg'
 																			className='me-1'
 																		/>
-																		{service.name}
+																		{skill.name}
 																	</Badge>
 																</div>
 															))}

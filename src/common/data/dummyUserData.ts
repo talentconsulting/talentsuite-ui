@@ -12,7 +12,7 @@ import UserImage6 from '../../assets/img/wanna/wanna6.png';
 import UserImage6Webp from '../../assets/img/wanna/wanna6.webp';
 import UserImage7 from '../../assets/img/wanna/wanna7.png';
 import UserImage7Webp from '../../assets/img/wanna/wanna7.webp';
-import SERVICES from './dummySkillsData';
+import SKILLS from './dummySkillsData';
 
 import User7Landing from '../../assets/img/wanna/landing1.png';
 import { TColor } from '../../type/color-type';
@@ -23,14 +23,14 @@ const john: IUserModel = {
 	username: 'john',
 	name: 'John',
 	surname: 'Doe',
-	position: 'CEO, Founder',
+	jobRole: 'Architect',
 	email: 'john@omtanke.studio',
 	src: UserImage,
 	srcSet: UserImageWebp,
 	isOnline: true,
 	isReply: true,
 	color: 'primary',
-	services: [SERVICES.HTML_SKILL, SERVICES.JAVA_SKILL, SERVICES.ANDROID_SKILL],
+	skills: [SKILLS.HTML_SKILL, SKILLS.JAVA_SKILL, SKILLS.ANDROID_SKILL],
 	password: '@ABC123',
 };
 
@@ -39,13 +39,13 @@ const grace: IUserModel = {
 	username: 'grace',
 	name: 'Grace',
 	surname: 'Buckland',
-	position: 'Staff',
+	jobRole: 'Developer',
 	email: 'grace@omtanke.studio',
 	src: UserImage2,
 	srcSet: UserImage2Webp,
 	isOnline: true,
 	color: 'warning',
-	services: [SERVICES.CSS_SKILL, SERVICES.KUBERNETES_SKILL, SERVICES.JAVA_SKILL],
+	skills: [SKILLS.CSS_SKILL, SKILLS.KUBERNETES_SKILL, SKILLS.JAVA_SKILL],
 	password: '@ABC123',
 };
 
@@ -54,13 +54,13 @@ const jane: IUserModel = {
 	username: 'jane',
 	name: 'Jane',
 	surname: 'Lee',
-	position: 'Staff',
+	jobRole: 'Developer',
 	email: 'jane@omtanke.studio',
 	src: UserImage3,
 	srcSet: UserImage3Webp,
 	isOnline: true,
 	color: 'secondary',
-	services: [SERVICES.SQL_SERVER_SKILL, SERVICES.ARCHITECTURE_SKILL, SERVICES.C_SHARP_SKILL],
+	skills: [SKILLS.SQL_SERVER_SKILL, SKILLS.ARCHITECTURE_SKILL, SKILLS.C_SHARP_SKILL],
 	password: '@ABC123',
 };
 
@@ -69,13 +69,13 @@ const ryan: IUserModel = {
 	username: 'ryan',
 	name: 'Ryan',
 	surname: 'McGrath',
-	position: 'Worker',
+	jobRole: 'BusinessAnalyst',
 	email: 'ryan@omtanke.studio',
 	src: UserImage4,
 	srcSet: UserImage4Webp,
 	isOnline: false,
 	color: 'info',
-	services: [SERVICES.POSTGRES_SKILL, SERVICES.COSMOS_SKILL, SERVICES.ARCHITECTURE_SKILL],
+	skills: [SKILLS.POSTGRES_SKILL, SKILLS.COSMOS_SKILL, SKILLS.ARCHITECTURE_SKILL],
 	password: '@ABC123',
 };
 
@@ -84,13 +84,13 @@ const ella: IUserModel = {
 	username: 'ella',
 	name: 'Ella',
 	surname: 'Oliver',
-	position: 'Worker',
+	jobRole: 'DeliveryManager',
 	email: 'ella@omtanke.studio',
 	src: UserImage5,
 	srcSet: UserImage5Webp,
 	isOnline: false,
 	color: 'success',
-	services: [SERVICES.KUBERNETES_SKILL, SERVICES.ANDROID_SKILL, SERVICES.CSS_SKILL, SERVICES.SQL_SERVER_SKILL],
+	skills: [SKILLS.KUBERNETES_SKILL, SKILLS.ANDROID_SKILL, SKILLS.CSS_SKILL, SKILLS.SQL_SERVER_SKILL],
 	password: '@ABC123',
 };
 
@@ -99,13 +99,13 @@ const chloe: IUserModel = {
 	username: 'chloe',
 	name: 'Chloe',
 	surname: 'Walker',
-	position: 'Staff',
+	jobRole: 'Tester',
 	email: 'chloe@omtanke.studio',
 	src: UserImage6,
 	srcSet: UserImage6Webp,
 	isOnline: true,
 	color: 'warning',
-	services: [SERVICES.REACT_SKILL, SERVICES.C_SHARP_SKILL],
+	skills: [SKILLS.REACT_SKILL, SKILLS.C_SHARP_SKILL],
 	password: '@ABC123',
 };
 
@@ -114,7 +114,7 @@ const sam: IUserModel = {
 	username: 'sam',
 	name: 'Sam',
 	surname: 'Roberts',
-	position: 'Worker',
+	jobRole: 'DevOps',
 	email: 'sam@omtanke.studio',
 	src: UserImage7,
 	srcSet: UserImage7Webp,
