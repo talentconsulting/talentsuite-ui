@@ -1,47 +1,81 @@
 import moment from 'moment';
-import RAG_STATUS, { IStatus } from '../../models/ui-models/enums/enumStatus';
-import Company1 from '../../assets/logos/company1.png';
-import Company2 from '../../assets/logos/company2.png';
-import Company3 from '../../assets/logos/company3.png';
-import { IProjectModel } from '../../models/ui-models/IProjectModel';
+import { IProjectDto } from '../../models/dtos/IProjectDto';
 
-const data: IProjectModel[] = [
+const dateFormat = "YYYY-MM-DDTHH:mm:ss";
+
+const data: IProjectDto[] = [
 	{
-		id: "f4abb297-f5bb-4495-8ecf-f3732e4a4026",
-		name: 'Project A',
-		startedDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(-100, 'days').format('DD'),
-		endDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(100, 'days').format('DD'),
-		teamMembers: [],
-		status: RAG_STATUS.APPROVED,
-		description: 'Build a data store',
-		image: Company1
-	},
-	{
-		id: "dd9712fd-d4d0-4a56-9a83-4807139995c0",
-		name: 'Project B',
-		startedDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(-80, 'days').format('DD'),
-		endDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(200, 'days').format('DD'),
-		teamMembers: [],
-		status: RAG_STATUS.AT_RISK,
-		description: 'Develope mobile app',
-		image: Company2
-	},
-	{
-		id: "86b610ee-e866-4749-9f10-4a5c59e96f2f",
-		name: 'Project C',
-		startedDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(-150, 'days').format('DD'),
-		endDate:
-			moment().format('YYYY') + moment().format('MM') + moment().add(30, 'days').format('DD'),
-		teamMembers: [],
-		status: RAG_STATUS.BEHIND,
-		description: 'Develope Web app',
-		image: Company3
-	}
+		id: "e1a05e24-562c-4ed5-99e2-54a5db138e5a",
+		contactNumber: "0555 777 8888",
+		name: "Sales Training Program",
+		reference: "con_99xyz",
+		startDate: moment("2023-11-20T00:00:00", dateFormat).toDate(),
+		endDate: moment("2024-01-31T00:00:00", dateFormat).toDate(),
+		clientProjects: [
+		  {
+			id: "d6b6a1c7-cc34-4eb1-8765-3e11bc0c5a76",
+			clientId: "e1a05e24-562c-4ed5-99e2-54a5db138e5a",
+			projectId: "e1a05e24-562c-4ed5-99e2-54a5db138e5a",
+		  },
+		],
+		contacts: [
+		  {
+			id: "1e205663-9033-4c8b-8f24-cb1c02a03e31",
+			firstname: "Harry Potter",
+			email: "harry@potter.com",
+			receivesReport: true,
+			projectId: "e1a05e24-562c-4ed5-99e2-54a5db138e5a",
+		  },
+		],
+		reports: [],
+		sows: [],
+	  },
+	  {
+		id: "2f46f497-d580-4fd7-a95a-9971d8c33e6d",
+		contactNumber: "0345 222 3333",
+		name: "Software Development Training",
+		reference: "con_45abc",
+		startDate: moment("2023-11-15T00:00:00", dateFormat).toDate(),
+		endDate: moment("2024-05-31T00:00:00", dateFormat).toDate(),
+		clientProjects: [],
+		contacts: [
+		  {
+			id: "e9ef6f89-7c71-4f9d-b361-7a50e4b1db1b",
+			firstname: "Hermione Granger",
+			email: "hermione@granger.com",
+			receivesReport: false,
+			projectId: "2f46f497-d580-4fd7-a95a-9971d8c33e6d",
+		  },
+		],
+		reports: [],
+		sows: [],
+	  },
+	  {
+		id: "c9075868-2a3f-48df-9b1d-fab3b0a8d3b3",
+		contactNumber: "0789 999 8888",
+		name: "Marketing Workshop",
+		reference: "con_78xyz",
+		startDate: moment("2023-12-01T00:00:00", dateFormat).toDate(),
+		endDate: moment("2024-02-28T00:00:00", dateFormat).toDate(),
+		clientProjects: [
+		  {
+			id: "a0b80c9d-b925-4c4a-97b7-7950a2f1d0d2",
+			clientId: "c9075868-2a3f-48df-9b1d-fab3b0a8d3b3",
+			projectId: "c9075868-2a3f-48df-9b1d-fab3b0a8d3b3",
+		  },
+		],
+		contacts: [
+		  {
+			id: "d52c9c1b-d84a-45df-9d88-87c047d5e8f4",
+			firstname: "Ginny Weasley",
+			email: "ginny@weasley.com",
+			receivesReport: true,
+			projectId: "c9075868-2a3f-48df-9b1d-fab3b0a8d3b3",
+		  },
+		],
+		reports: [],
+		sows: [],
+	  }
 ];
 
 export default data;

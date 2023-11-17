@@ -1,4 +1,7 @@
+import moment from 'moment';
+import { dateNow } from '../../helpers/dateHelper';
 import RAG_STATUS, { IStatus } from './enums/enumStatus';
+import { v4 as uuidv4 } from 'uuid';
 
 export interface IReportRiskModel {
     key: string;
@@ -29,11 +32,11 @@ export class ReportRiskModel implements IReportRiskModel {
 
 export interface IReportModel {
     id: string;
-    created: string;
+    created: Date;
     plannedTasks: string;
     completedTasks: string;
     weeknumber: number;
-    submissionDate: string;
+    submissionDate: Date;
     projectId: string;
     userId: string;
     risks: IReportRiskModel[];
@@ -46,11 +49,11 @@ export interface IReportModel {
 
 export class ReportModel implements IReportModel {
     id: string;
-    created: string;
+    created: Date;
     plannedTasks: string;
     completedTasks: string;
     weeknumber: number;
-    submissionDate: string;
+    submissionDate: Date;
     projectId: string;
     userId: string;
     risks: IReportRiskModel[];
@@ -70,11 +73,11 @@ export class ReportModel implements IReportModel {
         }
 
         this.id = (cloneModel == undefined) ? '' : cloneModel.id;
-        this.created = (cloneModel == undefined) ? '' : cloneModel.created;
+        this.created = (cloneModel == undefined) ? moment().toDate() : cloneModel.created;
         this.plannedTasks = (cloneModel == undefined) ? '' : cloneModel.plannedTasks;
         this.completedTasks = (cloneModel == undefined) ? '' : cloneModel.completedTasks;
         this.weeknumber = (cloneModel == undefined) ? 0 : cloneModel.weeknumber;
-        this.submissionDate = (cloneModel == undefined) ? '' : cloneModel.submissionDate;
+        this.submissionDate = (cloneModel == undefined) ? moment().toDate() : cloneModel.submissionDate;
         this.projectId = (cloneModel == undefined) ? '' : cloneModel.projectId;
         this.userId = (cloneModel == undefined) ? '' : cloneModel.userId;
         this.risks = risks;

@@ -3,8 +3,10 @@ import IReportService from './reportService';
 import IUserService from './userService';
 import { IReportModel, IReportRiskModel } from '../../models/ui-models/IReportModel';
 import { IReportDto} from '../../models/dtos/IReportDto';
-import  { dateParse}  from '../../helpers/dateHelper';
-import  RAG_STATUS, {parseStatus} from '../../models/ui-models/enums/enumStatus';
+import  RAG_STATUS, {getStatusByValue} from '../../models/ui-models/enums/enumStatus';
+import { IRiskDto } from '../../models/dtos/IRiskDto';
+import { v4 as uuidv4 } from 'uuid';
+import moment from 'moment';
 
 export interface IReportAggregateService {
     getById(id?: string): Promise<IReportModel>;
@@ -61,28 +63,104 @@ class ReportAggregateService implements IReportAggregateService{
                 reportId: dto.id,
                 riskDetails: risk.riskDetails,
                 riskMitigation: risk.riskMitigation,
-                ragStatus: parseStatus(risk.ragStatus)
+                ragStatus: getStatusByValue(risk.ragStatus)
             });
         });
 
+        var reportStatus = risks.sort((a, b) => a.ragStatus.severity > b.ragStatus.severity ? -1 : 1 )[0].ragStatus;
+        if(reportStatus == undefined)
+        {
+            reportStatus = RAG_STATUS.UNKNOWN;
+        }
+
         var model: IReportModel = {
                 id: dto.id,
-                created: dateParse(dto.created),
+                created: dto.created,
                 plannedTasks: dto.plannedTasks,
                 completedTasks: dto.completedTasks,
                 weeknumber: dto.weeknumber,
-                submissionDate: dateParse(dto.submissionDate),
+                submissionDate: dto.submissionDate,
                 projectId: dto.projectId,
                 userId: dto.userId,
                 risks: risks,
+                //todo do we need to do this or will it be included on the api return?
                 projectName: this.getValue(project, 'name'),
                 client: '',
                 userName: `${this.getValue(user, 'name')} ${this.getValue(user, 'surname')}`,
                 description: 'no description',
-                ragStatus: RAG_STATUS.UNKNOWN
+                ragStatus: reportStatus
             };
 
         return model;
+    }
+
+    async mapNewModelToDto(model: IReportModel): Promise<IReportDto> {
+        var newReportId = uuidv4();
+
+        var risks : IRiskDto[] = [];
+
+        model.risks.forEach(risk=>{
+            risks.push({
+                id : uuidv4(),
+                ragStatus : risk.ragStatus.value,
+                reportId : newReportId,
+                riskDetails : risk.riskDetails,
+                riskMitigation : risk.riskMitigation
+            });
+        });
+
+        var dto : IReportDto = {
+            id: newReportId,
+            created: moment().toDate(),
+            plannedTasks: model.plannedTasks,
+            completedTasks: model.completedTasks,
+            weeknumber: model.weeknumber,
+            submissionDate: new Date(model.submissionDate),
+            projectId: "86b610ee-e866-4749-9f10-4a5c59e96f2f", //todo remove hardcoded project id when projects service is wired up
+            userId: model.userId,
+            risks: risks
+        }
+        return dto;
+
+    }
+
+    async mapModelToDto(model: IReportModel): Promise<IReportDto> {
+
+        var risks : IRiskDto[] = [];
+
+        model.risks.forEach(risk=>{
+            risks.push({
+                id : risk.id,
+                ragStatus : risk.ragStatus.value,
+                reportId : risk.reportId,
+                riskDetails : risk.riskDetails,
+                riskMitigation : risk.riskMitigation
+            });
+        });
+
+        var dto : IReportDto = {
+            id: model.id,
+            created: new Date(model.created),
+            plannedTasks: model.plannedTasks,
+            completedTasks: model.completedTasks,
+            weeknumber: model.weeknumber,
+            submissionDate: new Date(model.submissionDate),
+            projectId: model.projectId,
+            userId: model.userId,
+            risks: risks
+        }
+        return dto;
+    }
+
+    async mapRiskModelToDto(riskModel : IReportRiskModel) : Promise<IRiskDto> {
+        var dto : IRiskDto = {
+            id : riskModel.id,
+            ragStatus : riskModel.ragStatus.value,
+            reportId : riskModel.reportId,
+            riskDetails : riskModel.riskDetails,
+            riskMitigation : riskModel.riskMitigation
+        }
+        return dto;
     }
 
     getValue(obj:any, key:string):string {

@@ -9,7 +9,7 @@ import Card, {
     CardTitle,
 } from '../../../../components/bootstrap/Card';
 import DataContext from './../../../../contexts/dataContext/dataContext';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Icon from '../../../../components/icon/Icon';
 import { IReportModel, IReportRiskModel, ReportModel, ReportRiskModel } from '../../../../models/ui-models/IReportModel';
 import REPORT_STATUS, { IStatus } from '../../../../models/ui-models/enums/enumStatus';
@@ -21,6 +21,8 @@ import { dateNow, weekNumber } from '../../../../helpers/dateHelper';
 import Button from '../../../../components/bootstrap/Button';
 import RAG_STATUS from '../../../../models/ui-models/enums/enumStatus';
 import Dropdown, { DropdownItem, DropdownMenu, DropdownToggle } from '../../../../components/bootstrap/Dropdown';
+import moment from 'moment';
+import { APP_PATHS } from '../../../../routes/contentRoutes';
 
 const ReportDetailsPage = () => {
 
@@ -30,8 +32,9 @@ const ReportDetailsPage = () => {
 	const pageTitle = ((id == 'new') ? 'New Report' : 'Edit Report');
 	const { dataService } = useContext(DataContext);
 	const { userData } = useContext(AuthContext);
+	const navigate = useNavigate();
 
-	var newReport = { 
+    var newReport = { 
 		plannedTasks: '',
 		completedTasks: '',
 		weeknumber: weekNumber(),
@@ -39,7 +42,7 @@ const ReportDetailsPage = () => {
 		userId: userData.id,
 		risks:[] as IReportRiskModel[],
 		userName: userData.name + ' ' + userData.surname,
-		submissionDate: dateNow(),
+		submissionDate: new Date(),
 		description: '',
 		ragStatus:REPORT_STATUS.APPROVED, 
 		projectName: ''
@@ -90,9 +93,19 @@ const ReportDetailsPage = () => {
 		shouldUpdate = !shouldUpdate;
 	}
 
-	const saveChanges = () => {
+	const handleSave = () => {
+		saveChanges();
+		navigate(`../${APP_PATHS.PROJECTS.REPORTS.LIST.replace(':id', "All")}`);
+    };
 
-		console.log('Not yet saving', data);
+	const saveChanges = () => {
+		if (data.id != undefined) {
+            console.log('Updating report:', data);
+			dataService.reportAggregateService.mapModelToDto(data).then(dto => dataService.reportService.updateReport(dto));
+        } else {
+            console.log('Saving new report:', data);
+			dataService.reportAggregateService.mapNewModelToDto(data).then(dto => dataService.reportService.addNewReport(dto));
+        }
     };
 
     return (
@@ -118,7 +131,7 @@ const ReportDetailsPage = () => {
 									</ReportInfoItem>
 
 									<ReportInfoItem icon='Person' label='Reported By'>{data.userName}</ReportInfoItem>
-									<ReportInfoItem icon='DateRange' label='Submitted'>Submitted: {data.submissionDate}</ReportInfoItem>
+									<ReportInfoItem icon='DateRange' label='Submitted'>Submitted: {moment(data.submissionDate).format('DD-MM-YYYY')}</ReportInfoItem>
 									<ReportInfoItem icon='Traffic' label='Rag Status'>Rag Status - <Icon icon='Circle' color={data.ragStatus.color} /></ReportInfoItem>
 
 								</ReportInfoBody>
@@ -206,7 +219,7 @@ const ReportDetailsPage = () => {
 					<Card stretch>
 							<CardBody>
 								<Button
-									onClick={saveChanges}
+									onClick={handleSave}
 									className='float-end'
 									color='info'
 									icon='Add'
