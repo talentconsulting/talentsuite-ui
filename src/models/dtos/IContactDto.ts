@@ -1,8 +1,8 @@
 export interface IContactDto
 {
     id: string;
-    firstName: string;
+    firstname: string;
     email: string;
-    receivesReports: boolean;
+    receivesReport: boolean;
     projectId: string;
 }
