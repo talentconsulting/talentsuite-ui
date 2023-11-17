@@ -14,9 +14,9 @@ import dummyEventsData from '../../../../common/data/dummyEventsData';
 import CommonAvatarTeam from '../../../../common/other/CommonAvatarTeam';
 import useDarkMode from '../../../../hooks/useDarkMode';
 import { UserModel, IUserModel } from '../../../../models/ui-models/IUserModel';
-import BasicInformationCard from './BasicInformationCard';
-import SkillCard from './SkillCard';
-import AssignmentCard from './AssignmentCard';
+import BasicInformationCard from './_BasicInformationCard';
+import SkillCard from './_SkillCard';
+import AssignmentCard from './_AssignmentCard';
 
 const PersonPage = () => {
 	const { darkModeStatus } = useDarkMode();
@@ -27,10 +27,12 @@ const PersonPage = () => {
 	const [data, updateUserDetails] = useState(new UserModel());
 	const [heading, updateHeading] = useState("Add User");
 	const [isInEditMode, updateEditMode] = useState(true);
+	const [isAddUser, updateIsAddUser] = useState(true);
 	const [cardDisabled, updateCardDisabled] = useState("card-disabled");
 
 	const getUserDetails = ()=>{
 		if(id!= 'AddNew'){
+			updateIsAddUser(false);
 			updateEditMode(false);
 			var user = getUserDataWithId(id);
 			updateUserDetails(user);
@@ -95,7 +97,7 @@ const PersonPage = () => {
 				</div>
 				<div className='row'>
 					<div className='col-lg-4'>
-						<BasicInformationCard userModel={data} updateFields={updateFields} isInEditMode={isInEditMode}/>
+						<BasicInformationCard userModel={data} updateFields={updateFields} isInEditMode={isInEditMode} isAddUser={isAddUser}/>
 					</div>
 					<div className='col-lg-8'>
 						<SkillCard userModel={data}/>

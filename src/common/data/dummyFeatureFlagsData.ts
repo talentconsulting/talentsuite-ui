@@ -36,7 +36,8 @@ const data: IFeatureFlagGroup[] = [
 		groupName :"Users",
 		description : "FeatureFlags related to Users",
 		flags : [
-            {flagName:"UseDummyData", isActive: true}
+            {flagName:"UseDummyData", isActive: true},
+            {flagName:"ExchangeToken", isActive: false}
         ]
 	}
 ];

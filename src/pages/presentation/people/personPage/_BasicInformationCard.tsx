@@ -10,10 +10,12 @@ import { UserModel, IUserModel } from '../../../../models/ui-models/IUserModel';
 import JobRoleTypes from '../../../../type/jobrole-type';
 import Select from '../../../../components/bootstrap/forms/Select';
 import { da } from 'date-fns/locale';
+import InputGroup, { InputGroupText } from '../../../../components/bootstrap/forms/InputGroup';
 
 interface IBasicInformationCardProps {
 	userModel: IUserModel;
 	isInEditMode: boolean;
+	isAddUser: boolean;
 	updateFields: (params: any) => any;
   }
 
@@ -78,6 +80,17 @@ const BasicInformationCard = (props: IBasicInformationCardProps) =>{
 										onChange={(e:any)=> updateField((data:IUserModel)=>{data.jobRole = e.target.value})}/>
 								</DataField>
 							}
+							{ props.isAddUser &&
+								<DataField label='Password' isInEditMode={props.isInEditMode}>
+									<Input 
+										id='password'
+										value={data.password}
+										type = 'password'
+										onChange={(e:any)=> updateField((data:IUserModel)=>{data.password = e.target.value})}
+										/>
+								</DataField>
+							}
+
 						</div>
 					</div>
 				</div>

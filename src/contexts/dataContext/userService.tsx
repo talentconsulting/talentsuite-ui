@@ -3,6 +3,7 @@ import { data } from '../../common/data/dummyUserData';
 import FeatureFlagsContext from './../../contexts/featureFlagsContext';
 import { useContext } from 'react';
 
+
 export interface IUserService {
 	getUsers(id?: string): Promise<IUserModel[]>;
 	getUserById(id?: string): Promise<IUserModel | undefined>;
