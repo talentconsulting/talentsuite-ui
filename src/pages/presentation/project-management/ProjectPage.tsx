@@ -44,16 +44,13 @@ const ProjectPage = () => {
 		description: '',
 		image: ''};
 	const [data, updateItems] = useState(emptyProject);
-	//var data = projectService.getProjectById(id);
 
 
 
 	const getProjectData = ()=>{
 
-		dataService.projectService.getProjectById(id).then(data => {
-			if(data != undefined){
-				updateItems(data)
-			}
+		dataService.projectAggregateService.getProjectById(id).then(data => {
+			updateItems(data);
 		});
 	}
 

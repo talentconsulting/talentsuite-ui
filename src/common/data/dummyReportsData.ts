@@ -6,11 +6,11 @@ import { IReportDto } from '../../models/dtos/IReportDto';
 const data: IReportDto[] = [
     {
         id: "1300db01-ac4e-4b0b-a3f1-c5b926adf12d",
-        created: formatDate(moment().add(-50, 'days')),
+        created: moment().add(-50, 'days').toDate(),
         plannedTasks: "User Research, UI Refresh Design",
         completedTasks: "Design DB Changes",
         weeknumber: 6,
-        submissionDate: formatDate(moment().add(-15, 'days')),
+        submissionDate: moment().add(-15, 'days').toDate(),
         projectId: "f4abb297-f5bb-4495-8ecf-f3732e4a4026",
         userId: "b8b675f9-f10b-4112-9027-84af190dbea4",
         risks: [
@@ -25,11 +25,11 @@ const data: IReportDto[] = [
     },
     {
         id: "5b01ab64-5de5-4b3c-8e5a-413ce7661a94",
-        created: formatDate(moment().add(-20, 'days')),
+        created: moment().add(-20, 'days').toDate(),
         plannedTasks: "Build Api, Update UI",
         completedTasks: "Design DB",
         weeknumber: 3,
-        submissionDate: formatDate(moment().add(-10, 'days')),
+        submissionDate: moment().add(-10, 'days').toDate(),
         projectId: "dd9712fd-d4d0-4a56-9a83-4807139995c0",
         userId: "161ff923-0a91-450e-8051-dbf67302e456",
         risks: [
