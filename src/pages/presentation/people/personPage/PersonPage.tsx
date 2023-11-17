@@ -14,9 +14,9 @@ import dummyEventsData from '../../../../common/data/dummyEventsData';
 import CommonAvatarTeam from '../../../../common/other/CommonAvatarTeam';
 import useDarkMode from '../../../../hooks/useDarkMode';
 import { UserModel, IUserModel } from '../../../../models/ui-models/IUserModel';
-import BasicInformationCard from './_BasicInformationCard';
-import SkillCard from './_SkillCard';
-import AssignmentCard from './_AssignmentCard';
+import BasicInformationCard from './BasicInformationCard';
+import SkillCard from './SkillCard';
+import AssignmentCard from './AssignmentCard';
 
 const PersonPage = () => {
 	const { darkModeStatus } = useDarkMode();
