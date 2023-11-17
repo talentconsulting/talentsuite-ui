@@ -29,7 +29,7 @@ const data: IFeatureFlagGroup[] = [
 		groupName :"Projects",
 		description : "FeatureFlags related to Projects",
 		flags : [
-            {flagName:"UseDummyData", isActive: true}
+            {flagName:"UseDummyData", isActive: false}
         ]
 	},
 	{
