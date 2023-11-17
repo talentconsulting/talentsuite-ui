@@ -76,7 +76,9 @@ class ReportService implements IReportService {
             body: JSON.stringify(report)
         };
         fetch(`${this.apiEndpoint}api/reports/${report.id}`, requestOptions)
-            .then(response => response.json());
+            .then(response => {
+                //todo trying to parse this (return guid id of the saved report) as json obviously threw an error, but do we want to do anything here?
+            });
     }
 
 
