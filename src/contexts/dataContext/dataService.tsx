@@ -6,6 +6,7 @@ import UserService from './userService';
 import IUserService from './userService';
 import ReportAggregateService from './reportAggregateService';
 import IReportAggregateService from './reportAggregateService';
+import ProjectAggregateService, { IProjectAggregateService } from './projectAggregateService';
 
 export interface IDataServiceProvider{
 	dataService:IDataService;
@@ -16,6 +17,7 @@ export interface IDataService {
 	reportService:IReportService;
 	userService:IUserService;
 	reportAggregateService:IReportAggregateService;
+	projectAggregateService:IProjectAggregateService;
 }
 
 export class DataService implements IDataService{
@@ -23,11 +25,13 @@ export class DataService implements IDataService{
 	reportService:IReportService;
 	userService:IUserService;
 	reportAggregateService:IReportAggregateService;
+	projectAggregateService:IProjectAggregateService;
 
 	constructor(){
 		this.projectService = new ProjectService();
 		this.reportService = new ReportService();
 		this.userService = new UserService();
 		this.reportAggregateService = new ReportAggregateService(this.reportService, this.projectService, this.userService);
+		this.projectAggregateService = new ProjectAggregateService(this.projectService);
 	}
 }
