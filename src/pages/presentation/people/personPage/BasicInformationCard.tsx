@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import Card, {
 	CardBody,
 } from '../../../../components/bootstrap/Card';
@@ -6,7 +7,6 @@ import Icon from '../../../../components/icon/Icon';
 import Input from '../../../../components/bootstrap/forms/Input';
 import Label from '../../../../components/bootstrap/forms/Label';
 import { UserModel, IUserModel } from '../../../../models/ui-models/IUserModel';
-import { useEffect, useState } from 'react';
 import JobRoleTypes from '../../../../type/jobrole-type';
 import Select from '../../../../components/bootstrap/forms/Select';
 import { da } from 'date-fns/locale';
