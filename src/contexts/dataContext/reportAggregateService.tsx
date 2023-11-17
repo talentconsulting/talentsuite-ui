@@ -83,6 +83,7 @@ class ReportAggregateService implements IReportAggregateService{
                 projectId: dto.projectId,
                 userId: dto.userId,
                 risks: risks,
+                //todo do we need to do this or will it be included on the api return?
                 projectName: this.getValue(project, 'name'),
                 client: '',
                 userName: `${this.getValue(user, 'name')} ${this.getValue(user, 'surname')}`,
