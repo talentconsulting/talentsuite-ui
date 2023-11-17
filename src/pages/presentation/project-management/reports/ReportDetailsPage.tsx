@@ -96,9 +96,8 @@ const ReportDetailsPage = () => {
             console.log('Updating report:', data);
 			dataService.reportAggregateService.mapModelToDto(data).then(dto => dataService.reportService.updateReport(dto));
         } else {
-            var addModel = new ReportAddModel(data);
             console.log('Saving new report:', data);
-			dataService.reportAggregateService.mapModelToDto(data).then(dto => dataService.reportService.addNewReport(dto));
+			dataService.reportAggregateService.mapNewModelToDto(data).then(dto => dataService.reportService.addNewReport(dto));
         }
     };
 

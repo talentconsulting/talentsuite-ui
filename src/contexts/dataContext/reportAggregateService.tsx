@@ -5,6 +5,8 @@ import { IReportModel, IReportRiskModel } from '../../models/ui-models/IReportMo
 import { IReportDto} from '../../models/dtos/IReportDto';
 import  RAG_STATUS, {getStatusByValue} from '../../models/ui-models/enums/enumStatus';
 import { IRiskDto } from '../../models/dtos/IRiskDto';
+import { v4 as uuidv4 } from 'uuid';
+import moment from 'moment';
 
 export interface IReportAggregateService {
     getById(id?: string): Promise<IReportModel>;
@@ -89,6 +91,36 @@ class ReportAggregateService implements IReportAggregateService{
             };
 
         return model;
+    }
+
+    async mapNewModelToDto(model: IReportModel): Promise<IReportDto> {
+        var newReportId = uuidv4();
+
+        var risks : IRiskDto[] = [];
+
+        model.risks.forEach(risk=>{
+            risks.push({
+                id : uuidv4(),
+                ragStatus : risk.ragStatus.value,
+                reportId : newReportId,
+                riskDetails : risk.riskDetails,
+                riskMitigation : risk.riskMitigation
+            });
+        });
+
+        var dto : IReportDto = {
+            id: newReportId,
+            created: moment().toDate(),
+            plannedTasks: model.plannedTasks,
+            completedTasks: model.completedTasks,
+            weeknumber: model.weeknumber,
+            submissionDate: new Date(model.submissionDate),
+            projectId: "86b610ee-e866-4749-9f10-4a5c59e96f2f", //todo remove hardcoded project id when projects service is wired up
+            userId: model.userId,
+            risks: risks
+        }
+        return dto;
+
     }
 
     async mapModelToDto(model: IReportModel): Promise<IReportDto> {
