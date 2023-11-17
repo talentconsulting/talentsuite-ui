@@ -20,6 +20,7 @@ const onRedirectCallback = (appState:any) => {
 	history.push(
 	  appState && appState.returnTo ? appState.returnTo : window.location.pathname
 	);
+	
   };
 
 const providerConfig = {

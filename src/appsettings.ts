@@ -2,6 +2,7 @@ import * as appSettings from './appsettings.json';
 
 export interface IAppSettings{
     ReportsApiUrl:string;
+    userApiUrl:string;
     domain:string;
     clientId:string;
     audience:string | null;
