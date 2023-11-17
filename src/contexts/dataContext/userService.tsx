@@ -39,7 +39,7 @@ class UserService implements IUserService {
             username: '',
             name: '',
             surname: '',
-            position: '',
+            jobRole: 'NotSet',
             email: '',
             src: '',
             srcSet: '',

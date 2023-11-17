@@ -53,7 +53,7 @@ const User = () => {
 						{`${userData?.name} ${userData?.surname}`}
 						<Icon icon='Verified' className='ms-1' color='info' />
 					</div>
-					<div className='user-sub-title'>{userData?.position}</div>
+					<div className='user-sub-title'>{userData?.jobRole}</div>
 				</div>
 			</div>
 			<DropdownMenu>

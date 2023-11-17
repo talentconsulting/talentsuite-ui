@@ -64,7 +64,7 @@ const cosmosDbSkill: ISkillModel = {
 	color: 'success',
 };
 
-const SERVICES: { [key: string]: ISkillModel } = {
+const SKILLS: { [key: string]: ISkillModel } = {
 	HTML_SKILL: htmlSkill,
 	JAVA_SKILL: javaSkill,
 	ANDROID_SKILL: androidSkill,
@@ -80,10 +80,10 @@ const SERVICES: { [key: string]: ISkillModel } = {
 };
 
 export function getServiceDataWithServiceName(serviceName: string) {
-	return SERVICES[
+	return SKILLS[
 		// @ts-ignore
 		Object.keys(SERVICES).filter((f) => SERVICES[f].name.toString() === serviceName)
 	];
 }
 
-export default SERVICES;
+export default SKILLS;
