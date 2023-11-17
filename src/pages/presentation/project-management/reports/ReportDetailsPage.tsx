@@ -9,7 +9,7 @@ import Card, {
     CardTitle,
 } from '../../../../components/bootstrap/Card';
 import DataContext from './../../../../contexts/dataContext/dataContext';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Icon from '../../../../components/icon/Icon';
 import { IReportModel, IReportRiskModel, ReportModel, ReportRiskModel, ReportAddModel } from '../../../../models/ui-models/IReportModel';
 import REPORT_STATUS, { IStatus } from '../../../../models/ui-models/enums/enumStatus';
@@ -22,6 +22,7 @@ import Button from '../../../../components/bootstrap/Button';
 import RAG_STATUS from '../../../../models/ui-models/enums/enumStatus';
 import Dropdown, { DropdownItem, DropdownMenu, DropdownToggle } from '../../../../components/bootstrap/Dropdown';
 import moment from 'moment';
+import { APP_PATHS } from '../../../../routes/contentRoutes';
 
 const ReportDetailsPage = () => {
 
@@ -31,6 +32,7 @@ const ReportDetailsPage = () => {
 	const pageTitle = ((id == 'new') ? 'New Report' : 'Edit Report');
 	const { dataService } = useContext(DataContext);
 	const { userData } = useContext(AuthContext);
+	const navigate = useNavigate();
 
     var newReport = { 
 		plannedTasks: '',
@@ -90,6 +92,11 @@ const ReportDetailsPage = () => {
 		updateUserDetails(updatedData);
 		shouldUpdate = !shouldUpdate;
 	}
+
+	const handleSave = () => {
+		saveChanges();
+		navigate(`../${APP_PATHS.PROJECTS.REPORTS.LIST.replace(':id', "All")}`);
+    };
 
 	const saveChanges = () => {
 		if (data.id != undefined) {
@@ -212,7 +219,7 @@ const ReportDetailsPage = () => {
 					<Card stretch>
 							<CardBody>
 								<Button
-									onClick={saveChanges}
+									onClick={handleSave}
 									className='float-end'
 									color='info'
 									icon='Add'
