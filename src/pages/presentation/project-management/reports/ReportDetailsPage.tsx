@@ -11,7 +11,7 @@ import Card, {
 import DataContext from './../../../../contexts/dataContext/dataContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import Icon from '../../../../components/icon/Icon';
-import { IReportModel, IReportRiskModel, ReportModel, ReportRiskModel, ReportAddModel } from '../../../../models/ui-models/IReportModel';
+import { IReportModel, IReportRiskModel, ReportModel, ReportRiskModel } from '../../../../models/ui-models/IReportModel';
 import REPORT_STATUS, { IStatus } from '../../../../models/ui-models/enums/enumStatus';
 import Textarea from '../../../../components/bootstrap/forms/Textarea';
 import AuthContext from '../../../../contexts/authContext';
